@@ -50,6 +50,10 @@
 - `sliding`：`size`, `initial`（数字矩阵展平，0 是空格）, `message`。目标为 1…N−1、0，必须确保可解。
 - `circuit`：`size`, `initial`（方向位掩码矩阵展平）, `message`。上=1、右=2、下=4、左=8；输入为第一格左侧，输出为最后一格右侧。
 - `forensic`：`src`（相对 public 的文件路径）, `filename`, `mode`（`header` / `metadata` / `lsb`）, `description`（可访问的画面描述）。检验台实际读取 PNG 字节。`header` 开启八字节文件头编辑；像素工具支持未交错的 8 位 RGB/RGBA PNG，按前 104 个像素、指定通道和位平面读取 ASCII。
+- `balance`：`count`（硬币数量）, `heavy`（从 1 开始的较重硬币编号）, `maxWeighings`, `message`。每次两盘数量必须相同，提交判断前必须由称量记录排除到唯一候选。
+- `jugs`：`capacity`（两个整数容量）, `targetJug`（0/1）, `target`, `message`。只可装满、倒空、倒至源空或目标满；`solveJugs` 可验证最短解。
+- `ferry`：`passengers`（`label`, `symbol`）, `conflicts`（不能在无人照看时同岸的索引对）, `message`。船载一位乘客，可以空船往返；非法渡河不执行。
+- `warehouse`：`layout`（等宽字符串数组）, `message`。`#` 墙、空格地面、`.` 目标、`$` 箱子、`@` 玩家、`+` 目标上的玩家、`*` 就位箱子；`solveWarehouse` 用于证明可解。
 - `cipher` 可设置 `config.tool` 为 `caesar`、`base64`、`vigenere` 或 `xor`，启用对应站内辅助工具。
 
 新增机制时同步更新类型、档案标签、卡片图标、渲染器与实际交互测试。完成后运行内容测试、相关浏览器测试与生产构建。

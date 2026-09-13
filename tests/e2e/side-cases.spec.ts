@@ -70,7 +70,7 @@ test('recover real files and complete the independent side stories', async ({ pa
         await page.getByRole('link', { name: `继续调查：${next.title}`, exact: true }).click()
     })
   }
-  await page.getByRole('link', { name: '返回异常档案', exact: true }).click()
+  await page.goto('/#/archives?chapter=side')
   await expect(page.locator('.archive-case-grid .status-solved')).toHaveCount(cases.length)
   await page.goto('/#/')
   await expect(page.getByRole('link', { name: '接收第一条线索', exact: true })).toHaveAttribute(

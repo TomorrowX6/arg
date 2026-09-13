@@ -52,4 +52,8 @@ export const kindLabels: Record<string, string> = {
   sliding: '滑块拼图',
   circuit: '线路旋转',
   forensic: '文件取证',
+  balance: '天平称量',
+  jugs: '量水机关',
+  ferry: '渡河规划',
+  warehouse: '仓库推箱',
 }
