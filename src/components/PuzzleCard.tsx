@@ -29,6 +29,9 @@ const kindIcon: Record<string, string> = {
   laser: 'sun',
   codebreak: 'key',
   bridge: 'lightbulb',
+  packet: 'activity',
+  wave: 'audio',
+  unicode: 'fingerprint',
 }
 export function PuzzleCard({ puzzle, featured = false }: { puzzle: Puzzle; featured?: boolean }) {
   const { state, dispatch } = useGame()

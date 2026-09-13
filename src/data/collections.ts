@@ -54,6 +54,15 @@ export const caseCollections: CaseCollection[] = [
     color: '#a58160',
     tag: '六份连续档案 · 动手与推理',
   },
+  {
+    id: 'postoffice',
+    title: '无人签收的邮局',
+    subtitle: 'LETTERS BETWEEN TWO CHANNELS',
+    description: '地址藏进域名，句子乱序到达，左右声道各守着半句承诺。读懂一封等了很久的信。',
+    icon: 'mail',
+    color: '#638991',
+    tag: '网络与声音 · 真实物证',
+  },
 ]
 export const collectionById = Object.fromEntries(
   caseCollections.map((collection) => [collection.id, collection]),

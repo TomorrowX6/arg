@@ -228,6 +228,10 @@
   border-radius: 4px;
   margin: 15px 0;
 }
+.artifact-table-scroll:focus-visible {
+  outline: 2px solid var(--coral);
+  outline-offset: 4px;
+}
 .artifact-table {
   width: 100%;
   border-collapse: collapse;

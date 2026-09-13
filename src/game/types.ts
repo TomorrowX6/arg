@@ -23,6 +23,9 @@ export type PuzzleKind =
   | 'laser'
   | 'codebreak'
   | 'bridge'
+  | 'packet'
+  | 'wave'
+  | 'unicode'
 
 export interface Artifact {
   type: PuzzleKind

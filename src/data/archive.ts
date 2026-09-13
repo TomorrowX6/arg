@@ -62,4 +62,7 @@ export const kindLabels: Record<string, string> = {
   laser: '镜面导光',
   codebreak: '符号推理',
   bridge: '提灯过桥',
+  packet: '网络取证',
+  wave: '声谱分析',
+  unicode: '字符隐写',
 }

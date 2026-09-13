@@ -8,7 +8,7 @@
     "build": "tsc -b && vite build",
     "lint": "oxlint",
     "preview": "vite preview",
-    "generate": "node scripts/generate-evidence.mjs && node scripts/generate-content.mjs",
+    "generate": "node scripts/generate-evidence.mjs && node scripts/generate-transmissions.mjs && node scripts/generate-content.mjs",
     "predev": "npm run generate",
     "prebuild": "npm run generate",
     "test": "vitest run",

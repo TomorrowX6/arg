@@ -57,6 +57,9 @@
 - `laser`：`size`、`source`（棋盘外的 `x`, `y` 与 `direction`）、`exit`（棋盘外坐标）、`mirrors`（从 0 编号的 `cell`、`tilt` 为 `/` 或反斜线、可选 `fixed`）、`walls`、`receivers`、`message`。镜面反射 90°；所有接收器被照到且光从指定出口离开才算完成。`traceLaser` 可检测挡板、出界与回路，`solveLaser` 枚举活动镜面验证解法。
 - `codebreak`：`symbols`（`label`, `glyph`）、`secret`（符号索引数组）、`maxGuesses`、`message`。支持重复符号，先统计位置正确，再从未匹配符号里统计误位，避免重复计数。玩家可以查看剩余候选数量；用完机会可重试同一个谜面。
 - `bridge`：`people`（`label`, 正整数 `time`）、`budget`、可选两项 `banks`、`message`。每次一至两人与提灯同侧出发，耗时取同行者较大值；可撤回，不执行超出灯油预算的动作。`solveBridge` 计算最短总用时，题目必须至少容纳一个解。
+- `packet`：`src`、`filename`。读取经典 PCAP 的以太网 / IPv4 / UDP / TCP / DNS，显示实际字段与载荷；编号 DNS 查询片段可去重、排序为十六进制；TCP 按单向四元组与序列号重组，检测缺口及矛盾重传，读取 HTTP 与 gzip 正文。提供原件和重组字节下载。当前检验台不重组 IP 分片、TCP 序列号回绕或多次复用同一四元组的连接。
+- `wave`：`src`、`filename`。读取单声道或双声道 16 位 PCM WAV，含 RIFF LIST/INFO 备注。波形、512 点 Hann 窗 FFT 声谱与声道合成全部来自采样数据；合声 `(L+R)/2`，差分 `(L−R)/2`。当前频带像素工具读取 750–1500 Hz 的七条等距频带，每列时长可调，默认 160 ms。
+- `unicode`：`src`、`filename`。读取真实 UTF-8 文本，统计常见不可见字符、可视化其位置，按选择的两种码位映射为 0/1，再以八位字节解码。默认 U+200B=0，U+200C=1。
 - `cipher` 可设置 `config.tool` 为 `caesar`、`base64`、`vigenere` 或 `xor`，启用对应站内辅助工具。
 
 新增机制时同步更新类型、档案标签、卡片图标、渲染器与实际交互测试。完成后运行内容测试、相关浏览器测试与生产构建。
@@ -64,6 +67,8 @@
 ## 取证物证
 
 `scripts/generate-evidence.mjs` 以原创像素绘图生成三份真实 PNG 文件，并在内容编译前自动执行。第一张仅损坏前四个签名字节；第二张把 Base64 留言写入 tEXt 的 Comment；第三张把零字节结束的 ASCII 写入蓝色通道最低位。单元测试直接读取这些文件，核对 CRC、元数据、像素解码和隐藏信息；浏览器测试下载修复后的文件并验证字节。
+
+`scripts/generate-transmissions.mjs` 生成三份 PCAP、真实零宽字符信件与双声道 WAV。PCAP 使用文档保留地址与 `.invalid` 域名，包含有效 IPv4/TCP 校验和、DNS 名称压缩、TCP 握手、乱序与重复片段；它们是游戏编写的静态物证，不来自真实用户通信。WAV 在共同背景上叠加方向相反的七频带信号，差分还原字形。所有生成过程可复现，文件同时随源码与网站提供；页面不硬编码这些物证的检验输出。
 
 支线使用 `optional: true`，不会计入主线进度或阻挡结局。可以用 `requires` 组成独立故事，完成后优先进入依赖当前档案的下一关。
 

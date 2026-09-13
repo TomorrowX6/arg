@@ -15,6 +15,9 @@ import { WarehouseDevice } from './WarehouseDevice'
 import { LaserDevice } from './LaserDevice'
 import { CodeBreakDevice } from './CodeBreakDevice'
 import { BridgeDevice } from './BridgeDevice'
+import { PacketDevice } from './PacketDevice'
+import { WaveDevice } from './WaveDevice'
+import { UnicodeDevice } from './UnicodeDevice'
 import '../styles/nonogram.css'
 import '../styles/mini-games.css'
 import '../styles/fairground.css'
@@ -41,6 +44,9 @@ export function ArtifactView({ artifact }: { artifact: Artifact }) {
     'laser',
     'codebreak',
     'bridge',
+    'packet',
+    'wave',
+    'unicode',
   ].includes(artifact.type)
   return (
     <section className={`artifact artifact-${artifact.type}`} aria-label={artifact.label}>
@@ -53,7 +59,13 @@ export function ArtifactView({ artifact }: { artifact: Artifact }) {
       </div>
       <div className="artifact-content">
         {artifact.title && <h3 className="artifact-title">{artifact.title}</h3>}
-        {artifact.type === 'laser' ? (
+        {artifact.type === 'packet' ? (
+          <PacketDevice artifact={artifact} />
+        ) : artifact.type === 'wave' ? (
+          <WaveDevice artifact={artifact} />
+        ) : artifact.type === 'unicode' ? (
+          <UnicodeDevice artifact={artifact} />
+        ) : artifact.type === 'laser' ? (
           <LaserDevice artifact={artifact} />
         ) : artifact.type === 'codebreak' ? (
           <CodeBreakDevice artifact={artifact} />
@@ -105,7 +117,12 @@ export function ArtifactView({ artifact }: { artifact: Artifact }) {
             {artifact.text && <div className="document-text">{artifact.text}</div>}
             {artifact.code && <pre className="cipher-code">{artifact.code}</pre>}
             {artifact.table && (
-              <div className="artifact-table-scroll">
+              <div
+                className="artifact-table-scroll"
+                tabIndex={0}
+                role="region"
+                aria-label={`${artifact.title ?? artifact.label}，可横向滚动的资料表`}
+              >
                 <table className="artifact-table">
                   <thead>
                     <tr>

@@ -3882,6 +3882,371 @@
       "answerHashes": [
         "4e84259b9441b2378649f7ef066fc96aa3ce9950064eed4f01ad8152885974d2"
       ]
+    },
+    {
+      "id": "x27",
+      "chapter": "side",
+      "number": 127,
+      "title": "地址写得太长了",
+      "subtitle": "有些信没有写进正文，而是藏在每一次问路里。",
+      "kind": "packet",
+      "difficulty": 2,
+      "minutes": 10,
+      "tags": [
+        "无人签收的邮局",
+        "DNS 隐写"
+      ],
+      "optional": true,
+      "collection": "postoffice",
+      "requires": [],
+      "briefing": [
+        "邮局旧服务器留下了一份抓包备份。大多数查询都很普通，只有以 drop.wugang.invalid 结尾的域名，前面带着两段奇怪的标签。第一段是从 1 开始的片段编号，第二段是十六进制内容。",
+        "在检验台筛选或逐包查看，找到这组域名。按编号排序，相同编号与内容的重传只算一次，再把片段拼成 UTF-8 字节。DNS 拼接工具与站内十六进制解码器可以完成全部操作；原始 PCAP 也可下载。"
+      ],
+      "artifact": {
+        "type": "packet",
+        "label": "物证 127 / 邮局域名记录",
+        "title": "THE ADDRESS IS PART OF THE LETTER",
+        "config": {
+          "src": "assets/evidence/post-office-dns.pcap",
+          "filename": "post-office-dns.pcap"
+        }
+      },
+      "question": "编号片段拼好后，指出的是哪一只信箱？",
+      "answerFormat": "BOX 与三位数字",
+      "hints": [
+        "筛选 drop.wugang.invalid。别按包的到达顺序直接拼接，最前面的数字才是片段的位置；应答里的 FRAGMENT ACCEPTED 只是确认收到。",
+        "DNS 拼接中填入后缀 drop.wugang.invalid。按 01、02、03 去重排列，得到 42 4F 58 20 30 31 37，再送入十六进制解码器。",
+        "01=424F，02=5820，03=303137。合起来解码为 BOX 017，也就是第 017 号信箱。"
+      ],
+      "resolution": "BOX 017。你在信箱背面的夹层找到一张服务器维护单，纸角被雨水泡软过。有人把一整句话拆成地址，反复确认它有没有抵达。第十七只信箱终于有了姓名，下一份备份来自它打开的一刻。",
+      "evidence": {
+        "title": "邮局的第 017 号信箱",
+        "text": "DNS 查询中的 01、02、03 片段经去重、排序与十六进制解码，得到 BOX 017。",
+        "symbol": "mail"
+      },
+      "answerHashes": [
+        "dbd142c011af4c4af1f12bc6710c1ba64c8b6e37fd33ed0fff347fa231d8f7d0",
+        "cc8543cf1529cc51e0517ff03b22127e33adbdec25436e10ba5f135235937fdc",
+        "c0577202647d91ee696956bf80768dca4230b95ba254945149edb70df58c7d10"
+      ]
+    },
+    {
+      "id": "x28",
+      "chapter": "side",
+      "number": 128,
+      "title": "先到的，不一定是第一句",
+      "subtitle": "把乱序的字节放回去，听见对方真正说了什么。",
+      "kind": "packet",
+      "difficulty": 2,
+      "minutes": 12,
+      "tags": [
+        "无人签收的邮局",
+        "TCP 重组"
+      ],
+      "optional": true,
+      "collection": "postoffice",
+      "requires": [
+        "x27"
+      ],
+      "briefing": [
+        "第 017 号信箱的读取记录到了，但服务器响应的片段顺序被打乱，还混入了一次完全相同的重传。TCP 的序列号表示字节在原始数据流中的位置，不能按抓到包的先后直接阅读。",
+        "切换到 TCP 追踪，选择来源端口为 80 的服务器响应：198.51.100.17:80 → 192.0.2.14:43017。按序列号重组后，在 HTTP 正文里找出 STATUS 后面的两个英文单词。"
+      ],
+      "artifact": {
+        "type": "packet",
+        "label": "物证 128 / 第十七号数据流",
+        "title": "PUT EVERY SENTENCE BACK",
+        "config": {
+          "src": "assets/evidence/letter-stream.pcap",
+          "filename": "letter-stream.pcap"
+        }
+      },
+      "question": "重组后的正文，STATUS 字段写着什么？",
+      "answerFormat": "两个英文单词",
+      "hints": [
+        "请求来自临时端口 43017，响应来自端口 80。先选对方向；包列表里有 SEQ 序列号和载荷长度。",
+        "进入 TCP 追踪，选择从 198.51.100.17:80 发出的那条流并重组。相同重传只保留一份；头部与正文之间有一个空行。",
+        "服务器响应重组后可读取 HTTP 正文，其中有 STATUS: STILL HERE。答案是 STILL HERE。"
+      ],
+      "resolution": "STILL HERE。我还在这里。简短的状态后面附着一封信和一段双声道录音。你没有从抓包里读到离开的时间，也没有读到任何催促；只有发送者林雀的名字，和收件人一栏里的「下一位档案员」。",
+      "evidence": {
+        "title": "我还在这里",
+        "text": "来源端口 80 的 TCP 响应经过序列号重组，排除相同重传后，正文状态为 STILL HERE，确认收件方仍在场。",
+        "symbol": "activity"
+      },
+      "answerHashes": [
+        "7a24199b644646bfc3d78943965db4600935b7bbfbdf30aea8e91c9e16e0ee52"
+      ]
+    },
+    {
+      "id": "x29",
+      "chapter": "side",
+      "number": 129,
+      "title": "最轻的字，没有墨迹",
+      "subtitle": "光标多走了几步，纸上却没有多出一个字。",
+      "kind": "unicode",
+      "difficulty": 2,
+      "minutes": 9,
+      "tags": [
+        "无人签收的邮局",
+        "Unicode 隐写"
+      ],
+      "optional": true,
+      "collection": "postoffice",
+      "requires": [
+        "x28"
+      ],
+      "briefing": [
+        "附件看上去只是一封普通的信，字符总数却比可见的字多。林雀在维护单上约定过：U+200B 表示二进制 0，U+200C 表示二进制 1；忽略其他字符，按它们在文件中出现的顺序读取。",
+        "使用逐字符检查，观察这两种零宽字符的数量与位置。每八位组成一个字节，高位在左，再按 UTF-8 读取。可切换隐藏字符显示，原始信件也可以下载。"
+      ],
+      "artifact": {
+        "type": "unicode",
+        "label": "物证 129 / 林雀的信",
+        "title": "THE LIGHTEST WORDS LEAVE NO INK",
+        "config": {
+          "src": "assets/evidence/letter-017.txt",
+          "filename": "letter-017.txt"
+        }
+      },
+      "question": "零宽字符藏下的窗口名称是什么？",
+      "answerFormat": "两个英文单词",
+      "hints": [
+        "先点逐字符检查。两种特殊字符都是真实存在于文件中的 Unicode 码位，它们通常不会占据可见宽度。",
+        "映射保持 0=U+200B、1=U+200C，点击提取隐藏字节。共 96 位，组成 12 个 UTF-8 字节，其中包括一个空格。",
+        "从 01010111 01001001 开始的位串解出 WINDOW SEVEN。你要找的是第七号窗口。"
+      ],
+      "resolution": "WINDOW SEVEN。窗边的木框上，正好刻着一枚很浅的 7。你把信放在窗台上，原文仍然完整，藏在空白里的方向也终于被读到了。抽屉里那段录音，似乎一直在等有人把左右声道分开。",
+      "evidence": {
+        "title": "第七号窗口",
+        "text": "U+200B 与 U+200C 按 0、1 提取为 96 位，UTF-8 解码得到 WINDOW SEVEN。投递位置是第 7 号窗口。",
+        "symbol": "fingerprint"
+      },
+      "answerHashes": [
+        "0bb9600be07925b5475a3056d19bbfbf9a0504396cb819ef9ec9bfecbabf817b",
+        "e24a67d9fc4d2b3ad1d70c295e1b587ba3db512602042c0f1d2b11548b31e17d",
+        "12dc242ce4356330983600747e217d718d0f11164a69eaae80708529c949dcd4"
+      ]
+    },
+    {
+      "id": "x30",
+      "chapter": "side",
+      "number": 130,
+      "title": "同一间房，两种声音",
+      "subtitle": "把共同的声音减掉，剩下的部分会画出一扇门。",
+      "kind": "wave",
+      "difficulty": 3,
+      "minutes": 12,
+      "tags": [
+        "无人签收的邮局",
+        "声道差分",
+        "声谱图"
+      ],
+      "optional": true,
+      "collection": "postoffice",
+      "requires": [
+        "x29"
+      ],
+      "briefing": [
+        "第七号窗口留下了一段双声道 WAV。两边都录到了相同的背景音，只有一部分信号以相反的方向写进了左、右声道。把左右声道做差，可以去掉共同的背景，再查看随时间变化的声谱图。",
+        "文件备注指向 750–1500 Hz 的七条等距频带，每一列持续 160 毫秒。从高频到低频为上到下，从录音开始到结束为左到右。可以放大到 625–1625 Hz，也可以展开频带像素读数。无需开启声音。"
+      ],
+      "artifact": {
+        "type": "wave",
+        "label": "物证 130 / 第七窗口录音",
+        "title": "LISTEN TO THE DIFFERENCE",
+        "config": {
+          "src": "assets/evidence/station-stereo.wav",
+          "filename": "station-stereo.wav"
+        }
+      },
+      "question": "差分声谱里画出的四个英文字母是什么？",
+      "answerFormat": "四个英文字母",
+      "hints": [
+        "合声会把反向的隐藏信号抵消。试着选择差分，让共同的背景相互抵消，再观察录音中不同的部分。",
+        "选择差分，然后把声谱显示范围改为 625–1625 Hz。也可展开把频带读成像素，保持每列 160 毫秒，读取七行图案。",
+        "差分后的四个字形依次是 O、P、E、N，组成 OPEN。窗口的门牌表示开放。"
+      ],
+      "resolution": "OPEN。四个字母在频谱里慢慢站稳。你不用把录音开得很响，也不用辨认陌生人的耳语；只需给两种声音各自的位置。窗台上的小门牌翻了过来，后面还有一张被仔细包好的签收回执。",
+      "evidence": {
+        "title": "窗口开放的声谱",
+        "text": "双声道差分去掉共同背景，750–1500 Hz 七条频带按每列 160 毫秒组成 OPEN。第七窗口处于开放状态。",
+        "symbol": "audio"
+      },
+      "answerHashes": [
+        "7550e27a58b88b09de4e4ceb1ea6126bba55cd928c553aa2ed41b0f73058110a"
+      ]
+    },
+    {
+      "id": "x31",
+      "chapter": "side",
+      "number": 131,
+      "title": "回执还包着一层纸",
+      "subtitle": "读到头部的说明，再打开正文的包装。",
+      "kind": "packet",
+      "difficulty": 3,
+      "minutes": 10,
+      "tags": [
+        "无人签收的邮局",
+        "GZIP 正文"
+      ],
+      "optional": true,
+      "collection": "postoffice",
+      "requires": [
+        "x30"
+      ],
+      "briefing": [
+        "签收回执藏在另一段 TCP 响应里。先按与前一份抓包相同的方法追踪服务器端口 80 的数据流。HTTP 头部的 Content-Encoding 会告诉你，正文还经过了什么处理。",
+        "观察头部后，按声明的编码还原正文，再按 UTF-8 阅读。检验台可以直接解压 GZIP。找出正文末尾校验词一栏的三个英文单词，它们还描述了什么时候适合投递。"
+      ],
+      "artifact": {
+        "type": "packet",
+        "label": "物证 131 / 压缩签收回执",
+        "title": "OPEN THE WRAPPING TOO",
+        "config": {
+          "src": "assets/evidence/receipt-stream.pcap",
+          "filename": "receipt-stream.pcap"
+        }
+      },
+      "question": "解压后的签收回执，校验词是什么？",
+      "answerFormat": "三个英文单词",
+      "hints": [
+        "服务器来源端口仍然是 80。正文看起来杂乱时，先查看 Content-Encoding，不要把压缩字节直接当成文字。",
+        "响应头声明 Content-Encoding: gzip。按序列号重组后，点击解压 GZIP 正文，检验台会解压实际载荷并按 UTF-8 显示。",
+        "解压后可以读到 READ: ALLOWED、PUBLISH: ASK FIRST、DELIVER: WHEN READY，以及校验词 AFTER THE RAIN。答案是 AFTER THE RAIN。"
+      ],
+      "resolution": "AFTER THE RAIN，等雨停以后。回执清楚地区分了阅读、公开与投递：可以阅读，公开之前另行询问，投递要等收件人准备好。你把每一项都抄进日志，最后才翻开窗口前的七张状态卡。",
+      "evidence": {
+        "title": "等雨停以后",
+        "text": "GZIP 正文的校验词为 AFTER THE RAIN。回执允许阅读，公开须另行询问，投递须在雨停且收件人准备好时进行。",
+        "symbol": "archive"
+      },
+      "answerHashes": [
+        "43375bb86f877cfc81194887cd3439aff92d2526a2f7eecf38433eb52a2e480b"
+      ]
+    },
+    {
+      "id": "x32",
+      "chapter": "side",
+      "number": 132,
+      "title": "现在，可以送达了",
+      "subtitle": "地址、门牌、天气之外，还要等一个人点头。",
+      "kind": "compare",
+      "difficulty": 2,
+      "minutes": 9,
+      "tags": [
+        "无人签收的邮局",
+        "跨物证核验"
+      ],
+      "optional": true,
+      "collection": "postoffice",
+      "requires": [
+        "x31"
+      ],
+      "briefing": [
+        "七张状态卡是同一封信的候选投递方案。用前五份物证逐项核对：信箱编号、窗口编号、收件人是否仍在场、门牌状态，以及雨是否已经停下。",
+        "除此之外，收件人还必须明确同意此刻接收。每一栏都是当前状态；只有全部条件相符的方案才可以投递。写下唯一符合的回执编号。"
+      ],
+      "artifact": {
+        "type": "compare",
+        "label": "文书 132 / 投递核验卡",
+        "title": "WHEN YOU ARE READY",
+        "table": [
+          [
+            "回执",
+            "信箱",
+            "窗口",
+            "收件人",
+            "门牌",
+            "天气",
+            "此刻接收"
+          ],
+          [
+            "R-01",
+            "017",
+            "7",
+            "在场",
+            "OPEN",
+            "雨停",
+            "未同意"
+          ],
+          [
+            "R-02",
+            "071",
+            "7",
+            "在场",
+            "OPEN",
+            "雨停",
+            "已同意"
+          ],
+          [
+            "R-03",
+            "017",
+            "4",
+            "在场",
+            "OPEN",
+            "雨停",
+            "已同意"
+          ],
+          [
+            "R-04",
+            "017",
+            "7",
+            "在场",
+            "OPEN",
+            "雨停",
+            "已同意"
+          ],
+          [
+            "R-05",
+            "017",
+            "7",
+            "在场",
+            "CLOSED",
+            "雨停",
+            "已同意"
+          ],
+          [
+            "R-06",
+            "017",
+            "7",
+            "在场",
+            "OPEN",
+            "雨中",
+            "已同意"
+          ],
+          [
+            "R-07",
+            "017",
+            "7",
+            "离开",
+            "OPEN",
+            "雨停",
+            "已同意"
+          ]
+        ],
+        "annotation": "横向查看完整表格。物证确认的状态不会自动代替收件人此刻的意愿。"
+      },
+      "question": "哪一张回执满足全部投递条件？",
+      "answerFormat": "R 与两位编号，例如 R-01",
+      "hints": [
+        "前五关分别确认了 BOX 017、STILL HERE、WINDOW SEVEN、OPEN、AFTER THE RAIN。把它们一项项对应到表格。",
+        "筛选 017 号信箱、第 7 窗口、在场、OPEN、雨停。R-01 与 R-04 都符合这些状态，接下来比较收件人此刻是否同意接收。",
+        "只有 R-04 的所有字段都相符，且收件人已经同意此刻接收。答案 R-04。"
+      ],
+      "resolution": "你把 R-04 写进投递日志，保留信纸原来的折痕，等对面的人把窗完全推开。雨已经停了。那个人接过信，说了一句「现在可以了」。邮局终于又有一封信，被完整地读过，也被愿意接收它的人妥善收好。",
+      "evidence": {
+        "title": "一封愿意被接收的信",
+        "text": "R-04 同时满足正确地址、收件人在场、窗口开放、雨已停以及此刻同意接收，投递核验完成。",
+        "symbol": "checks"
+      },
+      "answerHashes": [
+        "3cee6d259429b7c1aadffb224c0dc2d8e87ff38934df567b87bb6156f6c5abf0",
+        "999c36d45385505eb81f917d9d95a8a5399f20e4b6c74979cdeabe8806a07083",
+        "36810dc524abc924eb948dfd806a8488b2f0c3ebbc99e074aafdfaec69919718",
+        "745cec8ed93fc4b95d546ff396d82d94af506474e6be47acca6f6cec1ee02bb7"
+      ]
     }
   ]
 }
