@@ -1,0 +1,79 @@
+[
+  {
+    "id": "arrival",
+    "number": "01",
+    "title": "失踪的频率",
+    "subtitle": "THE FIRST SIGNAL",
+    "description": "一封没有署名的信，把你带到了凌晨仍然亮着灯的档案馆。",
+    "location": "旧广播大楼",
+    "coordinate": "31°17′ N / 121°03′ E",
+    "color": "#e16b4d",
+    "icon": "radio"
+  },
+  {
+    "id": "city",
+    "number": "02",
+    "title": "城市的背面",
+    "subtitle": "A CITY IN NEGATIVE",
+    "description": "地图上的空白不是海。那里曾经有街道、车站，还有等人回家的灯。",
+    "location": "雾港旧城区",
+    "coordinate": "GRID C4 / SECTOR 02",
+    "color": "#678576",
+    "icon": "map"
+  },
+  {
+    "id": "witness",
+    "number": "03",
+    "title": "谁在说谎",
+    "subtitle": "UNRELIABLE WITNESSES",
+    "description": "三个人，四份口供。城市消失的那一夜，并非所有人都在沉睡。",
+    "location": "市立记录局",
+    "coordinate": "FILE 1117 / RESTRICTED",
+    "color": "#b88b51",
+    "icon": "fingerprint"
+  },
+  {
+    "id": "station",
+    "number": "04",
+    "title": "第九观测站",
+    "subtitle": "THE NINTH OBSERVATORY",
+    "description": "沿着地下电缆走到尽头，有一台从未停止工作的机器。",
+    "location": "北岸观测站",
+    "coordinate": "SUB LEVEL 09 / 23:17",
+    "color": "#7589a3",
+    "icon": "orbit"
+  },
+  {
+    "id": "yesterday",
+    "number": "05",
+    "title": "不存在的昨日",
+    "subtitle": "THE DAY THAT WASN’T",
+    "description": "档案里的时间开始倒流。你必须辨认出哪一段回忆属于现在。",
+    "location": "记忆储存中心",
+    "coordinate": "TIMELINE Δ / 1999.11.17",
+    "color": "#947ca2",
+    "icon": "clock"
+  },
+  {
+    "id": "dawn",
+    "number": "06",
+    "title": "天亮之前",
+    "subtitle": "BEFORE THE DAY BREAKS",
+    "description": "所有信号汇聚在这里。最后一份档案，等待你的签名。",
+    "location": "中央发射塔",
+    "coordinate": "BROADCAST / 06:00",
+    "color": "#c99652",
+    "icon": "sun"
+  },
+  {
+    "id": "side",
+    "number": "EX",
+    "title": "异常档案",
+    "subtitle": "OPEN CASE FILES",
+    "description": "一些不在主线上的微小异常。每一件，都有人希望你看见。",
+    "location": "附属资料室",
+    "coordinate": "UNSORTED / OPEN ACCESS",
+    "color": "#687e84",
+    "icon": "folder"
+  }
+]

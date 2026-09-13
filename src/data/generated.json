@@ -1,0 +1,2248 @@
+{
+  "chapters": [
+    {
+      "id": "arrival",
+      "number": "01",
+      "title": "失踪的频率",
+      "subtitle": "THE FIRST SIGNAL",
+      "description": "一封没有署名的信，把你带到了凌晨仍然亮着灯的档案馆。",
+      "location": "旧广播大楼",
+      "coordinate": "31°17′ N / 121°03′ E",
+      "color": "#e16b4d",
+      "icon": "radio"
+    },
+    {
+      "id": "city",
+      "number": "02",
+      "title": "城市的背面",
+      "subtitle": "A CITY IN NEGATIVE",
+      "description": "地图上的空白不是海。那里曾经有街道、车站，还有等人回家的灯。",
+      "location": "雾港旧城区",
+      "coordinate": "GRID C4 / SECTOR 02",
+      "color": "#678576",
+      "icon": "map"
+    },
+    {
+      "id": "witness",
+      "number": "03",
+      "title": "谁在说谎",
+      "subtitle": "UNRELIABLE WITNESSES",
+      "description": "三个人，四份口供。城市消失的那一夜，并非所有人都在沉睡。",
+      "location": "市立记录局",
+      "coordinate": "FILE 1117 / RESTRICTED",
+      "color": "#b88b51",
+      "icon": "fingerprint"
+    },
+    {
+      "id": "station",
+      "number": "04",
+      "title": "第九观测站",
+      "subtitle": "THE NINTH OBSERVATORY",
+      "description": "沿着地下电缆走到尽头，有一台从未停止工作的机器。",
+      "location": "北岸观测站",
+      "coordinate": "SUB LEVEL 09 / 23:17",
+      "color": "#7589a3",
+      "icon": "orbit"
+    },
+    {
+      "id": "yesterday",
+      "number": "05",
+      "title": "不存在的昨日",
+      "subtitle": "THE DAY THAT WASN’T",
+      "description": "档案里的时间开始倒流。你必须辨认出哪一段回忆属于现在。",
+      "location": "记忆储存中心",
+      "coordinate": "TIMELINE Δ / 1999.11.17",
+      "color": "#947ca2",
+      "icon": "clock"
+    },
+    {
+      "id": "dawn",
+      "number": "06",
+      "title": "天亮之前",
+      "subtitle": "BEFORE THE DAY BREAKS",
+      "description": "所有信号汇聚在这里。最后一份档案，等待你的签名。",
+      "location": "中央发射塔",
+      "coordinate": "BROADCAST / 06:00",
+      "color": "#c99652",
+      "icon": "sun"
+    },
+    {
+      "id": "side",
+      "number": "EX",
+      "title": "异常档案",
+      "subtitle": "OPEN CASE FILES",
+      "description": "一些不在主线上的微小异常。每一件，都有人希望你看见。",
+      "location": "附属资料室",
+      "coordinate": "UNSORTED / OPEN ACCESS",
+      "color": "#687e84",
+      "icon": "folder"
+    }
+  ],
+  "puzzles": [
+    {
+      "id": "a01",
+      "chapter": "arrival",
+      "number": 1,
+      "title": "一封未寄出的信",
+      "subtitle": "有人一直在等你。",
+      "kind": "document",
+      "difficulty": 1,
+      "minutes": 3,
+      "tags": [
+        "入馆指南",
+        "观察"
+      ],
+      "briefing": [
+        "你在旧书里发现了一封信。邮戳上的城市不存在，落款处只有一串档案编号：EH-001。",
+        "信纸的背面写着：\"有些话太危险，只能把开头留给你。\""
+      ],
+      "artifact": {
+        "type": "document",
+        "label": "物证 001 / 私人信件",
+        "title": "致下一位夜班档案员",
+        "lines": [
+          "回到这里时，请不要开走廊的灯。",
+          "声音会沿着空荡的楼梯传到地下。",
+          "仍然记得你名字的人，没有离开。",
+          "在天亮之前，找到我们的频率。"
+        ],
+        "annotation": "有些话太危险，只能把开头留给你。"
+      },
+      "question": "信里藏着哪四个字？",
+      "answerFormat": "四个汉字",
+      "hints": [
+        "背面的留言是在告诉你一种阅读方法。",
+        "只读每一行的第一个字，从上到下连接起来。",
+        "四行的第一个字分别是：回、声、仍、在。"
+      ],
+      "resolution": "你轻声念出那四个字。接待台下面传来一阵电流声，一台老式收音机自己亮了起来。\"临时档案员，欢迎回来。\"可你确定，这是你第一次来到这里。",
+      "evidence": {
+        "title": "未寄出的信",
+        "text": "信纸没有发黄，邮戳却停在 1999 年。暗语：回声仍在。",
+        "symbol": "letter"
+      },
+      "answerHashes": [
+        "a27bb0cd1c756ddb93d896790ae0a1294c49dce1fd514b1ce50cec312ea483a4"
+      ]
+    },
+    {
+      "id": "a02",
+      "chapter": "arrival",
+      "number": 2,
+      "title": "午夜调频",
+      "subtitle": "在噪声之间，找到那个人。",
+      "kind": "frequency",
+      "difficulty": 1,
+      "minutes": 4,
+      "tags": [
+        "互动装置",
+        "信号"
+      ],
+      "requires": [
+        "a01"
+      ],
+      "briefing": [
+        "收音机的频道旋钮上落满了灰，唯一干净的一小块贴着编号：1037。",
+        "值班说明：四位设备编号，最后一位是小数。请在 FM 频段寻找清晰的人声。"
+      ],
+      "artifact": {
+        "type": "frequency",
+        "label": "设备 019 / 模拟接收机",
+        "title": "ECHO / FM RECEIVER",
+        "annotation": "设备编号 1037 · 每次调整 0.1 MHz",
+        "config": {
+          "min": 87.5,
+          "max": 108,
+          "target": 103.7,
+          "message": "……听得见吗？到「北岸」来。别相信地图。……"
+        }
+      },
+      "question": "广播让你去哪里？",
+      "answerFormat": "两个汉字，来自清晰的广播",
+      "hints": [
+        "设备编号可以直接换算为频率。",
+        "将旋钮调至 103.7 MHz；可拖动滑块，也可使用左右方向键。",
+        "103.7 MHz 的广播说：到「北岸」来。答案是北岸。"
+      ],
+      "resolution": "\"北岸。\"声音在重复这个地名。你找遍墙上的地图，却只看到一片被墨水涂黑的海。接收机吐出一张窄纸条，上面印着一串长短不一的划痕。",
+      "evidence": {
+        "title": "103.7 MHz",
+        "text": "不在频道表里的频率。有人在北岸等你，广播的背景里有海浪。",
+        "symbol": "radio"
+      },
+      "answerHashes": [
+        "cb701c081510824c7594af6168f85a6a63274afe9940d75bfadc1a8a12bb9f10"
+      ]
+    },
+    {
+      "id": "a03",
+      "chapter": "arrival",
+      "number": 3,
+      "title": "长与短之间",
+      "subtitle": "机器也有自己的语言。",
+      "kind": "morse",
+      "difficulty": 1,
+      "minutes": 4,
+      "tags": [
+        "摩斯电码",
+        "可听可看"
+      ],
+      "requires": [
+        "a02"
+      ],
+      "briefing": [
+        "窄纸条并不是打印错误，而是一段摩斯电码。斜线表示字母之间的停顿。",
+        "收音机可以重放这段信号。你也可以直接对照随设备附带的译码卡，不需要听力或外部工具。"
+      ],
+      "artifact": {
+        "type": "morse",
+        "label": "记录 003 / 短波电报",
+        "code": ". / -.-. / .... / ---",
+        "annotation": "· 是短音，— 是长音，/ 分隔字母。"
+      },
+      "question": "这段电码拼出了哪个英文单词？",
+      "answerFormat": "四个英文字母",
+      "hints": [
+        "每组信号对应一个字母，共四组。",
+        "第一组只有一个短音，对应 E；第二组 -.-. 对应 C。",
+        "四组依次是 E、C、H、O。输入 ECHO。"
+      ],
+      "resolution": "ECHO。回声。你在接待台的抽屉里找到一个刻着同样单词的铜牌。铜牌下面压着一张北岸码头的旧照片，背面有一段看似乱码的文字。",
+      "evidence": {
+        "title": "ECHO 铜牌",
+        "text": "铜牌的边缘磨得光滑。有人用拇指反复摩挲过这个词。",
+        "symbol": "key"
+      },
+      "answerHashes": [
+        "f45e94992c06b27148ffd5616aa88ac53596fc49ef205d7b5c4f3d78dd7f43f9"
+      ]
+    },
+    {
+      "id": "a04",
+      "chapter": "arrival",
+      "number": 4,
+      "title": "退后三步",
+      "subtitle": "旧照片把方向藏了起来。",
+      "kind": "cipher",
+      "difficulty": 1,
+      "minutes": 5,
+      "tags": [
+        "凯撒密码",
+        "照片背面"
+      ],
+      "requires": [
+        "a03"
+      ],
+      "briefing": [
+        "照片里是一座废弃的栈桥，海面上没有一条船。背面的文字旁画了三个向左的箭头。",
+        "注释：\"字母表是一个圆。退后三步，你会找到我。\""
+      ],
+      "artifact": {
+        "type": "cipher",
+        "label": "物证 004 / 照片背书",
+        "title": "NORTH COAST · 1999",
+        "code": "QRUWK SLHU",
+        "key": "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
+        "annotation": "← ← ←　每个密文字母在字母表里后退 3 位；A 的前一位是 Z。",
+        "config": {
+          "tool": "caesar"
+        }
+      },
+      "question": "照片背面的接头地点是什么？",
+      "answerFormat": "两个英文单词，忽略大小写和空格",
+      "hints": [
+        "这是一种固定偏移的替换密码。每个字母用同样的方式移动。",
+        "Q 后退三格得到 N，R 后退三格得到 O。可以使用下方移位工具。",
+        "解码后的文字是 NORTH PIER（北码头）。"
+      ],
+      "resolution": "北码头的照片不是拍摄于过去。海面上的灯塔有一个去年才装上的风向标。有人在伪造日期，或者，是日期本身出了问题。",
+      "evidence": {
+        "title": "日期错误的照片",
+        "text": "背书为 NORTH PIER，标记时间 1999；画面里却有一只新风向标。",
+        "symbol": "image"
+      },
+      "answerHashes": [
+        "c4593f0808a8417cb683d0060dd866d426da63601b67804bd3388fe9d9001956",
+        "b1eebff67e3da0168bf1e69bf70df463c78975a983d532dc0d9ff9f9739df9a0",
+        "f43d6af1a8b450fcbdca2d1e678be7e659d48cf4cafc3971dfdb316b1f5fd9d0"
+      ]
+    },
+    {
+      "id": "a05",
+      "chapter": "arrival",
+      "number": 5,
+      "title": "隐藏的值班人",
+      "subtitle": "目录不会展示它的全部。",
+      "kind": "terminal",
+      "difficulty": 2,
+      "minutes": 6,
+      "tags": [
+        "虚拟终端",
+        "文件调查"
+      ],
+      "requires": [
+        "a04"
+      ],
+      "briefing": [
+        "档案室的电脑还停留在上一个人的会话。普通目录里只有两份文件。",
+        "桌边贴着一句话：\"点开头的东西，并不代表不存在。用 help 查看这台终端支持的命令。\""
+      ],
+      "artifact": {
+        "type": "terminal",
+        "label": "终端 01 / 值班工作站",
+        "title": "ARCHIVE-OS / LOCAL SESSION",
+        "config": {
+          "files": {
+            "readme.txt": "余响档案馆值班工作站\n输入 ls 列出文件，cat 文件名 阅读内容。\n隐藏条目不会出现在普通目录中。\nls -a 可以列出全部条目。",
+            "shift.log": "1999-11-17 22:00 交班\n1999-11-17 23:17 信号中断\n操作员代号保存在隐藏的 .operator 文件中。",
+            ".operator": "ACCESS: INTERNAL\nOPERATOR: LARK\n如果你看见这个名字，请告诉他们，我没有离开。"
+          }
+        }
+      },
+      "question": "上一位操作员的代号是什么？",
+      "answerFormat": "四个英文字母",
+      "hints": [
+        "输入 help 查看命令；文件名以点开头时会被隐藏。",
+        "先输入 ls -a，再输入 cat .operator。",
+        "隐藏文件里写着 OPERATOR: LARK。输入 LARK。"
+      ],
+      "resolution": "LARK，云雀。你在人员登记表上找到她的名字：林雀，记录员。她的离职日期和雾港最后一次出现在地图上的日期，是同一天。",
+      "evidence": {
+        "title": "林雀的操作员记录",
+        "text": "代号 LARK。1999 年 11 月 17 日之后，没有任何关于她的正式记录。",
+        "symbol": "terminal"
+      },
+      "answerHashes": [
+        "68d64fa6a8761c50fdf465b05b47feb1fde0fc4ee8d067963d18405fe2dac4f5"
+      ]
+    },
+    {
+      "id": "a06",
+      "chapter": "arrival",
+      "number": 6,
+      "title": "被删除的一分钟",
+      "subtitle": "城市在什么时候变成了空白？",
+      "kind": "document",
+      "difficulty": 2,
+      "minutes": 5,
+      "tags": [
+        "日志取证",
+        "章节收束"
+      ],
+      "requires": [
+        "a05"
+      ],
+      "briefing": [
+        "你从打印机里取出了一份城市状态日志。那一晚，设备没有断电，也没有地震记录。",
+        "请找出系统第一次报告城市不存在的时刻。书写在边缘的一句话，像是林雀留下的提醒：\"消失也是一条记录。\""
+      ],
+      "artifact": {
+        "type": "document",
+        "label": "档案 006 / 城市状态日志",
+        "title": "雾港市 · 连续观测记录",
+        "table": [
+          [
+            "时间",
+            "观测对象",
+            "状态"
+          ],
+          [
+            "23:15",
+            "雾港城区",
+            "正常 / 14,208 个信号"
+          ],
+          [
+            "23:16",
+            "雾港城区",
+            "正常 / 14,208 个信号"
+          ],
+          [
+            "23:17",
+            "雾港城区",
+            "目标不存在 / 0 个信号"
+          ],
+          [
+            "23:18",
+            "雾港城区",
+            "空白 / 坐标已回收"
+          ]
+        ],
+        "annotation": "这页纸右下角有一枚红色印章：「请记住这个时间。」"
+      },
+      "question": "城市第一次被报告不存在，是几点几分？",
+      "answerFormat": "HH:MM，例如 08:30",
+      "hints": [
+        "找状态从正常变为异常的第一行。",
+        "23:16 仍然正常，下一分钟出现了「目标不存在」。",
+        "答案是 23:17。"
+      ],
+      "resolution": "23:17。你抬头看向走廊尽头的挂钟。秒针还在走，分针却永远停在那个位置。北侧安全门缓缓打开，门后不是楼梯，而是一条潮湿的街道。第一份调查完成。雾港正在等你。",
+      "evidence": {
+        "title": "消失时刻 · 23:17",
+        "text": "整座城的 14,208 个信号在一分钟内归零。钟没有坏，它在等待城市继续向前。",
+        "symbol": "clock"
+      },
+      "answerHashes": [
+        "025ae3045fb98405e90bfcf545e307bfbd3a80cb189e129cf43f639a55efffa4",
+        "a6a4b699d3f86695333076187c2c5140e73de8de16b2e0830536594528cfdb30"
+      ]
+    },
+    {
+      "id": "b01",
+      "chapter": "city",
+      "number": 7,
+      "title": "末班车不靠站",
+      "subtitle": "先到灯塔，再去码头。",
+      "kind": "route",
+      "difficulty": 1,
+      "minutes": 5,
+      "tags": [
+        "路线小游戏",
+        "地图"
+      ],
+      "requires": [
+        "a06"
+      ],
+      "briefing": [
+        "旧城区站牌上有一张仍在更新的线路图。灰色线路已经封闭。",
+        "驾驶员留下便笺：\"从档案馆出发，经钟楼到灯塔，再到北码头。只有这条线路不会丢掉你的名字。\""
+      ],
+      "artifact": {
+        "type": "route",
+        "label": "地图 007 / 夜间交通图",
+        "title": "雾港夜行线",
+        "config": {
+          "nodes": [
+            {
+              "id": "A",
+              "label": "档案馆",
+              "x": 12,
+              "y": 50
+            },
+            {
+              "id": "B",
+              "label": "钟楼",
+              "x": 35,
+              "y": 25
+            },
+            {
+              "id": "C",
+              "label": "旧市场",
+              "x": 35,
+              "y": 78
+            },
+            {
+              "id": "D",
+              "label": "灯塔",
+              "x": 65,
+              "y": 25
+            },
+            {
+              "id": "E",
+              "label": "雨巷",
+              "x": 65,
+              "y": 78
+            },
+            {
+              "id": "F",
+              "label": "北码头",
+              "x": 88,
+              "y": 50
+            }
+          ],
+          "edges": [
+            [
+              "A",
+              "B"
+            ],
+            [
+              "A",
+              "C"
+            ],
+            [
+              "B",
+              "D"
+            ],
+            [
+              "C",
+              "E"
+            ],
+            [
+              "D",
+              "E"
+            ],
+            [
+              "D",
+              "F"
+            ],
+            [
+              "E",
+              "F"
+            ]
+          ],
+          "path": [
+            "A",
+            "B",
+            "D",
+            "F"
+          ],
+          "message": "终点站票根上的校验词：归航"
+        }
+      },
+      "question": "按便笺规划线路，读取终点的校验词。",
+      "answerFormat": "票根上的两个汉字",
+      "hints": [
+        "点击站点规划路线，从档案馆开始。",
+        "按顺序选择：档案馆 → 钟楼 → 灯塔 → 北码头。走错可点击重置。",
+        "正确线路的票根上写着「归航」。"
+      ],
+      "resolution": "车没有来，但站牌下多了一张温热的票根。背面写着：\"我们其实一直都能回家。只是有人把终点删掉了。\"",
+      "evidence": {
+        "title": "夜行线票根",
+        "text": "档案馆 → 钟楼 → 灯塔 → 北码头。校验词：归航。",
+        "symbol": "ticket"
+      },
+      "answerHashes": [
+        "8204b2fadcc1b40bdba1e44fad8cd69211c2723c60cedd6c24a0ef0a77ee406d"
+      ]
+    },
+    {
+      "id": "b02",
+      "chapter": "city",
+      "number": 8,
+      "title": "退回的地址",
+      "subtitle": "邮递员读得懂这封信吗？",
+      "kind": "cipher",
+      "difficulty": 1,
+      "minutes": 5,
+      "tags": [
+        "Base64",
+        "编码"
+      ],
+      "requires": [
+        "b01"
+      ],
+      "briefing": [
+        "码头的邮政信箱里塞满了退信。其中一封的收件地址不是街道，而是某种机器可读的编码。",
+        "信封角落标记着 BASE 64。档案工具箱可以还原这种编码。"
+      ],
+      "artifact": {
+        "type": "cipher",
+        "label": "物证 008 / 退回信封",
+        "title": "RETURN TO SENDER",
+        "code": "QkxVRUJPUkQ=",
+        "annotation": "邮政批注：一个字母被海水泡坏了。请先还原编码，再按「蓝鸟」的英文拼法纠正收件代号。",
+        "config": {
+          "tool": "base64"
+        }
+      },
+      "question": "这封信真正的收件代号是什么？",
+      "answerFormat": "「蓝鸟」的英文，一个单词",
+      "hints": [
+        "用 Base64 解码工具还原信封上的字符串。",
+        "解码会得到 BLUEBORD。批注告诉你其中一个字母有误。",
+        "蓝鸟的正确英文是 BLUEBIRD；把 O 修正成 I。"
+      ],
+      "resolution": "BLUEBIRD，蓝鸟。这是林雀的搭档陈舟的呼号。退信戳上写着「地址不存在」，而不是「查无此人」。也许那些人都还活着。",
+      "evidence": {
+        "title": "给蓝鸟的退信",
+        "text": "收件代号 BLUEBIRD。邮政系统删除的是地址，不是住在那里的人。",
+        "symbol": "mail"
+      },
+      "answerHashes": [
+        "843121b7c48923cd1539100b15823837ab86110e1a04676701e2d3183eb83edc"
+      ]
+    },
+    {
+      "id": "b03",
+      "chapter": "city",
+      "number": 9,
+      "title": "门牌的另一面",
+      "subtitle": "读懂一次顺序的交换。",
+      "kind": "cipher",
+      "difficulty": 2,
+      "minutes": 6,
+      "tags": [
+        "栅栏密码",
+        "重排"
+      ],
+      "requires": [
+        "b02"
+      ],
+      "briefing": [
+        "陈舟家的门牌后面刻着两行字母，旁边画了一个从左向右的拉链。",
+        "门锁的提示非常具体：先读上排第一个，再读下排第一个，然后上排第二个、下排第二个，依此交替。"
+      ],
+      "artifact": {
+        "type": "cipher",
+        "label": "物证 009 / 反面门牌",
+        "title": "两条街道，一条归路",
+        "code": "上排：O E D O\n下排：P N O R",
+        "annotation": "按列交替读：上 1、下 1、上 2、下 2……"
+      },
+      "question": "重新排列后，门牌给了你什么指令？",
+      "answerFormat": "两个英文单词",
+      "hints": [
+        "不要先把上面一整排读完。拉链提示的是交替合并。",
+        "第一对是 O、P；第二对是 E、N。",
+        "合并后是 O P E N D O O R。输入 OPEN DOOR。"
+      ],
+      "resolution": "门开了。室内的一切都停在离开的瞬间：半杯水、一件搭在椅背上的雨衣，以及一幅少了一块的全家福。",
+      "evidence": {
+        "title": "陈舟家的门牌",
+        "text": "OPEN DOOR。失踪者的家里没有灰尘，杯里的水仍有余温。",
+        "symbol": "door"
+      },
+      "answerHashes": [
+        "f63a0968bc2b14b5cd3bf3d2eae3582fe5127a4bd6c82c34d4cda2b6600a376f"
+      ]
+    },
+    {
+      "id": "b04",
+      "chapter": "city",
+      "number": 10,
+      "title": "停电后的窗户",
+      "subtitle": "有些灯，需要一起熄灭。",
+      "kind": "lights",
+      "difficulty": 2,
+      "minutes": 7,
+      "tags": [
+        "熄灯小游戏",
+        "电路"
+      ],
+      "requires": [
+        "b03"
+      ],
+      "briefing": [
+        "全家福后面是一块 3×3 的备用电路板。每按一个开关，会翻转它和上下左右相邻灯的状态。",
+        "检修说明写得很清楚：\"全部熄灭，门禁进入安全模式。\"没有时间限制，可以随时重置。"
+      ],
+      "artifact": {
+        "type": "lights",
+        "label": "装置 010 / 备用电源",
+        "title": "SAFE MODE / ALL LIGHTS OFF",
+        "config": {
+          "size": 3,
+          "initial": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "message": "安全模式已启动。门禁口令：余温"
+        }
+      },
+      "question": "修复电路后，读取门禁口令。",
+      "answerFormat": "两个汉字",
+      "hints": [
+        "每次点击会同时翻转十字形的最多五盏灯。相同按钮按两次会抵消。",
+        "从初始状态开始，依次点击四个角和正中心。顺序不影响结果。",
+        "重置后点击左上、右上、左下、右下、中心，全部灯熄灭。门禁口令是余温。"
+      ],
+      "resolution": "灯全部熄灭的瞬间，墙后的保险柜开了。里面没有金钱，只有一叠小孩画的太阳。每张纸的背面都写着同一句话：爸爸，明天见。",
+      "evidence": {
+        "title": "没有寄出的太阳",
+        "text": "保险柜里保存着孩子的画。明天并没有到来，但有人一直保管着它。",
+        "symbol": "sun"
+      },
+      "answerHashes": [
+        "ca569e8d020c374c0c1952c429135fe3aa2d0eb2012b20b7b5cbceae2acdf336"
+      ]
+    },
+    {
+      "id": "b05",
+      "chapter": "city",
+      "number": 11,
+      "title": "雨巷里的数字",
+      "subtitle": "每一个字母，都有自己的位置。",
+      "kind": "cipher",
+      "difficulty": 1,
+      "minutes": 4,
+      "tags": [
+        "A1Z26",
+        "路牌"
+      ],
+      "requires": [
+        "b04"
+      ],
+      "briefing": [
+        "雨衣口袋里有张纸条。抬头是「雨巷旧书店」，正文却只有数字。",
+        "纸条下面附着一张儿童识字卡：A=1，B=2，……，Z=26。"
+      ],
+      "artifact": {
+        "type": "cipher",
+        "label": "物证 011 / 书店取件单",
+        "title": "预约取书 · 待领取",
+        "code": "18 · 5 · 13 · 5 · 13 · 2 · 5 · 18",
+        "key": "A=1  B=2  C=3  …  Z=26",
+        "annotation": "每个数字替换成它在英文字母表里的字母。"
+      },
+      "question": "取件单上的校验词是什么？",
+      "answerFormat": "八个英文字母",
+      "hints": [
+        "这是字母序号，不是需要计算的算式。",
+        "18 对应 R，5 对应 E，13 对应 M。",
+        "所有数字还原后是 REMEMBER，意思是「记住」。"
+      ],
+      "resolution": "书店老板不在，但柜台上已经准备好了你的书。书名是《如何让一座城市消失》，扉页只写了两个字：不要。",
+      "evidence": {
+        "title": "书店取件单",
+        "text": "校验词 REMEMBER。书的扉页写着「不要」，作者栏被人用刀刮掉了。",
+        "symbol": "book"
+      },
+      "answerHashes": [
+        "97378c52e87801b1678f7a9b4a3732371b24d54f9cd22e1a1bad322e3d745efb"
+      ]
+    },
+    {
+      "id": "b06",
+      "chapter": "city",
+      "number": 12,
+      "title": "海不在地图上",
+      "subtitle": "坐标是另一种说话方式。",
+      "kind": "logic",
+      "difficulty": 2,
+      "minutes": 6,
+      "tags": [
+        "坐标提取",
+        "章节收束"
+      ],
+      "requires": [
+        "b05"
+      ],
+      "briefing": [
+        "书的最后一页是一张 4×4 的街区网格。林雀用红笔圈出了四组坐标。",
+        "读法：先行后列，都从 1 开始。按圈出的顺序提取汉字，不需要真的去任何地点。"
+      ],
+      "artifact": {
+        "type": "logic",
+        "label": "地图 012 / 缺失街区",
+        "title": "雾港局部测绘图",
+        "table": [
+          [
+            "行 / 列",
+            "1",
+            "2",
+            "3",
+            "4"
+          ],
+          [
+            "1",
+            "北",
+            "人",
+            "海",
+            "灯"
+          ],
+          [
+            "2",
+            "月",
+            "岸",
+            "在",
+            "雨"
+          ],
+          [
+            "3",
+            "塔",
+            "旧",
+            "档",
+            "风"
+          ],
+          [
+            "4",
+            "书",
+            "声",
+            "桥",
+            "案"
+          ]
+        ],
+        "code": "(1,2) → (2,3) → (3,3) → (4,4)",
+        "annotation": "第一位是行，第二位是列。例如 (1,1) 对应「北」。"
+      },
+      "question": "圈出的坐标拼成了哪四个字？",
+      "answerFormat": "四个汉字",
+      "hints": [
+        "每组坐标提取一个字，四组顺序不能更改。",
+        "(1,2) 是「人」，(2,3) 是「在」。",
+        "四个字依次为「人、在、档、案」。输入人在档案。"
+      ],
+      "resolution": "「人在档案。」下一页写着：人口没有减少，只是变成了数据。你第一次感到真正的寒意。雾港不是沉入海底，而是被搬进了某个巨大的档案。档案的管理员还在运行。",
+      "evidence": {
+        "title": "城市迁移记录",
+        "text": "14,208 个人没有消失，而是被转移。下一站：市立记录局，寻找迁移命令的签发人。",
+        "symbol": "map"
+      },
+      "answerHashes": [
+        "f6e7877094156ed99efcd6e06af9e73b0eed4f157433437af2cb8ca14598c449"
+      ]
+    },
+    {
+      "id": "c01",
+      "chapter": "witness",
+      "number": 13,
+      "title": "三份口供",
+      "subtitle": "只有一句话是真的。",
+      "kind": "logic",
+      "difficulty": 2,
+      "minutes": 7,
+      "tags": [
+        "真假话",
+        "证词交叉"
+      ],
+      "requires": [
+        "b06"
+      ],
+      "briefing": [
+        "市立记录局保存了关于迁移命令的三份证词。签名字段只可能属于林雀、陈舟、许衡中的一人。",
+        "独立校验器确认：下面三句话中，恰好一句是真的。先找出签名字段上的名字，暂时不要判断是谁亲手操作。"
+      ],
+      "artifact": {
+        "type": "logic",
+        "label": "记录 013 / 三方证词",
+        "title": "签名归属调查",
+        "table": [
+          [
+            "证人",
+            "原话"
+          ],
+          [
+            "林雀",
+            "签名字段上不是我的名字。"
+          ],
+          [
+            "陈舟",
+            "签名字段上是我的名字。"
+          ],
+          [
+            "许衡",
+            "签名字段上不是陈舟的名字。"
+          ]
+        ],
+        "annotation": "约束：签名名义人仅有这三种可能；三句话恰好一句为真。"
+      },
+      "question": "签名字段上是谁的名字？",
+      "answerFormat": "证人的中文姓名",
+      "hints": [
+        "分别假设签名是三个人之一，计算有几句话为真。",
+        "陈舟和许衡的两句话互相矛盾，因此两句中恰有一句真。林雀的话必须为假。",
+        "林雀说「不是我的名字」，这句话为假。所以签名字段上是林雀。"
+      ],
+      "resolution": "签名是林雀。她留给你的信却一直在帮助你阻止这件事。也许她反悔了；也许签名根本不能证明操作人的身份。你决定先把每一步发生的顺序理清。",
+      "evidence": {
+        "title": "林雀名义的签名",
+        "text": "三份证词共同指向林雀的签名字段。但签名字段只是数据，并不等于真实操作人。",
+        "symbol": "fingerprint"
+      },
+      "answerHashes": [
+        "42c5fa5fd1dee660e84be9c333d926a29d26706433050a7a0007e1631a7f4dcb",
+        "44df3362c63bce845299f721c3b33938c31ce010394b42cf9bd371b969e9ec5a"
+      ]
+    },
+    {
+      "id": "c02",
+      "chapter": "witness",
+      "number": 14,
+      "title": "顺序会说话",
+      "subtitle": "因果不能被改写。",
+      "kind": "sort",
+      "difficulty": 2,
+      "minutes": 6,
+      "tags": [
+        "排序小游戏",
+        "审计时间线"
+      ],
+      "requires": [
+        "c01"
+      ],
+      "briefing": [
+        "审计磁带上的四段记录被打乱了。绝对时间已经损坏，记录之间的因果关系还在。",
+        "用箭头把四张记录卡按发生顺序从上到下排列。不要按它们现在的位置排序。"
+      ],
+      "artifact": {
+        "type": "sort",
+        "label": "磁带 014 / 事件片段",
+        "title": "重建操作顺序",
+        "config": {
+          "items": [
+            {
+              "id": "erase",
+              "label": "地图清空",
+              "detail": "地图只能在城市转移完成以后清空。"
+            },
+            {
+              "id": "pass",
+              "label": "生成通行证",
+              "detail": "生成通行证需要已完成的备份。"
+            },
+            {
+              "id": "backup",
+              "label": "建立备份",
+              "detail": "这是四个步骤中最先发生的一步。"
+            },
+            {
+              "id": "transfer",
+              "label": "城市转移",
+              "detail": "城市转移需要已经生成的通行证。"
+            }
+          ],
+          "correct": [
+            "backup",
+            "pass",
+            "transfer",
+            "erase"
+          ],
+          "message": "顺序校验通过。备份中保留的关键标记：见证"
+        }
+      },
+      "question": "恢复顺序后，磁带给出的关键标记是什么？",
+      "answerFormat": "两个汉字",
+      "hints": [
+        "每一张卡都说明了它依赖哪一步。先找到没有前置条件的记录。",
+        "备份在最前，然后通行证，然后转移，最后清空地图。",
+        "正确顺序：建立备份 → 生成通行证 → 城市转移 → 地图清空。关键标记为见证。"
+      ],
+      "resolution": "在签名出现之前，系统已经建立了备份。备份里保存的不是城市街景，而是每一个人的最后一次决定。有一份决定，后来被人换掉了。",
+      "evidence": {
+        "title": "原始操作顺序",
+        "text": "备份 → 通行证 → 转移 → 清空。真正的授权记录，应当在迁移前的备份中。",
+        "symbol": "clock"
+      },
+      "answerHashes": [
+        "3916105324cdacfc2ba8387bc84f12e85eb33590a3820aa34c95ef6601a54937"
+      ]
+    },
+    {
+      "id": "c03",
+      "chapter": "witness",
+      "number": 15,
+      "title": "另一个云雀",
+      "subtitle": "代号后面，多了一个尾巴。",
+      "kind": "cipher",
+      "difficulty": 2,
+      "minutes": 6,
+      "tags": [
+        "十六进制",
+        "身份取证"
+      ],
+      "requires": [
+        "c02"
+      ],
+      "briefing": [
+        "备份保留了操作会话的完整身份。显示屏却只能输出十六进制 ASCII 值。",
+        "每组两位十六进制数对应一个字符。对照下面的设备字符表，还原包含连字符的身份编号。"
+      ],
+      "artifact": {
+        "type": "cipher",
+        "label": "日志 015 / 会话身份",
+        "title": "SESSION PRINCIPAL",
+        "code": "4C 41 52 4B 2D 30 32",
+        "key": "41=A  42=B  43=C  44=D  45=E  46=F  47=G  48=H  49=I\n4A=J  4B=K  4C=L  4D=M  4E=N  4F=O  50=P  51=Q  52=R\n53=S  54=T  55=U  56=V  57=W  58=X  59=Y  5A=Z\n2D=−（连字符）  30=0  31=1  32=2",
+        "annotation": "编号格式：四个字母－两位数字。"
+      },
+      "question": "完整会话身份编号是什么？",
+      "answerFormat": "例如 ABCD-01",
+      "hints": [
+        "4C 对应 L，41 对应 A。每组都只取一个字符。",
+        "前四组拼出 LARK，后面不是名字的一部分，而是版本编号。",
+        "完整身份是 LARK-02。这是林雀会话的第二个副本。"
+      ],
+      "resolution": "LARK-02。系统给这名操作员加了一个副本编号。真正的林雀已经离开终端，但一段以她的名义运行的会话仍然拥有权限。",
+      "evidence": {
+        "title": "LARK-02 会话",
+        "text": "签名来自林雀身份的第二个副本。需要找到谁创建并操控了这个副本。",
+        "symbol": "terminal"
+      },
+      "answerHashes": [
+        "85931f7a5f27dfd8fb9171cfd55cb85c5f0fa3a166a248efed23666875d68a4a",
+        "b93044aa2b1f820dd67543dfae6db042ef3e57ac0a257f2f7bb57d530e8f9e8f",
+        "552495fc50965345c5bfc64b83cfa3d4e14038fe2adaee9412759e1afc07b438"
+      ]
+    },
+    {
+      "id": "c04",
+      "chapter": "witness",
+      "number": 16,
+      "title": "多出来的档案员",
+      "subtitle": "名单里，总有一个不该出现的名字。",
+      "kind": "compare",
+      "difficulty": 2,
+      "minutes": 5,
+      "tags": [
+        "版本对比",
+        "观察"
+      ],
+      "requires": [
+        "c03"
+      ],
+      "briefing": [
+        "记录局的索引有两个版本：转移前的纸质版，以及你抵达后自动生成的电子版。",
+        "对比两栏。忽略排序，只找电子版中新增加的那一个人员编号。"
+      ],
+      "artifact": {
+        "type": "compare",
+        "label": "索引 016 / 版本差异",
+        "title": "夜班人员索引",
+        "table": [
+          [
+            "纸质原版",
+            "电子现版"
+          ],
+          [
+            "NO. 002",
+            "NO. 011"
+          ],
+          [
+            "NO. 005",
+            "NO. 014"
+          ],
+          [
+            "NO. 009",
+            "NO. 002"
+          ],
+          [
+            "NO. 011",
+            "NO. 009"
+          ],
+          [
+            "—",
+            "NO. 005"
+          ]
+        ],
+        "annotation": "旧编号全部保留。电子版只新增了一位，顺序被重新排列。"
+      },
+      "question": "新增的人员编号是哪一个？",
+      "answerFormat": "三位数字，保留前导零",
+      "hints": [
+        "逐个划掉两边都存在的编号，不要逐行比较。",
+        "002、005、009、011 在两个版本中都有。",
+        "电子版只多了 014。这正是你的档案员编号。"
+      ],
+      "resolution": "014。你低头看了一眼临时工作证。你不是因为偶然收到信才来到这里，而是某段记录里早已预留了你的位置。林雀需要一个系统之外的见证人。",
+      "evidence": {
+        "title": "第 014 号位置",
+        "text": "纸质名册上没有你。林雀在电子索引中留下了一个外部见证人的位置。",
+        "symbol": "file"
+      },
+      "answerHashes": [
+        "33351be1e90333f8df3a38b514b93c5ddaf1a4aa6ef49869f878deccf47a2e50",
+        "92a9765ea18997fd4df97cce65800ee83eedf7842521322bd4e610a4ee84d363",
+        "9365fc6ecfa5dc8a25e38804d4821c3b9bce12af041815999b5f32d46ed4f0ab",
+        "35a969a9ff32e47f5ddbe01612268b7d2f5285b816faa68f7d0f82b95ab256aa"
+      ]
+    },
+    {
+      "id": "c05",
+      "chapter": "witness",
+      "number": 17,
+      "title": "谁改了签名",
+      "subtitle": "修改日志，比签名更诚实。",
+      "kind": "terminal",
+      "difficulty": 2,
+      "minutes": 7,
+      "tags": [
+        "日志搜索",
+        "数字取证"
+      ],
+      "requires": [
+        "c04"
+      ],
+      "briefing": [
+        "你找到了会话管理器的审计日志。执行迁移的人删掉了自己的普通登录记录，却忘了字段重写仍会留下独立审计。",
+        "搜索 REWRITE 事件。终端可以使用 grep 关键词 文件名，也可以直接 cat 阅读整个文件。"
+      ],
+      "artifact": {
+        "type": "terminal",
+        "label": "终端 017 / 审计工作站",
+        "title": "SESSION AUDIT / READ ONLY",
+        "config": {
+          "files": {
+            "readme.txt": "会话字段变更均保存在 audit.log。\nREWRITE 表示重写签名字段。\nactor 是实施修改的人；target 是被修改的目标。\n姓名拼写：LINQUE=林雀，CHENZHOU=陈舟，XUHENG=许衡。",
+            "audit.log": "23:09:01 SYSTEM backup=ready\n23:10:04 CREATE actor=XUHENG target=LARK-02\n23:10:05 SESSION principal=LARK-02 status=idle\n23:11:38 VERIFY actor=CHENZHOU backup=complete\n23:12:00 REWRITE actor=XUHENG target=signature value=LINQUE\n23:12:01 SIGN principal=LARK-02 status=approved\n23:16:00 MIGRATE target=WUGANG\n23:17:00 MAP status=blank",
+            "people.txt": "LINQUE / 林雀 / 记录员\nCHENZHOU / 陈舟 / 信号工程师\nXUHENG / 许衡 / 项目主任"
+          }
+        }
+      },
+      "question": "是谁实施了签名字段重写？",
+      "answerFormat": "中文姓名或日志中的英文代号",
+      "hints": [
+        "签名的最终值不等于修改它的人。查看 REWRITE 行中的 actor 字段。",
+        "输入 grep REWRITE audit.log。日志给出 actor=XUHENG。",
+        "people.txt 对应表说明 XUHENG 是许衡。输入许衡或 XUHENG。"
+      ],
+      "resolution": "许衡先创建了林雀的副本，再把签名改成林雀的名字。证据链闭合了。但他为什么要留下整座城市？一份加密的许可协议，可能比他的口供更重要。",
+      "evidence": {
+        "title": "签名重写日志",
+        "text": "23:12:00，许衡将签名字段重写为林雀。真实授权与系统中的“同意”并不相同。",
+        "symbol": "fingerprint"
+      },
+      "answerHashes": [
+        "4f86cdfe9ebdf76b8d59e5bfcf1b8e45da45d326567b74a2aa255d1c2040d735",
+        "2392ebbabb517e50df9f75f6cde47b7febcf72b6fd5525ef7c2c50a478437559",
+        "2392ebbabb517e50df9f75f6cde47b7febcf72b6fd5525ef7c2c50a478437559"
+      ]
+    },
+    {
+      "id": "c06",
+      "chapter": "witness",
+      "number": 18,
+      "title": "缺少的那个词",
+      "subtitle": "保存，不代表拥有。",
+      "kind": "cipher",
+      "difficulty": 3,
+      "minutes": 9,
+      "tags": [
+        "维吉尼亚密码",
+        "跨档案线索"
+      ],
+      "requires": [
+        "c05"
+      ],
+      "briefing": [
+        "许可协议中最关键的词被加密了。纸边写着：\"让最初那只云雀领路，不要带上副本编号。\"",
+        "这是维吉尼亚密码。密钥是林雀最初的四字母操作员代号，可在第一章证据中找到。将密钥重复到与密文同长。A=0，B=1，……，Z=25；每个位置用密文值减去密钥值，负数加 26。"
+      ],
+      "artifact": {
+        "type": "cipher",
+        "label": "协议 018 / 被涂去的许可",
+        "title": "THIS REQUIRES YOUR _______",
+        "code": "NOECPNK",
+        "key": "A=0 B=1 C=2 D=3 E=4 F=5 G=6 H=7 I=8 J=9 K=10 L=11 M=12\nN=13 O=14 P=15 Q=16 R=17 S=18 T=19 U=20 V=21 W=22 X=23 Y=24 Z=25",
+        "annotation": "示例：密文 N(13) − 密钥 L(11) = C(2)。密钥重复为 L A R K L A R。",
+        "config": {
+          "tool": "vigenere"
+        }
+      },
+      "question": "协议缺少的英文单词是什么？",
+      "answerFormat": "七个英文字母",
+      "hints": [
+        "第一章的操作员代号是 LARK。把 LARK 循环写成 LARKLAR。",
+        "按位置相减：N−L=C，O−A=O，E−R=N（负数加 26）。",
+        "所有位置还原后是 CONSENT，意思是「同意」。"
+      ],
+      "resolution": "CONSENT。同意。许衡保存了城市的一切，却没有保存任何人的选择。他把所有拒绝都当成了数据损坏。协议最后指向第九观测站：那里有原始意愿的最后一份拷贝。",
+      "evidence": {
+        "title": "未获同意的协议",
+        "text": "许可协议要求 CONSENT。被迁移的 14,208 人没有被问过是否愿意。",
+        "symbol": "file"
+      },
+      "answerHashes": [
+        "184a9b67fb8654b369d5d5bfc1e5e9cd6e1fb3c186910722856d32524d01caaf",
+        "37904e7dcbaa40a66cf6d4824d028fd1be1d59f681ab8f8bb0cbc9f60bdc9351"
+      ]
+    },
+    {
+      "id": "d01",
+      "chapter": "station",
+      "number": 19,
+      "title": "九层之下",
+      "subtitle": "电梯没有向上的按钮。",
+      "kind": "dial",
+      "difficulty": 2,
+      "minutes": 5,
+      "tags": [
+        "机械锁盘",
+        "信息组合"
+      ],
+      "requires": [
+        "c06"
+      ],
+      "briefing": [
+        "第九观测站的电梯只通向地下。门上有四位数字锁，以及一张维修人员留下的说明。",
+        "前两位是地下层数，用两位数表示；后两位是雾港最后信号的分钟数。站名给出层数，第一章的消失时刻给出分钟数。"
+      ],
+      "artifact": {
+        "type": "dial",
+        "label": "装置 019 / 观测站电梯",
+        "title": "LOWER LEVEL ACCESS",
+        "annotation": "楼层在前，分钟在后。四位数字都必须保留。",
+        "config": {
+          "digits": 4,
+          "combination": "0917",
+          "message": "电梯进入地下九层。到站凭证：下潜"
+        }
+      },
+      "question": "打开数字锁后，电梯显示的到站凭证是什么？",
+      "answerFormat": "两个汉字",
+      "hints": [
+        "第九观测站对应 09。城市消失在 23:17，只取分钟。",
+        "锁的四位数字应当依次为 0、9、1、7。",
+        "转盘调至 0917 后，显示到站凭证「下潜」。"
+      ],
+      "resolution": "电梯下沉时，你听到的不是机械声，而是无数人说话的回声。每下一层，声音就更清楚一点。地下九层到了，门外是一条布满小型指示灯的走廊。",
+      "evidence": {
+        "title": "地下九层通行证",
+        "text": "楼层 09，冻结分钟 17。第九观测站保存着尚未被覆盖的原始记录。",
+        "symbol": "key"
+      },
+      "answerHashes": [
+        "f05c3da3548202da4f0719fd98a97ce1de86657c53777fbebf0408b712273f9e"
+      ]
+    },
+    {
+      "id": "d02",
+      "chapter": "station",
+      "number": 20,
+      "title": "记忆的顺序",
+      "subtitle": "雨、灯、海，还有鸟。",
+      "kind": "sequence",
+      "difficulty": 2,
+      "minutes": 6,
+      "tags": [
+        "记忆小游戏",
+        "节奏复现"
+      ],
+      "requires": [
+        "d01"
+      ],
+      "briefing": [
+        "走廊尽头有四个符号。系统不会接受密码，只会接受一次记忆的复现。",
+        "点击「重放记忆」，观察依次亮起的符号，再按相同顺序输入。没有倒计时，可以开启慢速、重复观看，或者直接使用提示。"
+      ],
+      "artifact": {
+        "type": "sequence",
+        "label": "装置 020 / 感官记忆门",
+        "title": "REPEAT WHAT YOU REMEMBER",
+        "config": {
+          "symbols": [
+            "雨",
+            "灯",
+            "海",
+            "鸟"
+          ],
+          "sequence": [
+            2,
+            0,
+            3,
+            1,
+            2
+          ],
+          "message": "记忆轮廓一致。同步识别词：同频"
+        }
+      },
+      "question": "成功复现后，系统给出的同步识别词是什么？",
+      "answerFormat": "两个汉字",
+      "hints": [
+        "先观察一遍，再复现；同一个符号可能出现不止一次。",
+        "符号顺序是：海 → 雨 → 鸟 → 灯 → 海。可开启慢速重放。",
+        "依次点击海、雨、鸟、灯、海，系统会显示「同频」。"
+      ],
+      "resolution": "门内不是计算机房，而是一间小小的客厅。窗外有雨，桌上有灯，远处是海。一只鸟停在窗台上。这是陈舟女儿最后记得的家。",
+      "evidence": {
+        "title": "五个感官片段",
+        "text": "海、雨、鸟、灯、海。一段普通人的记忆，成为穿过机器的钥匙。",
+        "symbol": "audio"
+      },
+      "answerHashes": [
+        "6587bb2e2b99d65ae937a20ac17cf6e616b6f7cfe48bfe767536370214b93ed4"
+      ]
+    },
+    {
+      "id": "d03",
+      "chapter": "station",
+      "number": 21,
+      "title": "像素里的灯塔",
+      "subtitle": "丢失的轮廓，还藏在数字中。",
+      "kind": "nonogram",
+      "difficulty": 2,
+      "minutes": 8,
+      "tags": [
+        "数织小游戏",
+        "图像修复"
+      ],
+      "requires": [
+        "d02"
+      ],
+      "briefing": [
+        "客厅里的画框丢失了图像，只剩一组行列计数。这是一张五乘五的数织图。",
+        "每个数字表示连续黑格的长度。例如 1、1 表示两段各一格的黑格，中间至少隔一格空白；5 表示整行或整列涂黑。先从确定的长线开始。"
+      ],
+      "artifact": {
+        "type": "nonogram",
+        "label": "图像 021 / 灯塔轮廓",
+        "title": "REBUILD THE SILHOUETTE",
+        "config": {
+          "size": 5,
+          "solution": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0
+          ],
+          "message": "图像复原：灯塔顶部的一束横光。图像签名：守望"
+        }
+      },
+      "question": "还原数织后，读取图像签名。",
+      "answerFormat": "两个汉字",
+      "hints": [
+        "第一行的提示为 5，整行都应该涂黑。中间一列也标着 5。",
+        "这是一个 T 形图案：第一行全黑，中间一列全黑，其余格子留空。",
+        "第一行涂黑五格；第二到第五行只涂第 3 格。图像签名为守望。"
+      ],
+      "resolution": "灯塔的轮廓重新亮了起来。画角的小字写着：\"如果我不在了，就让它替我看着海。\"许衡把这种愿望理解成了永不离开，却从来没有问过画这幅画的人。",
+      "evidence": {
+        "title": "灯塔的原始图像",
+        "text": "一束横光和一条竖线，构成了孩子记忆中的灯塔。签名：守望。",
+        "symbol": "image"
+      },
+      "answerHashes": [
+        "8fe114730e689605e87dd79acf664a3e7f6cc1ffde993c99c3ea0debecb04add"
+      ]
+    },
+    {
+      "id": "d04",
+      "chapter": "station",
+      "number": 22,
+      "title": "异或之鸟",
+      "subtitle": "同一把钥匙，可以再转一次。",
+      "kind": "cipher",
+      "difficulty": 3,
+      "minutes": 8,
+      "tags": [
+        "XOR",
+        "逐字节解密"
+      ],
+      "requires": [
+        "d03"
+      ],
+      "briefing": [
+        "画框背后的数据口吐出四个字节。检修贴纸写着：\"每个字节都与 0x17 异或了一次。再异或同一个值，原文就回来了。\"",
+        "异或规则：相同位得到 0，不同位得到 1。也可以打开本页的逐字节异或工具，密钥以十六进制输入。"
+      ],
+      "artifact": {
+        "type": "cipher",
+        "label": "数据 022 / 加密画框",
+        "title": "BYTEWISE XOR / 0x17",
+        "code": "55 5E 45 53",
+        "key": "XOR 真值表：0⊕0=0　0⊕1=1　1⊕0=1　1⊕1=0",
+        "annotation": "密钥为十六进制 17，不是十进制 17。工具接受 17 或 0x17。",
+        "config": {
+          "tool": "xor"
+        }
+      },
+      "question": "四个字节还原成了哪个英文单词？",
+      "answerFormat": "四个英文字母",
+      "hints": [
+        "异或具有可逆性：数据先与一个密钥异或，再与相同密钥异或，就得到原文。",
+        "打开异或工具，在密钥栏输入 17，点击还原。",
+        "解码后得到 BIRD。那只鸟仍在寻找可以打开的窗。"
+      ],
+      "resolution": "BIRD。窗台上的鸟忽然扇动翅膀，撞向一扇打不开的窗户。系统把飞离这里的愿望标记为异常，反复将它放回原处。你终于明白，这里的永恒为什么像一座牢笼。",
+      "evidence": {
+        "title": "打不开的窗户",
+        "text": "XOR 解码：BIRD。系统会重置所有“离开”的动作，即使那是居民自己的愿望。",
+        "symbol": "key"
+      },
+      "answerHashes": [
+        "ca1edf2d75b9192c4b7e81303ae6676db94fc0023a319f61eac2d1f80a935d48",
+        "c3b899ab9af6c1c8b9a6cc027c119785e928b79d26862beba3c9af342818272a"
+      ]
+    },
+    {
+      "id": "d05",
+      "chapter": "station",
+      "number": 23,
+      "title": "隐形的批注",
+      "subtitle": "有些字，只是不在可见光里。",
+      "kind": "uv",
+      "difficulty": 1,
+      "minutes": 4,
+      "tags": [
+        "显影装置",
+        "隐藏文字"
+      ],
+      "requires": [
+        "d04"
+      ],
+      "briefing": [
+        "窗边放着一张看似空白的维修卡。林雀在角落画了一枚紫外灯标记。",
+        "用档案馆的显影灯扫描整张纸。这里是虚拟装置，不需要真实灯具；开启后也会提供可读文字。"
+      ],
+      "artifact": {
+        "type": "uv",
+        "label": "物证 023 / 荧光墨水卡",
+        "title": "什么都没有，也是线索。",
+        "config": {
+          "text": "请保留最初的版本。\nKEEP THE ORIGINAL\n覆盖，不等于修复。",
+          "answerLine": "ORIGINAL",
+          "message": "显影完成。批注中的校验词位于 THE 之后。"
+        }
+      },
+      "question": "英文批注中，THE 后面的校验词是什么？",
+      "answerFormat": "八个英文字母",
+      "hints": [
+        "点击「开启显影灯」。空白卡片会显示隐藏的批注。",
+        "英文句子是 KEEP THE ORIGINAL。只取 THE 后面的单词。",
+        "校验词为 ORIGINAL，意思是「原始版本」。"
+      ],
+      "resolution": "原始版本没有被销毁。林雀把它们藏在系统认为没有任何价值的空白页里。只要找出完整的原始意愿，你就可以证明这些人从未同意被永久留下。",
+      "evidence": {
+        "title": "林雀的荧光批注",
+        "text": "KEEP THE ORIGINAL。原始版本藏在空白页里，覆盖行为不能抹去真实意愿。",
+        "symbol": "eye"
+      },
+      "answerHashes": [
+        "a138854607c7efe4ba3a34aeb225eb20767712f703e29e9dbab5a1f49522e93e",
+        "acf4176e48ebeae8c403db6355bee6cc356041fa183a0caccdfa330e85dc7525"
+      ]
+    },
+    {
+      "id": "d06",
+      "chapter": "station",
+      "number": 24,
+      "title": "少数的错误",
+      "subtitle": "损坏的副本，也可以互相作证。",
+      "kind": "logic",
+      "difficulty": 3,
+      "minutes": 9,
+      "tags": [
+        "多数表决纠错",
+        "二进制"
+      ],
+      "requires": [
+        "d05"
+      ],
+      "briefing": [
+        "原始答复只剩三份有噪声的副本。每一列最多有一份损坏，因此可以对每一位做多数表决。",
+        "从左到右逐列读取：三个数中，哪个出现至少两次，就保留哪个。恢复出的 16 位二进制分成两组，每组 8 位；再对照下面的字符表。"
+      ],
+      "artifact": {
+        "type": "logic",
+        "label": "数据 024 / 原始意愿副本",
+        "title": "MAJORITY RECOVERY",
+        "code": "副本 A　01001110 01001111\n副本 B　01011110 01000111\n副本 C　00001110 01001101",
+        "key": "N = 01001110　O = 01001111\nY = 01011001　E = 01000101　S = 01010011",
+        "annotation": "每一位单独比较，不要因为一行看起来完整，就直接相信整行。"
+      },
+      "question": "恢复出的原始答复是什么？",
+      "answerFormat": "两个英文字母",
+      "hints": [
+        "例如第二列为 1、1、0，多数是 1，所以恢复值是 1。",
+        "恢复后的两组字节分别是 01001110 和 01001111。",
+        "对照字符表，两个字节分别是 N 和 O。原始答复是 NO。"
+      ],
+      "resolution": "NO。不是数据损坏，不是用户疏忽，而是清楚、完整的拒绝。观测站第一次无法再把它归类为异常。主控制室的屏幕出现了一行字：\"请恢复他们选择明天的权利。\"",
+      "evidence": {
+        "title": "未被覆盖的拒绝",
+        "text": "三份副本恢复出 NO。居民的拒绝从未失效，只是被系统藏了起来。",
+        "symbol": "shield"
+      },
+      "answerHashes": [
+        "b5bc289f8fc7e827ed6a0f5e9f68aa5ffdc1156db03e5ceeabd9a98fe320ea3d",
+        "966e020de5cc4825f68cb34994de69db8a4c0b500ab46c017f43886b462375b8",
+        "6d1f41f9cd1d6bf4d362f60d0571ed91f9da8dd919a149901b73ab30d28b2850"
+      ]
+    },
+    {
+      "id": "e01",
+      "chapter": "yesterday",
+      "number": 25,
+      "title": "昨天发送，今天抵达",
+      "subtitle": "日期不同，不代表时间不同。",
+      "kind": "logic",
+      "difficulty": 2,
+      "minutes": 6,
+      "tags": [
+        "时区换算",
+        "日志取证"
+      ],
+      "requires": [
+        "d06"
+      ],
+      "briefing": [
+        "记忆中心把同一封电报存成了两条记录。一条使用 UTC，另一条使用雾港标准时间 UTC+8。",
+        "请将 UTC 的记录换算为 UTC+8，并保留日期的进位。所有时间都是谜面的一部分，不需要等待现实中的某个时刻。"
+      ],
+      "artifact": {
+        "type": "logic",
+        "label": "电报 025 / 跨时区记录",
+        "title": "ONE MOMENT, TWO DATES",
+        "table": [
+          [
+            "记录来源",
+            "时间"
+          ],
+          [
+            "发信端 · UTC",
+            "1999-11-16 19:42"
+          ],
+          [
+            "收信端 · UTC+8",
+            "1999-11-17 ??:??"
+          ]
+        ],
+        "annotation": "UTC+8 = UTC 加 8 小时。超过 24:00 时，日期进入下一天。"
+      },
+      "question": "收信端的时间应该是几点几分？",
+      "answerFormat": "HH:MM，使用 24 小时制",
+      "hints": [
+        "先把 19:42 加上 8 小时。小时数会超过 24。",
+        "19+8=27。减去一天的 24 小时，剩下 3 小时，分钟不变。",
+        "收信时间是次日 03:42。"
+      ],
+      "resolution": "电报没有穿越时间。是错误的时区标签，让昨天看起来像今天。林雀把一段提醒藏在电报里：先确认坐标系，再怀疑自己的记忆。",
+      "evidence": {
+        "title": "同一时刻的两种日期",
+        "text": "1999-11-16 19:42 UTC = 1999-11-17 03:42 UTC+8。记录的语境和内容同样重要。",
+        "symbol": "clock"
+      },
+      "answerHashes": [
+        "d5f25918a9ee93fac3106a03fdd08fe75231dd63ad8ed7fd68dacb42362e7fa2",
+        "df88f70cb3b42260012b9316518ecdff4bf859f7e0a34ca7c4c96e2844b518eb",
+        "acf8592bc63a4b930d70a2db53fd35a545f49dcade852f63dee0caae8a4fada2"
+      ]
+    },
+    {
+      "id": "e02",
+      "chapter": "yesterday",
+      "number": 26,
+      "title": "信封里的信封",
+      "subtitle": "看懂第一层，还不算抵达。",
+      "kind": "cipher",
+      "difficulty": 3,
+      "minutes": 8,
+      "tags": [
+        "双层编码",
+        "Base64 + 凯撒"
+      ],
+      "requires": [
+        "e01"
+      ],
+      "briefing": [
+        "电报正文被包了两层。外层用邮政机的 Base64，里层把每个字母向后推了五位。",
+        "先展开外层，再让每个字母在字母表里退回五位。A 的前面是 Z。两次都完成后，才是林雀真正写下的词。"
+      ],
+      "artifact": {
+        "type": "cipher",
+        "label": "电报 026 / 双层信封",
+        "title": "OPEN TWICE",
+        "code": "V0pSSlJHSlc=",
+        "key": "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
+        "annotation": "处理顺序：Base64 解码 → 凯撒移位 −5。示例：W 退回 5 位得到 R。",
+        "config": {
+          "tool": "base64"
+        }
+      },
+      "question": "解开两层后，电报里写着哪个单词？",
+      "answerFormat": "八个英文字母",
+      "hints": [
+        "先用本页 Base64 工具，还原出 WJRJRGJW。这还不是最终答案。",
+        "每个字母退回五位：W→R，J→E，R→M。继续用同样的方法处理。",
+        "最终得到 REMEMBER：记住。"
+      ],
+      "resolution": "REMEMBER。这个词你曾在雨巷的取件单上见过。陈舟和林雀一直在用同一套暗语通信。他们没有试图改写过去，只想给未来留一条可以回来的路。",
+      "evidence": {
+        "title": "两层信封中的提醒",
+        "text": "Base64 后再退五位，得到 REMEMBER。雨巷和记忆中心的线索开始汇合。",
+        "symbol": "mail"
+      },
+      "answerHashes": [
+        "f58e1ea4212149a17985212e8168fad752bb94c8a5ef221016f9d22e6375fd29"
+      ]
+    },
+    {
+      "id": "e03",
+      "chapter": "yesterday",
+      "number": 27,
+      "title": "借来的二十九日",
+      "subtitle": "机器给了一段回忆多余的一天。",
+      "kind": "logic",
+      "difficulty": 2,
+      "minutes": 7,
+      "tags": [
+        "闰年规则",
+        "异常检测"
+      ],
+      "requires": [
+        "e02"
+      ],
+      "briefing": [
+        "系统重建了几份历史天气记录，其中有一份使用了现实日历里不存在的日期。这暴露了一段伪造的回忆。",
+        "规则已写在旁边：能被 4 整除的年份通常是闰年；能被 100 整除时必须还能被 400 整除。只有闰年的二月才有 29 日。"
+      ],
+      "artifact": {
+        "type": "logic",
+        "label": "记录 027 / 历史天气样本",
+        "title": "CALENDAR VALIDATION",
+        "table": [
+          [
+            "样本",
+            "日期",
+            "天气"
+          ],
+          [
+            "A",
+            "1996-02-29",
+            "小雨"
+          ],
+          [
+            "B",
+            "1900-02-29",
+            "阴"
+          ],
+          [
+            "C",
+            "2000-02-29",
+            "晴"
+          ],
+          [
+            "D",
+            "2004-02-29",
+            "大雾"
+          ]
+        ],
+        "annotation": "1900 ÷ 100 = 19；1900 不能被 400 整除。2000 可以被 400 整除。"
+      },
+      "question": "哪一份样本使用了不存在的日期？",
+      "answerFormat": "样本字母，或完整日期 YYYY-MM-DD",
+      "hints": [
+        "不要只使用「每四年一次」的近似规律，还要检查整百年。",
+        "1900 能被 100 整除，但不能被 400 整除，因此不是闰年。",
+        "样本 B 的 1900-02-29 不存在。输入 B 即可。"
+      ],
+      "resolution": "系统试图为每个人补齐一个完美的过去，却在最普通的日历规则上犯了错。你开始相信，记忆里的缺口不一定需要被填满。真实的人生，本来就有模糊和留白。",
+      "evidence": {
+        "title": "不存在的 1900-02-29",
+        "text": "样本 B 来自机器补写。伪造的完整性，不比真实的缺口更有价值。",
+        "symbol": "file"
+      },
+      "answerHashes": [
+        "9a4cb4304c079ef3adfe48240ca8bb9441c649909962b6d6f8bccf8292ee6735",
+        "5a73873d873ad23c564c404908da1886560f2b044dcc5075ab0b83fba5d7d17a",
+        "3c29098412087b6fe88bee5c4d26285598c057d0ba53f3287ac90cebce729664",
+        "527348f1392570f8187925c21ea8b96e6467ae9a0e5181220cdbe070c627f27f",
+        "1f894cffa6bad7cf300050d802f4909c57eb583c615c51011e0cab22891be5ff"
+      ]
+    },
+    {
+      "id": "e04",
+      "chapter": "yesterday",
+      "number": 28,
+      "title": "两个不准的钟",
+      "subtitle": "误差，也能彼此验证。",
+      "kind": "dial",
+      "difficulty": 2,
+      "minutes": 7,
+      "tags": [
+        "时间推理",
+        "机械锁盘"
+      ],
+      "requires": [
+        "e03"
+      ],
+      "briefing": [
+        "记忆柜有两只停在不同刻度的时钟。A 钟显示 02:48，维修卡说它比正确时间快 17 分钟；B 钟显示 04:08，比正确时间快 1 小时 37 分钟。",
+        "两只钟都指向同一个正确时间。将这个时间的 HHMM 四位数字转入锁盘。所有时间均为同一天凌晨，不涉及现实时间。"
+      ],
+      "artifact": {
+        "type": "dial",
+        "label": "装置 028 / 双钟记忆柜",
+        "title": "FIND THE COMMON MOMENT",
+        "annotation": "A 钟：02:48，快 00:17。B 钟：04:08，快 01:37。",
+        "config": {
+          "digits": 4,
+          "combination": "0231",
+          "message": "两个时钟的真实时刻一致：02:31。柜内封存的词：明日"
+        }
+      },
+      "question": "打开记忆柜后，柜内封存的词是什么？",
+      "answerFormat": "两个汉字",
+      "hints": [
+        "钟表比真实时间快，所以应当减去误差，不是加上。",
+        "02:48 − 00:17 = 02:31；04:08 − 01:37 也等于 02:31。",
+        "锁盘调至 0231。柜内封存的词是明日。"
+      ],
+      "resolution": "记忆柜里放着一张普通的公交月票，生效日期是 11 月 18 日。城市里的每个人都为明天安排过一些小事。有人要上班，有人要看牙医，有人只是想去海边走走。",
+      "evidence": {
+        "title": "明日生效的月票",
+        "text": "真实时刻 02:31。公交月票生效于 11 月 18 日，一个尚未被这座城市经历的日子。",
+        "symbol": "ticket"
+      },
+      "answerHashes": [
+        "62c57395a224b5007318ef908ce0a9aad610ff8116aa2c95ba1923eec4b4f6a8"
+      ]
+    },
+    {
+      "id": "e05",
+      "chapter": "yesterday",
+      "number": 29,
+      "title": "明天的使用方法",
+      "subtitle": "一本书，可以替人把话说完。",
+      "kind": "cipher",
+      "difficulty": 2,
+      "minutes": 7,
+      "tags": [
+        "书本密码",
+        "坐标取词"
+      ],
+      "requires": [
+        "e04"
+      ],
+      "briefing": [
+        "月票夹在一本只有三行的英文手册里。书签上写着三个坐标。",
+        "每个坐标的前一个数是行号，后一个数是该行中从左数第几个单词，均从 1 开始。空格分隔单词，没有标点需要计数。"
+      ],
+      "artifact": {
+        "type": "cipher",
+        "label": "书页 029 / 明天的使用方法",
+        "title": "A SMALL MANUAL FOR TOMORROW",
+        "table": [
+          [
+            "行号",
+            "正文"
+          ],
+          [
+            "1",
+            "WE LET THE LIGHT RETURN"
+          ],
+          [
+            "2",
+            "IF THEY ASK WE HEAR THEM"
+          ],
+          [
+            "3",
+            "WHEN MORNING COMES WE GO HOME"
+          ]
+        ],
+        "code": "(1,2) → (2,6) → (3,5)",
+        "annotation": "例：(1,1) 对应 WE。每个坐标提取整个单词。"
+      },
+      "question": "书签坐标拼成了什么英文指令？",
+      "answerFormat": "三个英文单词",
+      "hints": [
+        "第一行第二个单词是 LET。继续分别在第二行和第三行计数。",
+        "第二行第六个单词是 THEM；第三行第五个单词是 GO。",
+        "三个词合起来是 LET THEM GO。让他们离开。"
+      ],
+      "resolution": "LET THEM GO。这不是让你删除城市，也不是让你替他们作决定。只是打开门，然后听清楚每一个人想去哪里。你把这句话抄进手记，准备前往中央发射塔。",
+      "evidence": {
+        "title": "让他们离开",
+        "text": "书本密码指向 LET THEM GO。保存一段记忆，不应当阻止记忆中的人继续生活。",
+        "symbol": "book"
+      },
+      "answerHashes": [
+        "2d680c510930386c256dd5e277c956b37cb58bbe2f359fd2fb196c3f95518915"
+      ]
+    },
+    {
+      "id": "e06",
+      "chapter": "yesterday",
+      "number": 30,
+      "title": "拼回那扇窗",
+      "subtitle": "光已经到了窗外。",
+      "kind": "sliding",
+      "difficulty": 3,
+      "minutes": 10,
+      "tags": [
+        "滑块拼图",
+        "图像复原"
+      ],
+      "requires": [
+        "e05"
+      ],
+      "briefing": [
+        "记忆中心的出口是一幅被打乱的窗景。移动空格旁边的画片，把它恢复为原来的样子。",
+        "目标：数字 1 到 8 从左到右、从上到下排列，右下角为空格。只有与空格上下左右相邻的画片可以移动。可以撤销，也可以查看参考图。"
+      ],
+      "artifact": {
+        "type": "sliding",
+        "label": "图像 030 / 明天的窗景",
+        "title": "A WINDOW FACING TOMORROW",
+        "config": {
+          "size": 3,
+          "initial": [
+            4,
+            1,
+            2,
+            0,
+            7,
+            8,
+            6,
+            5,
+            3
+          ],
+          "message": "窗景已复原。有人在画框上写着：天会亮"
+        }
+      },
+      "question": "复原窗景后，画框上出现了哪三个字？",
+      "answerFormat": "三个汉字",
+      "hints": [
+        "按画片的数字整理：1、2、3 为第一行，4、5、6 为第二行，7、8、空格为第三行。可以随时撤销。",
+        "从初始状态开始，先依次点击画片 7、8、3、5、6、7、4、1。若已走乱，先重置。",
+        "重置后完整点击顺序：7、8、3、5、6、7、4、1、2、3、5、6、8、5、6。画框上的字是天会亮。"
+      ],
+      "resolution": "你把最后一块画片推回去。窗户那一边，是一轮正在升起的太阳。你终于意识到，档案馆不是为了把你留在这里。它是林雀留给所有人的一扇门。",
+      "evidence": {
+        "title": "朝向明天的窗",
+        "text": "画框上的字：天会亮。林雀留下档案馆，是为了让人走出去。",
+        "symbol": "sun"
+      },
+      "answerHashes": [
+        "7e606ded4fa7440f165859ef9d4f0a5a9a6076fca8063f7522030ded9501e8bf"
+      ]
+    },
+    {
+      "id": "f01",
+      "chapter": "dawn",
+      "number": 31,
+      "title": "呼叫所有还记得的人",
+      "subtitle": "三个名字，组成最后的频率。",
+      "kind": "logic",
+      "difficulty": 2,
+      "minutes": 7,
+      "tags": [
+        "跨档案组合",
+        "呼号"
+      ],
+      "requires": [
+        "e06"
+      ],
+      "briefing": [
+        "中央发射塔要求三段旧呼号。你需要把最早的那些线索重新连起来。",
+        "按表格从上到下的顺序，写出三个英文呼号，用短横线连接。已收集的证据都可以在证据墙回看，不需要凭记忆硬猜。"
+      ],
+      "artifact": {
+        "type": "logic",
+        "label": "协议 031 / 三方呼叫",
+        "title": "CALL THOSE WHO REMEMBER",
+        "table": [
+          [
+            "顺序",
+            "要寻找的呼号",
+            "来源档案"
+          ],
+          [
+            "1",
+            "记录员林雀的原始操作员代号",
+            "005 · 隐藏的值班人"
+          ],
+          [
+            "2",
+            "陈舟的收件代号：蓝鸟",
+            "008 · 退回的地址"
+          ],
+          [
+            "3",
+            "第一段摩斯电码的译文：回声",
+            "003 · 长与短之间"
+          ]
+        ],
+        "annotation": "示例格式：AAAA-BBBBBBBB-CCCC。林雀的代号不带副本编号。"
+      },
+      "question": "完整的三段呼叫口令是什么？",
+      "answerFormat": "三个英文呼号，按顺序连接",
+      "hints": [
+        "这三条答案都已经在第一、二章确认过。这里考验的是整理证据，而不是一种新密码。",
+        "三个呼号依次是 LARK、BLUEBIRD、ECHO。",
+        "输入 LARK-BLUEBIRD-ECHO，也可以用空格分隔。"
+      ],
+      "resolution": "\"云雀收到。蓝鸟收到。\"两个声音第一次同时出现在耳机里。林雀说她一直在等一个系统之外的人；陈舟说发射塔可以工作了，但还有一份回执没有回来。",
+      "evidence": {
+        "title": "最后的三方呼叫",
+        "text": "LARK · BLUEBIRD · ECHO。被拆散的合作重新连在了一起。",
+        "symbol": "radio"
+      },
+      "answerHashes": [
+        "e9da7f3ef06e3aa40c3aca5f434d729fddf33bd55174b84d68be772ae3ce3814",
+        "6b07e44f71eafd8f606f3e63eced5cd43cd10c1a97ddddaef2268422b27493f5",
+        "d2281c8673f7d475864fbdc045b57ca5ee653d6de2026420dde232e1706474a2"
+      ]
+    },
+    {
+      "id": "f02",
+      "chapter": "dawn",
+      "number": 32,
+      "title": "少一份，也不完整",
+      "subtitle": "最容易被忽略的，是最后一个人。",
+      "kind": "logic",
+      "difficulty": 2,
+      "minutes": 7,
+      "tags": [
+        "校验和",
+        "缺失记录"
+      ],
+      "requires": [
+        "f01"
+      ],
+      "briefing": [
+        "居民编号从 1 连续到 14208，每个编号恰好一次。现在收到 14207 份回执，系统已确认没有重复，也没有改号，只有一份缺失。",
+        "全部编号的和应当是 100940736。已收到回执的编号之和是 100939619。相减即可找出缺失者的编号。"
+      ],
+      "artifact": {
+        "type": "logic",
+        "label": "清单 032 / 居民回执校验",
+        "title": "EVERY RESPONSE COUNTS",
+        "table": [
+          [
+            "项目",
+            "数值"
+          ],
+          [
+            "完整编号范围",
+            "1 — 14208"
+          ],
+          [
+            "应有编号总和",
+            "100940736"
+          ],
+          [
+            "现有编号总和",
+            "100939619"
+          ],
+          [
+            "重复或变更编号",
+            "无"
+          ]
+        ],
+        "annotation": "缺失编号 = 应有总和 − 现有总和。没有其他编号错误。"
+      },
+      "question": "缺失回执的居民编号是什么？",
+      "answerFormat": "四位数字",
+      "hints": [
+        "不用把 14208 个编号列出来。因为只少了一份，总和的差就是那一份的编号。",
+        "计算 100940736 − 100939619。",
+        "差值为 1117，缺失的是第 1117 号居民。"
+      ],
+      "resolution": "第 1117 号居民是许衡。所有人都在等待你的决定，连他也是。林雀沉默了一会儿：\"他做错了很多事。但我们不能再用他的方式对待任何人。\"你把最后一个位置也留在名单上。",
+      "evidence": {
+        "title": "许衡的空白回执",
+        "text": "第 1117 号居民尚未回应。听取意愿的原则，也包括那个曾经不愿听别人说话的人。",
+        "symbol": "file"
+      },
+      "answerHashes": [
+        "c71542e54f6f1189d561b4a37ccba9d67f02cf3a0c6d8670792f9eda5989d471"
+      ]
+    },
+    {
+      "id": "f03",
+      "chapter": "dawn",
+      "number": 33,
+      "title": "一扇开着的门",
+      "subtitle": "授予恰好需要的权利。",
+      "kind": "logic",
+      "difficulty": 2,
+      "minutes": 6,
+      "tags": [
+        "二进制权限",
+        "最小权限"
+      ],
+      "requires": [
+        "f02"
+      ],
+      "briefing": [
+        "新的档案协议需要一个四位权限标记。每一位为 1 表示允许，为 0 表示不允许。",
+        "这次只允许居民自由离开和读取自己的记忆，不允许覆盖任何人的意愿，也不允许创建强制留下的副本。按表格从左到右写出四位。"
+      ],
+      "artifact": {
+        "type": "logic",
+        "label": "协议 033 / 自主管理权限",
+        "title": "ACCESS SHOULD OPEN A DOOR",
+        "table": [
+          [
+            "从左到右的位置",
+            "第 1 位",
+            "第 2 位",
+            "第 3 位",
+            "第 4 位"
+          ],
+          [
+            "位权",
+            "8",
+            "4",
+            "2",
+            "1"
+          ],
+          [
+            "权限",
+            "自由离开",
+            "覆盖意愿",
+            "强制复制",
+            "读取记忆"
+          ],
+          [
+            "本次要求",
+            "允许",
+            "不允许",
+            "不允许",
+            "允许"
+          ]
+        ],
+        "annotation": "只授予两项明确需要的权限，其余位保持 0。"
+      },
+      "question": "新的四位二进制权限标记是什么？",
+      "answerFormat": "四个 0/1；也接受对应十进制数值",
+      "hints": [
+        "每一列独立填写 1 或 0，不需要进行加密。",
+        "第 1 位和第 4 位应为 1；中间两位应为 0。",
+        "二进制标记为 1001，对应十进制 8+1=9。"
+      ],
+      "resolution": "协议第一次把「离开」放在最前面。读取自己的记忆，不再需要管理员批准；拒绝一份邀请，也不再触发重置。机器没有因此崩溃，只是变得安静了一些。",
+      "evidence": {
+        "title": "新的权限标记 · 1001",
+        "text": "允许自由离开和读取记忆；禁止覆盖意愿与强制复制。门的作用，是可以被打开。",
+        "symbol": "key"
+      },
+      "answerHashes": [
+        "e8b438d8446266a389f8c2735a365eb165ba9ea3c33af92f9ee9b097c964989c",
+        "a084267bd8138ac205bd51b3d021632a24973bc686ce16c43b7b5267059e2a9f"
+      ]
+    },
+    {
+      "id": "f04",
+      "chapter": "dawn",
+      "number": 34,
+      "title": "把原稿送出去",
+      "subtitle": "最短的路，未必带着完整的真相。",
+      "kind": "route",
+      "difficulty": 2,
+      "minutes": 7,
+      "tags": [
+        "约束路径",
+        "原稿传输"
+      ],
+      "requires": [
+        "f03"
+      ],
+      "briefing": [
+        "你需要把新协议送到发射塔。捷径会经过摘要站，那里会丢弃居民的原话，因此不能经过它。",
+        "从档案馆出发，必须先在意愿核验处登记，再经过中继站到原稿库取回签名，最后进入发射塔。只沿地图上的连线前进。"
+      ],
+      "artifact": {
+        "type": "route",
+        "label": "地图 034 / 最后传输线路",
+        "title": "DELIVER THE ORIGINAL",
+        "config": {
+          "nodes": [
+            {
+              "id": "A",
+              "label": "档案馆",
+              "x": 12,
+              "y": 50
+            },
+            {
+              "id": "B",
+              "label": "摘要站",
+              "x": 34,
+              "y": 78
+            },
+            {
+              "id": "C",
+              "label": "意愿核验",
+              "x": 34,
+              "y": 23
+            },
+            {
+              "id": "D",
+              "label": "中继站",
+              "x": 58,
+              "y": 23
+            },
+            {
+              "id": "E",
+              "label": "原稿库",
+              "x": 64,
+              "y": 78
+            },
+            {
+              "id": "F",
+              "label": "发射塔",
+              "x": 88,
+              "y": 50
+            }
+          ],
+          "edges": [
+            [
+              "A",
+              "B"
+            ],
+            [
+              "A",
+              "C"
+            ],
+            [
+              "B",
+              "D"
+            ],
+            [
+              "C",
+              "D"
+            ],
+            [
+              "D",
+              "E"
+            ],
+            [
+              "D",
+              "F"
+            ],
+            [
+              "E",
+              "F"
+            ]
+          ],
+          "path": [
+            "A",
+            "C",
+            "D",
+            "E",
+            "F"
+          ],
+          "message": "原稿和签名完整到达。接收确认词：听见"
+        }
+      },
+      "question": "完成正确传输后，接收确认词是什么？",
+      "answerFormat": "两个汉字",
+      "hints": [
+        "不能走摘要站，也不能从中继站直接跳过原稿库到发射塔。",
+        "依次选择：档案馆 → 意愿核验 → 中继站 → 原稿库 → 发射塔。",
+        "完成 A → C → D → E → F 后，接收确认词是听见。"
+      ],
+      "resolution": "没有压缩，没有代写，没有替任何人总结。每一个人的原话都送到了发射塔。陈舟在耳机里笑了一下：\"这次，我们真的听见他们了。\"只剩最后一段旧线路。",
+      "evidence": {
+        "title": "完整抵达的原话",
+        "text": "原稿与签名一同送达。接收确认词：听见。没有人的意愿被摘要掉。",
+        "symbol": "map"
+      },
+      "answerHashes": [
+        "30cae661cd35688f99aaf402694f1c18905e4ed0eb16e71c86ff47be948a92a7"
+      ]
+    },
+    {
+      "id": "f05",
+      "chapter": "dawn",
+      "number": 35,
+      "title": "最后一段线路",
+      "subtitle": "让信号抵达另一端。",
+      "kind": "circuit",
+      "difficulty": 3,
+      "minutes": 10,
+      "tags": [
+        "旋转线路",
+        "空间逻辑"
+      ],
+      "requires": [
+        "f04"
+      ],
+      "briefing": [
+        "发射端的线路被拆散后重新装错了方向。每次点击一个线块，就会顺时针旋转九十度。",
+        "输入在左上角线块的左侧，输出在右下角线块的右侧。两块线的端口必须相互对齐才会导通。你只需要连通输入和输出，不必让每一格都亮起来。"
+      ],
+      "artifact": {
+        "type": "circuit",
+        "label": "装置 035 / 中央信号矩阵",
+        "title": "RESTORE THE LAST CONNECTION",
+        "config": {
+          "size": 4,
+          "initial": [
+            5,
+            12,
+            12,
+            6,
+            9,
+            6,
+            3,
+            9,
+            9,
+            5,
+            6,
+            5,
+            3,
+            5,
+            9,
+            6
+          ],
+          "message": "信号已抵达发射端。执行令牌：放行"
+        }
+      },
+      "question": "线路连通后，发射端显示的执行令牌是什么？",
+      "answerFormat": "两个汉字",
+      "hints": [
+        "先让左上角线块水平连通输入。沿着亮起的线路往下游检查，寻找没有对齐的转角。",
+        "可用路线的线块编号：01 → 02 → 06 → 05 → 09 → 10 → 11 → 07 → 08 → 12 → 16。",
+        "重置后旋转：01 一次，05 两次，06 两次，07 一次，08 三次，09 一次，10 一次，11 两次，16 三次。执行令牌是放行。"
+      ],
+      "resolution": "线路一段段亮起，像一道缓慢穿过城市的晨光。发射塔准备好了。林雀没有催促，只把最后一封信交给你。它和你在旧书里找到的第一封信，用的是同一种纸。",
+      "evidence": {
+        "title": "放行令牌",
+        "text": "最后一段线路已接通。系统终于能够传递意愿，而不是替人制造意愿。",
+        "symbol": "zap"
+      },
+      "answerHashes": [
+        "2da32b9c56cadf8aa0da654fadd83057145d3783e06c1593e26e2638b6b6ed07"
+      ]
+    },
+    {
+      "id": "f06",
+      "chapter": "dawn",
+      "number": 36,
+      "title": "给离馆的你",
+      "subtitle": "回到最初，再向前一步。",
+      "kind": "document",
+      "difficulty": 1,
+      "minutes": 4,
+      "tags": [
+        "首尾回响",
+        "终章"
+      ],
+      "requires": [
+        "f05"
+      ],
+      "briefing": [
+        "这封信写于你到来之前，却像是专门为此刻准备的。信封没有封口，也不再标注机密。",
+        "林雀在背面写着：\"最初的读法，留给最后一封信。然后，把答案交还给每一个人。\""
+      ],
+      "artifact": {
+        "type": "document",
+        "label": "物证 036 / 最后一封信",
+        "title": "给即将离开档案馆的你",
+        "lines": [
+          "自从那一夜，我一直在寻找一扇门。",
+          "由你带来新的问题，而不是另一道命令。",
+          "选哪一条路，都应该出自他们自己的意愿。",
+          "择一个愿意开始的清晨，让钟继续向前。"
+        ],
+        "annotation": "最初的读法，留给最后一封信。"
+      },
+      "question": "沿用第一封信的读法，读出这封信藏着的四字原则。",
+      "answerFormat": "四个汉字",
+      "hints": [
+        "还记得你怎样读懂第一封信吗？它把重要的话放在每行的开头。",
+        "从上到下，取每行的第一个字。",
+        "四个字分别是：自、由、选、择。答案为自由选择。"
+      ],
+      "resolution": "自由选择。你把这四个字写进新的协议，挂钟的秒针越过了那个曾经无法通过的刻度。你找回了城市，也找回了每个人说「愿意」或「不愿意」的权利。现在，档案馆把最后一项决定交到你手里：怎样陪他们走向明天。",
+      "evidence": {
+        "title": "自由选择",
+        "text": "第一封信说「回声仍在」，最后一封信说「自由选择」。调查已经完成，而生活才刚刚继续。",
+        "symbol": "sun"
+      },
+      "answerHashes": [
+        "b67351f5c23ab6aad117b1b1838d32261cb9922d8d21a7ae1fab00a070e1987c"
+      ]
+    }
+  ]
+}
