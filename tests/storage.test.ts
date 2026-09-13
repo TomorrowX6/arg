@@ -51,6 +51,19 @@ describe('save persistence and recovery', () => {
     expect(imported.settings.fontSize).toBe('standard')
     expect(Object.hasOwn(imported.hints, '__proto__')).toBe(false)
   })
+  it('preserves long-running reception logs beyond 366 dates and 500 signals per date', () => {
+    const state = createState()
+    for (let day = 0; day < 400; day++) {
+      const date = new Date(Date.UTC(2026, 0, day + 1)).toISOString().slice(0, 10)
+      state.dailySolved[date] = Array.from(
+        { length: day === 0 ? 700 : 1 },
+        (_, i) => `field-v2-${date}-${i}`,
+      )
+    }
+    expect(parseSave(JSON.parse(serializeSave(state))).dailySolved).toEqual(state.dailySolved)
+    state.dailySolved['2026-01-01'].push('field-v2-2026-01-01-0', '__proto__')
+    expect(parseSave(state).dailySolved['2026-01-01']).toHaveLength(700)
+  })
   it('keeps a corrupt or future-version save untouched and pauses overwrites', () => {
     const data = new Map<string, string>([[STORAGE_KEY, '{"version":2,"future":"precious"}']])
     vi.stubGlobal('localStorage', {

@@ -1,0 +1,231 @@
+.field-page .page-title-row h1 {
+  text-wrap: balance;
+}
+.field-channel-bar {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 7px;
+  border: 1px solid #d2dcc5;
+  background: #eff2e6;
+  border-radius: 5px;
+  margin-bottom: 23px;
+}
+.field-channel-bar > button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 11px 15px;
+  background: none;
+  border-radius: 3px;
+  color: #526a43;
+  font-size: 11px;
+}
+.field-channel-bar > button.active {
+  background: #435d3d;
+  color: #f2f0da;
+  box-shadow: 0 2px #354c32;
+}
+.field-channel-bar > button:not(.active):hover {
+  background: #e0e8d3;
+}
+.field-channel-bar > span {
+  margin-left: auto;
+  padding-right: 10px;
+  color: #5c724a;
+  font-size: 10px;
+}
+.field-paging {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.field-previous {
+  padding: 12px;
+}
+.field-paging > button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+.field-tool-link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid #cbd9ba;
+  border-radius: 4px;
+  padding: 15px 17px;
+  margin: -9px 0 27px;
+  background: #f0f5e6;
+  font-size: 11px;
+  color: #54743d;
+}
+.field-tool-link > span {
+  flex: 1;
+}
+.field-tool-link:hover {
+  background: #e5eed5;
+}
+.field-legacy {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 17px 19px;
+  border: 1px solid #d8ccac;
+  background: #f3eddc;
+  border-radius: 5px;
+  margin: 0 0 24px;
+  color: #77663f;
+}
+.field-legacy > svg {
+  flex: none;
+}
+.field-legacy > p {
+  flex: 1;
+  font-size: 11px;
+  line-height: 1.9;
+}
+.field-tuning {
+  margin-top: 23px;
+  border: 1px solid #d5ddc9;
+  border-radius: 5px;
+  background: #f1f4e9;
+}
+.field-tuning > summary {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 20px;
+  list-style: none;
+  font-size: 11px;
+  color: #536d42;
+  cursor: pointer;
+}
+.field-tuning > summary::-webkit-details-marker {
+  display: none;
+}
+.field-tuning > summary > svg:last-child {
+  margin-left: auto;
+}
+.field-tuning[open] > summary {
+  border-bottom: 1px solid #d5dfc5;
+}
+.field-tuning > form {
+  display: flex;
+  align-items: flex-end;
+  gap: 14px;
+  padding: 19px 20px 10px;
+}
+.field-tuning label {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 11px;
+  color: #516b40;
+  min-width: 0;
+}
+.field-tuning input {
+  display: block;
+  width: 100%;
+  min-width: 0;
+  border: 1px solid #bfcdaa;
+  border-radius: 4px;
+  padding: 10px 12px;
+  font: 12px var(--mono);
+  color: #3e5a34;
+  background: #fbfcf3;
+}
+.field-tuning > p {
+  font-size: 10px;
+  color: #62734e;
+  line-height: 1.9;
+  padding: 7px 20px 17px;
+}
+.field-share-fallback {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 13px 15px;
+  margin: 12px 0 21px;
+  border: 1px solid #c5d5b1;
+  border-radius: 4px;
+  background: #eef4e2;
+  font-size: 11px;
+  color: #52723a;
+}
+.field-share-fallback > input {
+  width: 100%;
+  font: 11px var(--mono);
+  padding: 9px;
+  border: 1px solid #bacda4;
+  background: #fbfcf3;
+  color: #3d5c2e;
+  border-radius: 3px;
+}
+@media (max-width: 650px) {
+  .field-channel-bar {
+    padding: 5px;
+    gap: 3px;
+    margin-bottom: 18px;
+  }
+  .field-channel-bar > button {
+    flex: 1;
+    padding: 11px 7px;
+    font-size: 10px;
+    gap: 5px;
+  }
+  .field-channel-bar > button > svg {
+    width: 14px;
+  }
+  .field-channel-bar > span {
+    display: none;
+  }
+  .field-paging {
+    gap: 6px;
+  }
+  .field-paging > .button {
+    font-size: 10px;
+    padding: 11px 12px;
+  }
+  .field-paging > .field-previous {
+    padding: 11px;
+  }
+  .field-legacy {
+    flex-wrap: wrap;
+    padding: 16px;
+    gap: 11px;
+  }
+  .field-legacy > p {
+    min-width: 75%;
+  }
+  .field-legacy > button {
+    margin-left: 30px;
+  }
+  .field-tuning > form {
+    flex-wrap: wrap;
+    padding: 17px 15px 10px;
+    gap: 12px;
+  }
+  .field-tuning label {
+    min-width: 42%;
+  }
+  .field-tuning > form > button {
+    margin-top: 3px;
+  }
+  .field-tuning > summary {
+    padding: 15px;
+    font-size: 11px;
+  }
+  .field-tuning > p {
+    padding: 5px 15px 16px;
+  }
+  .field-tuning input {
+    font-size: 11px;
+    padding: 10px 8px;
+  }
+  .field-tool-link {
+    padding: 14px;
+    font-size: 10px;
+  }
+}

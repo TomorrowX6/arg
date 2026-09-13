@@ -26,12 +26,14 @@ export default function Toolbox() {
     ? (requested as ToolMethod)
     : 'base64'
   const sourceCase = params.get('from') ? puzzleById[params.get('from')!] : undefined
+  const fieldReturn = params.get('returnTo')
   return (
     <ToolReader
       key={params.toString()}
       initialMethod={method}
       initialInput={params.get('input') ?? ''}
       sourceId={sourceCase?.id}
+      returnTo={fieldReturn?.startsWith('/field?') ? fieldReturn : undefined}
     />
   )
 }
@@ -40,10 +42,12 @@ function ToolReader({
   initialMethod,
   initialInput,
   sourceId,
+  returnTo,
 }: {
   initialMethod: ToolMethod
   initialInput: string
   sourceId?: string
+  returnTo?: string
 }) {
   const { dispatch } = useGame()
   const [method, setMethod] = useState(initialMethod)
@@ -154,6 +158,13 @@ function ToolReader({
         <Link className="tool-source-link" to={`/case/${sourceId}`}>
           <Icon name="arrowLeft" size={15} />
           <span>返回档案：{puzzleById[sourceId].title}</span>
+          <small>原始资料已带入</small>
+        </Link>
+      )}
+      {!sourceId && returnTo && (
+        <Link className="tool-source-link" to={returnTo}>
+          <Icon name="arrowLeft" size={15} />
+          <span>返回当前接收电报</span>
           <small>原始资料已带入</small>
         </Link>
       )}

@@ -83,12 +83,15 @@ export function parseSave(input: unknown): GameState {
     ? Object.fromEntries(
         Object.entries(input.dailySolved)
           .filter(([date, ids]) => /^\d{4}-\d{2}-\d{2}$/.test(date) && Array.isArray(ids))
-          .slice(-366)
           .map(([date, ids]) => [
             date,
-            (ids as unknown[])
-              .filter((id): id is string => typeof id === 'string' && safeKey(id))
-              .slice(0, 500),
+            [
+              ...new Set(
+                (ids as unknown[]).filter(
+                  (id): id is string => typeof id === 'string' && safeKey(id),
+                ),
+              ),
+            ],
           ]),
       )
     : {}

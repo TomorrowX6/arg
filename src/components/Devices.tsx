@@ -27,7 +27,14 @@ export function FrequencyDevice({ artifact }: { artifact: Artifact }) {
         <span className="frequency-fm">FM</span>
         <strong>{frequency.toFixed(1)}</strong>
         <span>MHz</span>
-        <div className="signal-bars" aria-label={`信号强度 ${strength}%`}>
+        <div
+          className="signal-bars"
+          role="meter"
+          aria-label="信号强度"
+          aria-valuenow={strength}
+          aria-valuemin={0}
+          aria-valuemax={100}
+        >
           {Array.from({ length: 8 }, (_, i) => (
             <i
               key={i}
