@@ -49,6 +49,13 @@
 - `uv`：`text`（按换行显示的隐形批注）, `message`。
 - `sliding`：`size`, `initial`（数字矩阵展平，0 是空格）, `message`。目标为 1…N−1、0，必须确保可解。
 - `circuit`：`size`, `initial`（方向位掩码矩阵展平）, `message`。上=1、右=2、下=4、左=8；输入为第一格左侧，输出为最后一格右侧。
+- `forensic`：`src`（相对 public 的文件路径）, `filename`, `mode`（`header` / `metadata` / `lsb`）, `description`（可访问的画面描述）。检验台实际读取 PNG 字节。`header` 开启八字节文件头编辑；像素工具支持未交错的 8 位 RGB/RGBA PNG，按前 104 个像素、指定通道和位平面读取 ASCII。
 - `cipher` 可设置 `config.tool` 为 `caesar`、`base64`、`vigenere` 或 `xor`，启用对应站内辅助工具。
 
 新增机制时同步更新类型、档案标签、卡片图标、渲染器与实际交互测试。完成后运行内容测试、相关浏览器测试与生产构建。
+
+## 取证物证
+
+`scripts/generate-evidence.mjs` 以原创像素绘图生成三份真实 PNG 文件，并在内容编译前自动执行。第一张仅损坏前四个签名字节；第二张把 Base64 留言写入 tEXt 的 Comment；第三张把零字节结束的 ASCII 写入蓝色通道最低位。单元测试直接读取这些文件，核对 CRC、元数据、像素解码和隐藏信息；浏览器测试下载修复后的文件并验证字节。
+
+支线使用 `optional: true`，不会计入主线进度或阻挡结局。可以用 `requires` 组成独立故事，完成后优先进入依赖当前档案的下一关。

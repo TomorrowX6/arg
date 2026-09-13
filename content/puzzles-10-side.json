@@ -1,0 +1,502 @@
+[
+  {
+    "id": "x01",
+    "chapter": "side",
+    "number": 101,
+    "title": "照片没有死去",
+    "subtitle": "一张打不开的照片，仍然记得码头。",
+    "kind": "forensic",
+    "difficulty": 2,
+    "minutes": 8,
+    "tags": ["摄影师支线", "PNG 文件头", "真实文件"],
+    "optional": true,
+    "briefing": [
+      "摄影师阮青留下了一只防潮信封。里面的存储卡只剩三张照片，这是第一张。文件名没有丢，电脑却说它不是图片。",
+      "维修记录注明：只有文件开头的四个字节被擦成了 00，后面的所有字节都完好。PNG 的标准八字节签名是 89 50 4E 47 0D 0A 1A 0A。打开检验台的十六进制页，恢复完整文件头，看看她拍下了什么。"
+    ],
+    "artifact": {
+      "type": "forensic",
+      "label": "物证 101 / 损坏的码头照片",
+      "title": "THE PHOTOGRAPH REMEMBERS",
+      "annotation": "文件格式卡：PNG → 89 50 4E 47 0D 0A 1A 0A。修复只作用于当前副本，原件始终可以下载。",
+      "config": {
+        "src": "assets/evidence/pier-04.png",
+        "filename": "pier-04.png",
+        "mode": "header",
+        "description": "雾港的黄昏码头。左侧绿色路牌清楚写着 PIER 04，远处渡船的窗户亮着灯。照片右下角署名 RUAN QING。"
+      }
+    },
+    "question": "修复后的照片里，路牌上的码头代号是什么？",
+    "answerFormat": "英文 PIER 加两位数字",
+    "answers": ["PIER04", "PIER 04", "4号码头", "04"],
+    "hints": [
+      "扩展名只是名字；PNG 软件首先检查文件最前面的八个字节。照片没有整个坏掉。",
+      "在「十六进制」页输入完整的标准签名 89 50 4E 47 0D 0A 1A 0A，应用修复，再回到「文件概览」。",
+      "路牌写着 PIER 04。输入 PIER04。也可以展开修复照片的文字描述。"
+    ],
+    "resolution": "照片重新出现了。不是灾难现场，也不是求救信号，只是一艘快要收班的渡船。阮青在信封上写着：「如果你看见了这个码头，请继续看第二张。不是每个离开的人，都来得及告别。」",
+    "evidence": {
+      "title": "四号码头的照片",
+      "text": "损坏的仅仅是文件头。阮青在 PIER 04 拍下了一艘仍在等人的渡船。",
+      "symbol": "fingerprint"
+    }
+  },
+  {
+    "id": "x02",
+    "chapter": "side",
+    "number": 102,
+    "title": "写在相框背后",
+    "subtitle": "照片不说的话，文件会说。",
+    "kind": "forensic",
+    "difficulty": 2,
+    "minutes": 8,
+    "tags": ["摄影师支线", "PNG 元数据", "Base64"],
+    "optional": true,
+    "briefing": [
+      "第二张照片可以正常打开：一张挂在照相馆里的肖像，看不出异常。阮青却特意把文件原件留了下来。",
+      "相框背面的小纸条写着：「检查 tEXt 数据块。我的留言在 Comment 里，用的是 Base64。它会告诉你第三张照片该读哪一个颜色通道、哪一位。」"
+    ],
+    "artifact": {
+      "type": "forensic",
+      "label": "物证 102 / 最后一张冲印",
+      "title": "WORDS BEHIND THE FRAME",
+      "annotation": "PNG 的 tEXt 块可以保存键值文字；其中的 Comment 是本关目标。检验台提供 Base64 解码。",
+      "config": {
+        "src": "assets/evidence/last-print.png",
+        "filename": "last-print.png",
+        "mode": "metadata",
+        "description": "照相馆里挂着阮青自己的肖像，下面写着 THE LAST PRINT。窗外是黄昏的雾港。"
+      }
+    },
+    "question": "Comment 解码后给出的颜色与位编号是什么？",
+    "answerFormat": "一个英文颜色加一个数字",
+    "answers": ["BLUE0", "BLUE 0", "蓝色0", "蓝0"],
+    "hints": [
+      "这里的线索不在画面，而在 PNG 的附加文字数据块。点击「数据块」页。",
+      "依次检查 tEXt，找到关键词 Comment。它的值是 QkxVRSAw，点「尝试 Base64 解码」。",
+      "QkxVRSAw 解码得到 BLUE 0。输入 BLUE0；它指向蓝色通道的第 0 位。"
+    ],
+    "resolution": "BLUE 0。阮青不是在给照片调色，她在指引一种几乎看不见的读法。第三张照片拍的是海面；每一小点蓝色都可能保留一个二进制位。",
+    "evidence": {
+      "title": "相框背后的读法",
+      "text": "Comment 留言解码为 BLUE 0：蓝色通道，最低位。",
+      "symbol": "eye"
+    },
+    "requires": ["x01"]
+  },
+  {
+    "id": "x03",
+    "chapter": "side",
+    "number": 103,
+    "title": "海的最低处",
+    "subtitle": "每一滴蓝色，都留住了一点消息。",
+    "kind": "forensic",
+    "difficulty": 3,
+    "minutes": 10,
+    "tags": ["摄影师支线", "LSB 隐写", "像素取证"],
+    "optional": true,
+    "briefing": [
+      "最后一张照片拍摄于天亮之前。肉眼只能看见船、灯塔与海。按照上一张照片的留言，真正的信藏在蓝色通道第 0 位，也叫最低有效位。",
+      "切换到「像素通道」，选择对应颜色与位编号。读取器会从左上角逐行提取前 104 个像素，每 8 位组成一个 ASCII 字节，遇到 00 结束。这与下载照片后手动读取像素得到的内容相同。"
+    ],
+    "artifact": {
+      "type": "forensic",
+      "label": "物证 103 / 黎明之前的海",
+      "title": "ONE BIT OF THE SEA",
+      "annotation": "BLUE 0。每组八位从左往右，最高位在前。不要读整幅图的平均颜色。",
+      "config": {
+        "src": "assets/evidence/before-dawn.png",
+        "filename": "before-dawn.png",
+        "mode": "lsb",
+        "description": "青绿色的海面，一艘小渡船正驶向亮着灯的灯塔。月亮尚未落下，画面上方写着 BEFORE THE DAWN。"
+      }
+    },
+    "question": "蓝色最低位中隐藏的英文留言是什么？",
+    "answerFormat": "三个英文单词",
+    "answers": ["FERRY AT SIX", "FERRYATSIX"],
+    "hints": [
+      "蓝色数值的最后一位可以轻微变动而不改变肉眼观感。把这些小变化排列起来，就能形成文字。",
+      "在「像素通道」中选蓝色 BLUE，位编号 0，点击「提取所选位平面」。",
+      "得到 FERRY AT SIX，意思是六点的渡船。输入这三个英文单词即可。"
+    ],
+    "resolution": "FERRY AT SIX。阮青没有被带走，她为自己买了六点的船票。她留下照片，是希望后来的人知道：离开一座城市，并不等于不爱它。信封底部还有一句话：「如果你也要走，记得带上原件。」",
+    "evidence": {
+      "title": "六点的渡船",
+      "text": "阮青的留言 FERRY AT SIX 隐藏在蓝色通道最低位。她在天亮时自愿离开，并保留了自己的照片。",
+      "symbol": "sun"
+    },
+    "requires": ["x02"]
+  },
+  {
+    "id": "x04",
+    "chapter": "side",
+    "number": 104,
+    "title": "镜子里的营业时间",
+    "subtitle": "关店的人，把欢迎写反了。",
+    "kind": "cipher",
+    "difficulty": 1,
+    "minutes": 5,
+    "tags": ["镜像字母", "Atbash", "小店"],
+    "optional": true,
+    "briefing": [
+      "旧镜子店的门锁着，门上没有营业时间，只有一张英文便条。门缝里透出炉火的光，似乎有人正在烧水。",
+      "店主习惯把字母表像镜子一样倒过来：A 对应 Z，B 对应 Y，以此类推。用下面的两行字母表，一对一替换便条的字母。"
+    ],
+    "artifact": {
+      "type": "cipher",
+      "label": "便条 104 / 镜子店的门",
+      "title": "THE DOOR IS STILL WARM",
+      "code": "XLNV RM",
+      "key": "ABCDEFGHIJKLMNOPQRSTUVWXYZ\nZYXWVUTSRQPONMLKJIHGFEDCBA",
+      "annotation": "照镜子两次，就会回到原来的样子。"
+    },
+    "question": "便条原本写的是哪两个英文单词？",
+    "answerFormat": "两个英文单词",
+    "answers": ["COME IN"],
+    "hints": [
+      "两个字母表按列对齐。X 在上排对应下排的 C。",
+      "依次替换 X→C、L→O、N→M、V→E。第二个词用相同的方法。",
+      "完整译文是 COME IN，意思是「请进」。"
+    ],
+    "resolution": "COME IN。店主从里面推开门：「我想写得神秘一点，又怕真的把客人挡在外面。」你第一次在这座城市里，收到一杯完全不需要密码的热茶。",
+    "evidence": {
+      "title": "仍在营业的镜子店",
+      "text": "镜像便条的译文是 COME IN。炉火还亮着，有人等着招待来客。",
+      "symbol": "key"
+    }
+  },
+  {
+    "id": "x05",
+    "chapter": "side",
+    "number": 105,
+    "title": "排字工的两副铅字",
+    "subtitle": "两种样式，也足够写一封信。",
+    "kind": "cipher",
+    "difficulty": 2,
+    "minutes": 7,
+    "tags": ["培根密码", "二进制", "印刷厂"],
+    "optional": true,
+    "briefing": [
+      "排字工把字母分成 A、B 两种记号，每五个一组。纸边明确写着：用现代 26 字母版本，A=0、B=1；五位二进制的数值从 A=0 一直对应到 Z=25。",
+      "这是给女儿的折纸图案名。每组只还原一个英文字母，不需要阅读纸张的字体或颜色。"
+    ],
+    "artifact": {
+      "type": "cipher",
+      "label": "纸条 105 / 两副铅字",
+      "title": "FIVE MARKS MAKE A LETTER",
+      "code": "AAAAB  ABAAA  BAAAB  AAABB",
+      "key": "A记号=0，B记号=1\n五位位权：16 8 4 2 1\n0=A  1=B  2=C  3=D  4=E  5=F  6=G  7=H  8=I  9=J  10=K  11=L  12=M\n13=N  14=O  15=P  16=Q  17=R  18=S  19=T  20=U  21=V  22=W  23=X  24=Y  25=Z"
+    },
+    "question": "四组记号还原出的折纸图案名是什么？",
+    "answerFormat": "四个英文字母",
+    "answers": ["BIRD"],
+    "hints": [
+      "先把每组的 A 写成 0、B 写成 1，再把五位二进制变成数字。",
+      "四组得到 00001、01000、10001、00011，也就是 1、8、17、3。注意字母从 0 开始编号。",
+      "1→B，8→I，17→R，3→D。答案 BIRD。"
+    ],
+    "resolution": "BIRD。你在抽屉里找到一只折得很歪的纸鸟，翅膀上印着一行小字：「爸爸，下一次教我折真的能飞的。」排字工的回信只有两种记号，却一直没有舍得寄出。",
+    "evidence": {
+      "title": "两副铅字的纸鸟",
+      "text": "五位培根密码写着 BIRD。排字工把一次普通的折纸约定保存了很久。",
+      "symbol": "mail"
+    }
+  },
+  {
+    "id": "x06",
+    "chapter": "side",
+    "number": 106,
+    "title": "五乘五的窗",
+    "subtitle": "坐标指向一个比秘密更要紧的词。",
+    "kind": "cipher",
+    "difficulty": 1,
+    "minutes": 6,
+    "tags": ["波利比奥斯", "坐标密码", "温室"],
+    "optional": true,
+    "briefing": [
+      "温室的玻璃窗被分成五行五列。园丁把每个字母记成两位坐标：第一位是行号，第二位是列号。I 和 J 共用一格。",
+      "值班便条没有写今晚该做什么，只留下五组坐标。按下表逐个查找。"
+    ],
+    "artifact": {
+      "type": "cipher",
+      "label": "便条 106 / 温室夜班",
+      "title": "A MESSAGE THROUGH THE WINDOW",
+      "code": "52 11 44 15 42",
+      "table": [
+        ["行 / 列", "1", "2", "3", "4", "5"],
+        ["1", "A", "B", "C", "D", "E"],
+        ["2", "F", "G", "H", "I/J", "K"],
+        ["3", "L", "M", "N", "O", "P"],
+        ["4", "Q", "R", "S", "T", "U"],
+        ["5", "V", "W", "X", "Y", "Z"]
+      ],
+      "annotation": "行号在前，列号在后；编号从 1 开始。"
+    },
+    "question": "园丁留下的英文任务词是什么？",
+    "answerFormat": "五个英文字母",
+    "answers": ["WATER"],
+    "hints": [
+      "例如 52，就是第 5 行第 2 列，不是第五十二个字母。",
+      "52→W，11→A，44→T。继续查后两组。",
+      "五个字母依次是 W、A、T、E、R，答案 WATER。"
+    ],
+    "resolution": "WATER。你给窗台上那盆快要干透的薄荷浇了水。园丁在记录册上写着：「如果今晚只能救下一样东西，先救那盆不会叫你的植物。」薄荷的气味填满了温室。",
+    "evidence": {
+      "title": "温室的一杯水",
+      "text": "方阵便条写着 WATER。异常档案有时只是提醒后来的人，别忘了浇水。",
+      "symbol": "grid"
+    }
+  },
+  {
+    "id": "x07",
+    "chapter": "side",
+    "number": 107,
+    "title": "三条轨道，一壶茶",
+    "subtitle": "跑错顺序的字母，也想准时赴约。",
+    "kind": "cipher",
+    "difficulty": 2,
+    "minutes": 8,
+    "tags": ["栅栏密码", "重排", "电车"],
+    "optional": true,
+    "briefing": [
+      "电车售票员把八个字母按三条轨道的上下折返顺序写下，再从第一轨到第三轨逐行读出密文。轨道顺序为 1、2、3、2、1、2、3、2。",
+      "要还原，就按每轨需要的字母数量把密文分成三段，再依照原来的轨道顺序取回字母。译文是一项聚会前的小请求。"
+    ],
+    "artifact": {
+      "type": "cipher",
+      "label": "票根 107 / 三轨折返",
+      "title": "THREE RAILS, ONE INVITATION",
+      "code": "BGRNTAIE",
+      "table": [
+        ["轨道", "原文字母位置", "需要字母数"],
+        ["第 1 轨", "1、5", "2"],
+        ["第 2 轨", "2、4、6、8", "4"],
+        ["第 3 轨", "3、7", "2"]
+      ],
+      "annotation": "先把密文按 2 / 4 / 2 分段，填回相应位置，再从位置 1 读到 8。"
+    },
+    "question": "按原顺序还原后，售票员希望你做什么？",
+    "answerFormat": "两个英文单词，共八个字母",
+    "answers": ["BRING TEA"],
+    "hints": [
+      "密文不是按原文顺序排的。先分成 BG / RNTA / IE 三段。",
+      "把 B、G 放在位置 1、5；R、N、T、A 放在 2、4、6、8；I、E 放在 3、7。",
+      "从位置 1 到 8 读出 BRINGTEA，即 BRING TEA。"
+    ],
+    "resolution": "BRING TEA。售票员在空车厢里铺好一张小桌，邀请最后一班车的乘客一起喝茶。他说密码不是为了保密，只是因为这一夜实在太长，想给路上多留一点乐趣。",
+    "evidence": {
+      "title": "最后一班车的茶会",
+      "text": "三轨栅栏密码还原成 BRING TEA。空车厢里的小桌，还留着一个位置。",
+      "symbol": "map"
+    }
+  },
+  {
+    "id": "x08",
+    "chapter": "side",
+    "number": 108,
+    "title": "只有一位说错",
+    "subtitle": "电报也会口误，但可以被温柔地纠正。",
+    "kind": "logic",
+    "difficulty": 3,
+    "minutes": 10,
+    "tags": ["Hamming(7,4)", "奇偶校验", "纠错"],
+    "optional": true,
+    "briefing": [
+      "一段七位电报在传输中恰好翻转了一位。位编号从左到右是 1 至 7。检查使用偶校验：指定位置中 1 的数量应当为偶数。",
+      "三项检查若失败，分别记作权重 1、2、4；成功则记 0。把失败检查的权重相加，就得到需要翻转的位编号。这里保证只有一个错误。"
+    ],
+    "artifact": {
+      "type": "logic",
+      "label": "电报 108 / 单位错误",
+      "title": "A SIGNAL CAN BE REPAIRED",
+      "code": "位置  1 2 3 4 5 6 7\n收到  0 1 1 0 1 1 1",
+      "table": [
+        ["检查", "包含位置", "失败时记分"],
+        ["P1", "1、3、5、7", "1"],
+        ["P2", "2、3、6、7", "2"],
+        ["P4", "4、5、6、7", "4"]
+      ],
+      "annotation": "恰好一位翻转。偶数个 1 为通过，奇数个 1 为失败。"
+    },
+    "question": "需要翻转的是从左到右第几位？",
+    "answerFormat": "1 至 7 中的一个数字",
+    "answers": ["5", "第5位"],
+    "hints": [
+      "分别数每组有多少个 1，别把位编号本身相加。",
+      "P1 的值为 0、1、1、1，共三个 1，失败；P2 共四个 1，通过；P4 共三个 1，失败。",
+      "失败权重 1+4=5，翻转第 5 位。原始七位为 0110011；答案 5。"
+    ],
+    "resolution": "你把第五位从 1 改回 0，三项校验全部恢复。接收员在记录上画了一个很小的圆：「有错误的消息，也不必整封丢弃。」那份差点被作废的问候，终于被送往下一站。",
+    "evidence": {
+      "title": "第五位的更正",
+      "text": "电报错误位为 5。0110111 更正为 0110011，三个偶校验均通过。",
+      "symbol": "radio"
+    }
+  },
+  {
+    "id": "x09",
+    "chapter": "side",
+    "number": 109,
+    "title": "一把很小的公钥",
+    "subtitle": "邮差只需要投对那个柜子。",
+    "kind": "logic",
+    "difficulty": 2,
+    "minutes": 9,
+    "tags": ["RSA 入门", "模运算", "投递柜"],
+    "optional": true,
+    "briefing": [
+      "教学用投递柜采用一个很小的 RSA 公钥：n=55，e=3。加密规则是把柜号的三次方除以 55，取余数。收到的密文是 48。",
+      "候选柜号只有 7、12、27、37。计算每个候选值的三次方，再取除以 55 的余数，找出唯一匹配的柜子。下表给出中间数值，不需要大数计算器。"
+    ],
+    "artifact": {
+      "type": "logic",
+      "label": "凭据 109 / 教学公钥",
+      "title": "THE RIGHT LETTERBOX",
+      "code": "PUBLIC KEY: n = 55, e = 3\nCIPHERTEXT: 48",
+      "table": [
+        ["柜号 m", "m³", "相邻的 55 倍数"],
+        ["7", "343", "330"],
+        ["12", "1728", "1705"],
+        ["27", "19683", "19635"],
+        ["37", "50653", "50600"]
+      ],
+      "annotation": "余数 = m³ − 不超过 m³ 的最大 55 倍数。这里的小数字仅用于解谜演示。"
+    },
+    "question": "信件属于哪一个柜号？",
+    "answerFormat": "两位数字",
+    "answers": ["27"],
+    "hints": [
+      "每一行把第二列减去第三列，得到该柜号加密后的余数。",
+      "四行的余数依次为 13、23、48、53。寻找收到的 48。",
+      "27³ = 19683，19683 − 55×357 = 48。柜号是 27。"
+    ],
+    "resolution": "第二十七号柜子里没有机密，只有一张写着「谢谢你认真投递」的明信片。邮差练习了很久，只为让每封信都抵达它该去的人手里。",
+    "evidence": {
+      "title": "二十七号投递柜",
+      "text": "小型 RSA 题中，27³ mod 55 = 48。信件成功送达第 27 号柜。",
+      "symbol": "key"
+    }
+  },
+  {
+    "id": "x10",
+    "chapter": "side",
+    "number": 110,
+    "title": "多出的一枚硬币",
+    "subtitle": "天平记住了重量，账本记住了人。",
+    "kind": "logic",
+    "difficulty": 2,
+    "minutes": 7,
+    "tags": ["天平", "排除法", "杂货铺"],
+    "optional": true,
+    "briefing": [
+      "八枚外观相同的硬币里，恰好有一枚比其他硬币重，其余重量相同。杂货铺留下两次称量记录，没有砝码误差。",
+      "把两次结果放在一起，找出那枚较重的硬币。天平上没出现的硬币，也可能是关键。"
+    ],
+    "artifact": {
+      "type": "logic",
+      "label": "记录 110 / 杂货铺天平",
+      "title": "A LITTLE MORE THAN EXPECTED",
+      "table": [
+        ["称量", "左盘", "右盘", "结果"],
+        ["第一次", "1、2、3", "4、5、6", "平衡"],
+        ["第二次", "7", "1", "左盘更重"]
+      ],
+      "annotation": "只有一枚较重。第一次的六枚硬币总重相等，第二次使用第 1 枚作为参照。"
+    },
+    "question": "较重的是第几枚硬币？",
+    "answerFormat": "1 至 8 中的一个数字",
+    "answers": ["7", "第7枚"],
+    "hints": [
+      "第一次两盘平衡，且两边枚数相同。较重的硬币不可能在这六枚里。",
+      "只剩 7 和 8；第二次拿 7 与已确认正常的 1 对比，7 更重。",
+      "较重的是第 7 枚。答案 7。"
+    ],
+    "resolution": "第七枚不是假币，是店主夹在零钱里的旧纪念章。他想多给借宿的孩子一点东西，又怕对方觉得受了施舍。你把它单独装好，在账本上记了一句：已归还。",
+    "evidence": {
+      "title": "第七枚纪念章",
+      "text": "前六枚重量相同；第七枚更重。它是一枚被当成零钱留下的纪念章。",
+      "symbol": "orbit"
+    }
+  },
+  {
+    "id": "x11",
+    "chapter": "side",
+    "number": 111,
+    "title": "一张没画完的贺卡",
+    "subtitle": "数字之间，还留着一个很小的心愿。",
+    "kind": "nonogram",
+    "difficulty": 2,
+    "minutes": 8,
+    "tags": ["数织", "贺卡", "像素图"],
+    "optional": true,
+    "briefing": [
+      "档案夹里有一张生日贺卡，图案被打印机擦掉了，只剩每行每列的黑格数量。",
+      "数字表示连续黑格的长度；同一行有多个数字时，各段之间至少留一个空格。填黑正确位置即可复原。叉号只用来记笔记，不影响判断。"
+    ],
+    "artifact": {
+      "type": "nonogram",
+      "label": "物证 111 / 像素贺卡",
+      "title": "A CARD THAT WAITED",
+      "config": {
+        "size": 5,
+        "solution": [0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 0, 0, 1, 0, 0],
+        "message": "图案复原。卡片上的祝福：总有人记得"
+      }
+    },
+    "question": "复原贺卡后，显示的五字祝福是什么？",
+    "answerFormat": "五个汉字",
+    "answers": ["总有人记得"],
+    "hints": [
+      "先看整行或整列都填满的 5；这些格子可以直接确定。",
+      "五行从上到下的黑格为：第 2、4 格；全部；全部；第 2 至 4 格；第 3 格。",
+      "图案是一颗心。祝福是总有人记得，输入这五个字。"
+    ],
+    "resolution": "是一颗很不规整的心。贺卡没有写生日日期，因为寄信的人说：「记不起是哪一天，也可以每天都祝你快乐。」你把它摆在档案馆最容易被看见的位置。",
+    "evidence": {
+      "title": "一颗像素心",
+      "text": "数织复原了一张生日贺卡，上面写着：总有人记得。",
+      "symbol": "grid"
+    }
+  },
+  {
+    "id": "x12",
+    "chapter": "side",
+    "number": 112,
+    "title": "页面没有说完的话",
+    "subtitle": "有些留言，藏在浏览器没有画出来的地方。",
+    "kind": "terminal",
+    "difficulty": 2,
+    "minutes": 8,
+    "tags": ["网页源码", "HTML 注释", "本地终端"],
+    "optional": true,
+    "briefing": [
+      "这是照相馆旧网站的一份离线快照，保存在虚拟终端里。网页正文只有「今日休息」，但店员说他曾在源码里留过一行注释。",
+      "输入 ls 查看文件，再用 cat index.html 读取完整源码。HTML 注释位于 <!-- 与 --> 之间，浏览器通常不显示它，但源码会保留。这里只读取提供的虚构文件，不需要打开真实网站。"
+    ],
+    "artifact": {
+      "type": "terminal",
+      "label": "快照 112 / 照相馆网站",
+      "title": "LOOK BETWEEN THE TAGS",
+      "config": {
+        "files": {
+          "readme.txt": "离线网页快照。使用 cat index.html 阅读源码。HTML 注释不会显示在网页正文。",
+          "index.html": "<!doctype html>\n<html lang=\"zh-CN\">\n<head><title>青空照相馆</title></head>\n<body>\n  <h1>今日休息</h1>\n  <!-- 收件确认词：SEE YOU TOMORROW -->\n  <p>已经付过钱的照片，都放在门旁的盒子里。</p>\n</body>\n</html>"
+        }
+      }
+    },
+    "question": "HTML 注释里的英文收件确认词是什么？",
+    "answerFormat": "三个英文单词",
+    "answers": ["SEE YOU TOMORROW"],
+    "hints": [
+      "网页显示的文字不是文件的全部。先列出目录，找到 HTML 文件。",
+      "依次输入 ls 和 cat index.html，查看被 <!-- 与 --> 包围的那一行。",
+      "注释写着收件确认词 SEE YOU TOMORROW。输入这三个英文单词。"
+    ],
+    "resolution": "SEE YOU TOMORROW。店员把照片放进门旁的盒子，第一次准时下班了。他以为那只是一句寻常的告别，没想到有人会隔着二十七年的静默，认真读到它。",
+    "evidence": {
+      "title": "源码里的明天见",
+      "text": "照相馆网页注释保存了 SEE YOU TOMORROW。页面没有显示的那句话，仍留在原文件中。",
+      "symbol": "terminal"
+    }
+  }
+]

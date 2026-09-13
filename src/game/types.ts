@@ -15,6 +15,7 @@ export type PuzzleKind =
   | 'uv'
   | 'sliding'
   | 'circuit'
+  | 'forensic'
 
 export interface Artifact {
   type: PuzzleKind

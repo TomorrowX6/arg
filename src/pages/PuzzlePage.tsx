@@ -4,6 +4,7 @@ import { Link, useParams } from 'react-router-dom'
 import {
   chapters,
   getNextPuzzle,
+  getNextSidePuzzle,
   getStatus,
   kindLabels,
   puzzleById,
@@ -48,7 +49,7 @@ function CaseReader({ id }: { id: string }) {
   const revealedHints = state.hints[id] ?? 0
   const bookmarked = state.bookmarked.includes(id)
   const solved = status === 'solved'
-  const next = getNextPuzzle(state)
+  const next = puzzle.optional ? getNextSidePuzzle(puzzle, state) : getNextPuzzle(state)
   const chapterPuzzles = puzzles.filter((item) => item.chapter === puzzle.chapter)
   useEffect(() => {
     if (status !== 'locked') dispatch({ type: 'active', id })
@@ -221,9 +222,19 @@ function CaseReader({ id }: { id: string }) {
                 ) : (
                   <Link
                     className="button button-coral"
-                    to={state.solved.f06 ? '/ending' : '/archives'}
+                    to={
+                      puzzle.optional
+                        ? '/archives?chapter=side'
+                        : state.solved.f06
+                          ? '/ending'
+                          : '/archives'
+                    }
                   >
-                    {state.solved.f06 ? '查看你的结局' : '返回档案目录'}
+                    {puzzle.optional
+                      ? '返回异常档案'
+                      : state.solved.f06
+                        ? '查看你的结局'
+                        : '返回档案目录'}
                     <Icon name="arrowRight" size={17} />
                   </Link>
                 )}

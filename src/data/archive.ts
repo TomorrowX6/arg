@@ -16,8 +16,22 @@ export function getNextPuzzle(
   state: Pick<GameState, 'solved' | 'activePuzzle'>,
 ): Puzzle | undefined {
   const active = state.activePuzzle ? puzzleById[state.activePuzzle] : undefined
-  if (active && getStatus(active, state) === 'available') return active
+  if (active && !active.optional && getStatus(active, state) === 'available') return active
   return mainPuzzles.find((puzzle) => getStatus(puzzle, state) === 'available')
+}
+
+export function getNextSidePuzzle(
+  current: Puzzle,
+  state: Pick<GameState, 'solved'>,
+): Puzzle | undefined {
+  const available = sidePuzzles.filter(
+    (puzzle) => puzzle.id !== current.id && getStatus(puzzle, state) === 'available',
+  )
+  return (
+    available.find((puzzle) => puzzle.requires?.includes(current.id)) ??
+    available.find((puzzle) => puzzle.number > current.number) ??
+    available[0]
+  )
 }
 
 export const kindLabels: Record<string, string> = {
@@ -37,4 +51,5 @@ export const kindLabels: Record<string, string> = {
   uv: '隐形墨水',
   sliding: '滑块拼图',
   circuit: '线路旋转',
+  forensic: '文件取证',
 }

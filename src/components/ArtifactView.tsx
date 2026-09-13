@@ -7,6 +7,7 @@ import { NonogramDevice } from './NonogramDevice'
 import { RevealDevice } from './RevealDevice'
 import { SlidingDevice } from './SlidingDevice'
 import { CircuitDevice } from './CircuitDevice'
+import { ForensicDevice } from './ForensicDevice'
 import '../styles/nonogram.css'
 
 export function ArtifactView({ artifact }: { artifact: Artifact }) {
@@ -23,6 +24,7 @@ export function ArtifactView({ artifact }: { artifact: Artifact }) {
     'uv',
     'sliding',
     'circuit',
+    'forensic',
   ].includes(artifact.type)
   return (
     <section className={`artifact artifact-${artifact.type}`} aria-label={artifact.label}>
@@ -35,7 +37,9 @@ export function ArtifactView({ artifact }: { artifact: Artifact }) {
       </div>
       <div className="artifact-content">
         {artifact.title && <h3 className="artifact-title">{artifact.title}</h3>}
-        {artifact.type === 'frequency' ? (
+        {artifact.type === 'forensic' ? (
+          <ForensicDevice artifact={artifact} />
+        ) : artifact.type === 'frequency' ? (
           <FrequencyDevice artifact={artifact} />
         ) : artifact.type === 'lights' ? (
           <LightsDevice artifact={artifact} />

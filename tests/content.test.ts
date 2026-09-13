@@ -2,7 +2,13 @@ import { describe, expect, it } from 'vitest'
 import { readFileSync, readdirSync } from 'node:fs'
 import { createHash } from 'node:crypto'
 import type { Puzzle } from '../src/game/types'
-import { puzzles, mainPuzzles, getStatus } from '../src/data/archive'
+import {
+  puzzles,
+  mainPuzzles,
+  getStatus,
+  getNextPuzzle,
+  getNextSidePuzzle,
+} from '../src/data/archive'
 import { normalizeAnswer } from '../src/game/answers'
 import { decodeVigenere, decodeXor, isConnected } from '../src/game/mechanics'
 
@@ -14,6 +20,17 @@ const authored = readdirSync('content')
 > & { answers: string[] })[]
 
 describe('the authored campaign', () => {
+  it('keeps optional investigations separate from the next main case', () => {
+    expect(getNextPuzzle({ solved: {}, activePuzzle: 'x01' })?.id).toBe('a01')
+    const state = { solved: { x01: { at: '2026-09-14T00:00:00Z', hints: 0, attempts: 1 } } }
+    expect(
+      getNextSidePuzzle(
+        puzzles.find((puzzle) => puzzle.id === 'x01')!,
+        state,
+      )?.id,
+    ).toBe('x02')
+    expect(mainPuzzles).toHaveLength(36)
+  })
   it('compiles every source record and hashes all accepted answers consistently', () => {
     expect(puzzles).toHaveLength(authored.length)
     for (const source of authored) {

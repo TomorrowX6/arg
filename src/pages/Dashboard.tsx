@@ -1,5 +1,12 @@
 import { Link } from 'react-router-dom'
-import { chapters, getNextPuzzle, getStatus, mainPuzzles, puzzles } from '../data/archive'
+import {
+  chapters,
+  getNextPuzzle,
+  getStatus,
+  mainPuzzles,
+  puzzles,
+  sidePuzzles,
+} from '../data/archive'
 import { useGame } from '../game/useGame'
 import { CityMap } from '../components/CityMap'
 import { Icon } from '../components/Icon'
@@ -221,20 +228,38 @@ export default function Dashboard() {
             })}
         </div>
       </section>
-      <Link to="/field" className="field-banner">
-        <span className="field-banner-icon">
-          <Icon name="radio" size={25} />
-        </span>
-        <div>
-          <strong>主线之外，还有一些声音。</strong>
-          <p>进入异常接收站，截获一份新的神秘电报。</p>
-        </div>
-        <span className="field-live">
-          <span className="status-dot" />
-          开放接收
-        </span>
-        <Icon name="arrowUpRight" size={22} />
-      </Link>
+      <section className="discovery-grid" aria-label="更多调查">
+        <Link to="/archives?chapter=side" className="discovery-card">
+          <div className="discovery-icon">
+            <Icon name="fingerprint" size={26} />
+          </div>
+          <div>
+            <span className="eyebrow">SIDE STORIES / {sidePuzzles.length} CASES</span>
+            <h3>大事件之外的小故事</h3>
+            <p>修复照片，读取隐写电报，走进仍亮着灯的小店。</p>
+            <small>
+              {sidePuzzles.filter((puzzle) => state.solved[puzzle.id]).length} /{' '}
+              {sidePuzzles.length} 份异常档案已复原
+            </small>
+          </div>
+          <Icon name="arrowUpRight" size={21} />
+        </Link>
+        <Link to="/field" className="discovery-card">
+          <div className="discovery-icon">
+            <Icon name="radio" size={26} />
+          </div>
+          <div>
+            <span className="eyebrow">THE OPEN FREQUENCY</span>
+            <h3>还有信号，正在抵达</h3>
+            <p>接收新的加密电报，把同一份信号分享给朋友。</p>
+            <small>
+              <span className="status-dot" />
+              异常接收站 · 随时开放
+            </small>
+          </div>
+          <Icon name="arrowUpRight" size={21} />
+        </Link>
+      </section>
     </div>
   )
 }

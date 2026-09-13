@@ -21,6 +21,7 @@ const kindIcon: Record<string, string> = {
   uv: 'eye',
   sliding: 'grid',
   circuit: 'zap',
+  forensic: 'fingerprint',
 }
 export function PuzzleCard({ puzzle, featured = false }: { puzzle: Puzzle; featured?: boolean }) {
   const { state, dispatch } = useGame()
