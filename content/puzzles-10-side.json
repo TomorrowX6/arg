@@ -39,7 +39,8 @@
       "title": "四号码头的照片",
       "text": "损坏的仅仅是文件头。阮青在 PIER 04 拍下了一艘仍在等人的渡船。",
       "symbol": "fingerprint"
-    }
+    },
+    "collection": "photographer"
   },
   {
     "id": "x02",
@@ -82,7 +83,8 @@
       "text": "Comment 留言解码为 BLUE 0：蓝色通道，最低位。",
       "symbol": "eye"
     },
-    "requires": ["x01"]
+    "requires": ["x01"],
+    "collection": "photographer"
   },
   {
     "id": "x03",
@@ -125,7 +127,8 @@
       "text": "阮青的留言 FERRY AT SIX 隐藏在蓝色通道最低位。她在天亮时自愿离开，并保留了自己的照片。",
       "symbol": "sun"
     },
-    "requires": ["x02"]
+    "requires": ["x02"],
+    "collection": "photographer"
   },
   {
     "id": "x04",
@@ -148,7 +151,10 @@
       "title": "THE DOOR IS STILL WARM",
       "code": "XLNV RM",
       "key": "ABCDEFGHIJKLMNOPQRSTUVWXYZ\nZYXWVUTSRQPONMLKJIHGFEDCBA",
-      "annotation": "照镜子两次，就会回到原来的样子。"
+      "annotation": "照镜子两次，就会回到原来的样子。",
+      "config": {
+        "tool": "atbash"
+      }
     },
     "question": "便条原本写的是哪两个英文单词？",
     "answerFormat": "两个英文单词",
@@ -163,7 +169,8 @@
       "title": "仍在营业的镜子店",
       "text": "镜像便条的译文是 COME IN。炉火还亮着，有人等着招待来客。",
       "symbol": "key"
-    }
+    },
+    "collection": "corners"
   },
   {
     "id": "x05",
@@ -185,7 +192,10 @@
       "label": "纸条 105 / 两副铅字",
       "title": "FIVE MARKS MAKE A LETTER",
       "code": "AAAAB  ABAAA  BAAAB  AAABB",
-      "key": "A记号=0，B记号=1\n五位位权：16 8 4 2 1\n0=A  1=B  2=C  3=D  4=E  5=F  6=G  7=H  8=I  9=J  10=K  11=L  12=M\n13=N  14=O  15=P  16=Q  17=R  18=S  19=T  20=U  21=V  22=W  23=X  24=Y  25=Z"
+      "key": "A记号=0，B记号=1\n五位位权：16 8 4 2 1\n0=A  1=B  2=C  3=D  4=E  5=F  6=G  7=H  8=I  9=J  10=K  11=L  12=M\n13=N  14=O  15=P  16=Q  17=R  18=S  19=T  20=U  21=V  22=W  23=X  24=Y  25=Z",
+      "config": {
+        "tool": "bacon"
+      }
     },
     "question": "四组记号还原出的折纸图案名是什么？",
     "answerFormat": "四个英文字母",
@@ -200,7 +210,8 @@
       "title": "两副铅字的纸鸟",
       "text": "五位培根密码写着 BIRD。排字工把一次普通的折纸约定保存了很久。",
       "symbol": "mail"
-    }
+    },
+    "collection": "corners"
   },
   {
     "id": "x06",
@@ -230,7 +241,10 @@
         ["4", "Q", "R", "S", "T", "U"],
         ["5", "V", "W", "X", "Y", "Z"]
       ],
-      "annotation": "行号在前，列号在后；编号从 1 开始。"
+      "annotation": "行号在前，列号在后；编号从 1 开始。",
+      "config": {
+        "tool": "polybius"
+      }
     },
     "question": "园丁留下的英文任务词是什么？",
     "answerFormat": "五个英文字母",
@@ -245,7 +259,8 @@
       "title": "温室的一杯水",
       "text": "方阵便条写着 WATER。异常档案有时只是提醒后来的人，别忘了浇水。",
       "symbol": "grid"
-    }
+    },
+    "collection": "corners"
   },
   {
     "id": "x07",
@@ -273,7 +288,10 @@
         ["第 2 轨", "2、4、6、8", "4"],
         ["第 3 轨", "3、7", "2"]
       ],
-      "annotation": "先把密文按 2 / 4 / 2 分段，填回相应位置，再从位置 1 读到 8。"
+      "annotation": "先把密文按 2 / 4 / 2 分段，填回相应位置，再从位置 1 读到 8。",
+      "config": {
+        "tool": "rail"
+      }
     },
     "question": "按原顺序还原后，售票员希望你做什么？",
     "answerFormat": "两个英文单词，共八个字母",
@@ -288,7 +306,8 @@
       "title": "最后一班车的茶会",
       "text": "三轨栅栏密码还原成 BRING TEA。空车厢里的小桌，还留着一个位置。",
       "symbol": "map"
-    }
+    },
+    "collection": "corners"
   },
   {
     "id": "x08",
@@ -331,7 +350,8 @@
       "title": "第五位的更正",
       "text": "电报错误位为 5。0110111 更正为 0110011，三个偶校验均通过。",
       "symbol": "radio"
-    }
+    },
+    "collection": "corners"
   },
   {
     "id": "x09",
@@ -375,7 +395,8 @@
       "title": "二十七号投递柜",
       "text": "小型 RSA 题中，27³ mod 55 = 48。信件成功送达第 27 号柜。",
       "symbol": "key"
-    }
+    },
+    "collection": "corners"
   },
   {
     "id": "x10",
@@ -416,7 +437,8 @@
       "title": "第七枚纪念章",
       "text": "前六枚重量相同；第七枚更重。它是一枚被当成零钱留下的纪念章。",
       "symbol": "orbit"
-    }
+    },
+    "collection": "corners"
   },
   {
     "id": "x11",
@@ -456,7 +478,8 @@
       "title": "一颗像素心",
       "text": "数织复原了一张生日贺卡，上面写着：总有人记得。",
       "symbol": "grid"
-    }
+    },
+    "collection": "corners"
   },
   {
     "id": "x12",
@@ -497,6 +520,7 @@
       "title": "源码里的明天见",
       "text": "照相馆网页注释保存了 SEE YOU TOMORROW。页面没有显示的那句话，仍留在原文件中。",
       "symbol": "terminal"
-    }
+    },
+    "collection": "corners"
   }
 ]

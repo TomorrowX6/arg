@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import type { FormEvent } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import {
@@ -16,6 +16,9 @@ import { playSuccess } from '../game/audio'
 import { Icon } from '../components/Icon'
 import { ArtifactView } from '../components/ArtifactView'
 import { Modal } from '../components/Modal'
+import { collectionById } from '../data/collections'
+import { archiveTools } from '../data/tools'
+import '../styles/collections.css'
 
 export default function PuzzlePage() {
   const { id } = useParams()
@@ -40,6 +43,7 @@ function CaseReader({ id }: { id: string }) {
   const { state, dispatch } = useGame()
   const status = getStatus(puzzle, state)
   const chapter = chapters.find((item) => item.id === puzzle.chapter)!
+  const collection = puzzle.collection ? collectionById[puzzle.collection] : undefined
   const [answer, setAnswer] = useState('')
   const [feedback, setFeedback] = useState('')
   const [checking, setChecking] = useState(false)
@@ -49,8 +53,29 @@ function CaseReader({ id }: { id: string }) {
   const revealedHints = state.hints[id] ?? 0
   const bookmarked = state.bookmarked.includes(id)
   const solved = status === 'solved'
+  const previousSolved = useRef(solved)
   const next = puzzle.optional ? getNextSidePuzzle(puzzle, state) : getNextPuzzle(state)
-  const chapterPuzzles = puzzles.filter((item) => item.chapter === puzzle.chapter)
+  const chapterPuzzles = puzzles.filter((item) =>
+    collection ? item.collection === collection.id : item.chapter === puzzle.chapter,
+  )
+  const toolboxMethod =
+    puzzle.kind === 'morse'
+      ? 'morse'
+      : (archiveTools.find((tool) => tool.id === puzzle.artifact.config?.tool)?.id ?? 'base64')
+  const toolboxQuery = new URLSearchParams({
+    method: toolboxMethod,
+    input: puzzle.artifact.code ?? '',
+    from: id,
+  }).toString()
+  function jumpTo(sectionId: string) {
+    const section = document.getElementById(sectionId)
+    section?.focus({ preventScroll: true })
+    section?.scrollIntoView({ block: 'start' })
+  }
+  useEffect(() => {
+    if (solved && !previousSolved.current) document.getElementById('resolution-title')?.focus()
+    previousSolved.current = solved
+  }, [solved])
   useEffect(() => {
     if (status !== 'locked') dispatch({ type: 'active', id })
   }, [id, status, dispatch])
@@ -136,7 +161,11 @@ function CaseReader({ id }: { id: string }) {
           档案目录
         </Link>
         <span>/</span>
-        <Link to={`/archives?chapter=${chapter.id}`}>{chapter.title}</Link>
+        <Link
+          to={`/archives?chapter=${chapter.id}${collection ? `&collection=${collection.id}` : ''}`}
+        >
+          {collection?.title ?? chapter.title}
+        </Link>
         <span>/</span>
         <span>CASE {String(puzzle.number).padStart(3, '0')}</span>
       </div>
@@ -193,8 +222,23 @@ function CaseReader({ id }: { id: string }) {
             ))}
           </section>
           <ArtifactView artifact={puzzle.artifact} />
+          {(puzzle.kind === 'cipher' || puzzle.kind === 'morse') && puzzle.artifact.code && (
+            <Link to={`/tools?${toolboxQuery}`} className="case-toolbox-link">
+              <Icon name="key" size={18} />
+              <span>
+                <strong>换一种读法</strong>
+                <small>把这段资料带到解码工具箱</small>
+              </span>
+              <Icon name="arrowUpRight" size={18} />
+            </Link>
+          )}
           {solved ? (
-            <section className="resolution-panel" aria-labelledby="resolution-title">
+            <section
+              className="resolution-panel"
+              id="case-findings"
+              tabIndex={-1}
+              aria-labelledby="resolution-title"
+            >
               <div className="resolution-icon">
                 <Icon name="check" size={24} />
               </div>
@@ -242,7 +286,7 @@ function CaseReader({ id }: { id: string }) {
               </div>
             </section>
           ) : (
-            <section className="answer-panel">
+            <section className="answer-panel" id="case-findings" tabIndex={-1}>
               <div className="section-label">
                 <span>02</span>
                 <h2>提交你的发现</h2>
@@ -292,7 +336,7 @@ function CaseReader({ id }: { id: string }) {
           )}
         </div>
         <aside className="case-aside">
-          <section className="hint-panel">
+          <section className="hint-panel" id="case-hints" tabIndex={-1}>
             <div className="hint-title">
               <span>
                 <Icon name="lightbulb" size={19} />
@@ -345,7 +389,7 @@ function CaseReader({ id }: { id: string }) {
             </dl>
           </section>
           <section className="chapter-case-list">
-            <h3>本章档案</h3>
+            <h3>{collection?.title ?? '本章档案'}</h3>
             {chapterPuzzles.map((item) => (
               <Link
                 to={`/case/${item.id}`}
@@ -367,6 +411,12 @@ function CaseReader({ id }: { id: string }) {
               </Link>
             ))}
           </section>
+          {collection && (
+            <Link to="/archives?chapter=side" className="other-stories-link">
+              看看其他异常故事
+              <Icon name="arrowUpRight" size={15} />
+            </Link>
+          )}
           <div className="case-aside-note">
             <Icon name="book" size={18} />
             <p>
@@ -378,6 +428,22 @@ function CaseReader({ id }: { id: string }) {
           </div>
         </aside>
       </div>
+      <nav className="case-dock" aria-label="本关快捷操作">
+        <button onClick={() => jumpTo('case-findings')}>
+          <Icon name={solved ? 'check' : 'key'} size={18} />
+          <span>{solved ? '复原记录' : '提交发现'}</span>
+        </button>
+        <button onClick={() => jumpTo('case-hints')}>
+          <Icon name="lightbulb" size={18} />
+          <span>
+            提示 <small>{revealedHints}/3</small>
+          </span>
+        </button>
+        <button onClick={() => setNoteOpen(true)} aria-label="打开本关笔记">
+          <Icon name="book" size={18} />
+          <span>笔记</span>
+        </button>
+      </nav>
       {noteOpen && (
         <Modal title="留下一条调查笔记" onClose={() => setNoteOpen(false)}>
           <p className="modal-description">关联档案：{puzzle.title}</p>

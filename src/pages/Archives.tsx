@@ -4,6 +4,8 @@ import { chapters, getStatus, puzzles } from '../data/archive'
 import { useGame } from '../game/useGame'
 import { Icon } from '../components/Icon'
 import { PuzzleCard } from '../components/PuzzleCard'
+import { caseCollections } from '../data/collections'
+import '../styles/collections.css'
 
 export default function Archives() {
   const { state } = useGame()
@@ -12,9 +14,15 @@ export default function Archives() {
   const [query, setQuery] = useState('')
   const [filter, setFilter] = useState('all')
   const chapter = chapters.find((item) => item.id === selected)
+  const collection =
+    selected === 'side'
+      ? caseCollections.find((item) => item.id === params.get('collection'))
+      : undefined
+  const introduction = collection ?? chapter
   const filtered = puzzles.filter(
     (puzzle) =>
       (selected === 'all' || puzzle.chapter === selected) &&
+      (!collection || puzzle.collection === collection.id) &&
       `${puzzle.title}${puzzle.subtitle}${puzzle.tags.join('')}${String(puzzle.number).padStart(3, '0')}`
         .toLowerCase()
         .includes(query.toLowerCase()) &&
@@ -51,18 +59,64 @@ export default function Archives() {
           </button>
         ))}
       </div>
-      {chapter && (
+      {chapter && introduction && (
         <section
           className="chapter-intro"
-          style={{ '--chapter-color': chapter.color } as React.CSSProperties}
+          style={{ '--chapter-color': introduction.color } as React.CSSProperties}
         >
-          <div className="chapter-big-number">{chapter.number}</div>
-          <div>
-            <span className="eyebrow">{chapter.subtitle}</span>
-            <h2>{chapter.title}</h2>
-            <p>{chapter.description}</p>
+          <div className="chapter-big-number" aria-hidden="true">
+            {chapter.number}
           </div>
-          <Icon name={chapter.icon} size={56} strokeWidth={1} />
+          <div>
+            <span className="eyebrow">{introduction.subtitle}</span>
+            <h2>{introduction.title}</h2>
+            <p>{introduction.description}</p>
+          </div>
+          <Icon name={introduction.icon} size={56} strokeWidth={1} />
+        </section>
+      )}
+      {selected === 'side' && (
+        <section className="collection-browser" aria-label="异常故事分组">
+          <div className="collection-browser-heading">
+            <span className="eyebrow">CHOOSE A STORY</span>
+            <button
+              className="text-button"
+              onClick={() => setParams({ chapter: 'side' })}
+              aria-pressed={!collection}
+            >
+              全部异常档案
+              <Icon name="arrowRight" size={14} />
+            </button>
+          </div>
+          <div className="collection-grid">
+            {caseCollections.map((item) => {
+              const members = puzzles.filter((puzzle) => puzzle.collection === item.id)
+              if (!members.length) return null
+              const complete = members.filter((puzzle) => state.solved[puzzle.id]).length
+              return (
+                <button
+                  className={`collection-card ${collection?.id === item.id ? 'selected' : ''}`}
+                  key={item.id}
+                  aria-pressed={collection?.id === item.id}
+                  onClick={() => setParams({ chapter: 'side', collection: item.id })}
+                >
+                  <div className="collection-card-top">
+                    <Icon name={item.icon} size={24} />
+                    <span>
+                      {complete}/{members.length}
+                    </span>
+                  </div>
+                  <h3>{item.title}</h3>
+                  <p>{item.tag}</p>
+                  <div className="collection-progress">
+                    {members.map((puzzle) => (
+                      <i className={state.solved[puzzle.id] ? 'complete' : ''} key={puzzle.id} />
+                    ))}
+                  </div>
+                </button>
+              )
+            })}
+          </div>
         </section>
       )}
       <div className="archive-toolbar">

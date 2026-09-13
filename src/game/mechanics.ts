@@ -112,10 +112,11 @@ export function parseHex(input: string): number[] {
 }
 
 export function decodeXor(input: string, key: string): string {
-  const normalized = key.trim().replace(/^0x/i, '')
-  if (!/^[a-fA-F0-9]{1,2}$/.test(normalized))
-    throw new Error('请输入一个字节的十六进制密钥，例如 17 或 2A。')
-  const bytes = parseHex(input).map((byte) => byte ^ parseInt(normalized, 16))
+  const normalized = key.trim().replace(/^0x/i, '').replace(/\s+/g, '')
+  if (!/^[a-fA-F0-9]{1,128}$/.test(normalized) || (normalized.length > 1 && normalized.length % 2))
+    throw new Error('请输入十六进制密钥，例如 17 或 17 A3。多个字节会循环使用。')
+  const secret = normalized.length === 1 ? [parseInt(normalized, 16)] : parseHex(normalized)
+  const bytes = parseHex(input).map((byte, index) => byte ^ secret[index % secret.length])
   try {
     return new TextDecoder('utf-8', { fatal: true }).decode(new Uint8Array(bytes))
   } catch {

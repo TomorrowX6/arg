@@ -22,6 +22,7 @@ const FieldStation = lazy(() => import('./pages/FieldStation'))
 const Settings = lazy(() => import('./pages/Settings'))
 const About = lazy(() => import('./pages/About'))
 const Ending = lazy(() => import('./pages/Ending'))
+const Toolbox = lazy(() => import('./pages/Toolbox'))
 
 class ArchiveBoundary extends Component<{ children: ReactNode }, { failed: boolean }> {
   state = { failed: false }
@@ -72,6 +73,7 @@ export default function App() {
                 <Route path="settings" element={<Settings />} />
                 <Route path="about" element={<About />} />
                 <Route path="ending" element={<Ending />} />
+                <Route path="tools" element={<Toolbox />} />
                 <Route
                   path="*"
                   element={

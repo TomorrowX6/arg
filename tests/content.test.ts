@@ -8,6 +8,7 @@ import {
   getStatus,
   getNextPuzzle,
   getNextSidePuzzle,
+  puzzleById,
 } from '../src/data/archive'
 import { normalizeAnswer } from '../src/game/answers'
 import { decodeVigenere, decodeXor, isConnected } from '../src/game/mechanics'
@@ -20,6 +21,10 @@ const authored = readdirSync('content')
 > & { answers: string[] })[]
 
 describe('the authored campaign', () => {
+  it('does not treat JavaScript prototype names as archive identities', () => {
+    expect(puzzleById.constructor).toBeUndefined()
+    expect(puzzleById.__proto__).toBeUndefined()
+  })
   it('keeps optional investigations separate from the next main case', () => {
     expect(getNextPuzzle({ solved: {}, activePuzzle: 'x01' })?.id).toBe('a01')
     const state = { solved: { x01: { at: '2026-09-14T00:00:00Z', hints: 0, attempts: 1 } } }

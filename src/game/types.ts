@@ -54,6 +54,7 @@ export interface Puzzle {
   evidence: { title: string; text: string; symbol: string }
   requires?: string[]
   optional?: boolean
+  collection?: string
 }
 
 export interface Chapter {

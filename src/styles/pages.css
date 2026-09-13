@@ -48,8 +48,7 @@
 }
 .chapter-big-number {
   font: 62px var(--serif);
-  color: var(--chapter-color);
-  opacity: 0.5;
+  color: #718164;
   line-height: 1;
 }
 .chapter-intro > div:nth-child(2) {

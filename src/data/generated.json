@@ -2288,6 +2288,7 @@
         "text": "损坏的仅仅是文件头。阮青在 PIER 04 拍下了一艘仍在等人的渡船。",
         "symbol": "fingerprint"
       },
+      "collection": "photographer",
       "answerHashes": [
         "c2e65b637b550d9d2e65cb99e5d750e392d0709f896ded533699a7199e4eee78",
         "c2e65b637b550d9d2e65cb99e5d750e392d0709f896ded533699a7199e4eee78",
@@ -2342,6 +2343,7 @@
       "requires": [
         "x01"
       ],
+      "collection": "photographer",
       "answerHashes": [
         "4e152d570d79beee6883f35d333db20966ca8118d37ec5c1816aeb3be2e9141b",
         "4e152d570d79beee6883f35d333db20966ca8118d37ec5c1816aeb3be2e9141b",
@@ -2396,6 +2398,7 @@
       "requires": [
         "x02"
       ],
+      "collection": "photographer",
       "answerHashes": [
         "5277bb9110e074dd95dc41b6bcb0d9674bb4c8b38d92979828723e807f7e4949",
         "5277bb9110e074dd95dc41b6bcb0d9674bb4c8b38d92979828723e807f7e4949"
@@ -2426,7 +2429,10 @@
         "title": "THE DOOR IS STILL WARM",
         "code": "XLNV RM",
         "key": "ABCDEFGHIJKLMNOPQRSTUVWXYZ\nZYXWVUTSRQPONMLKJIHGFEDCBA",
-        "annotation": "照镜子两次，就会回到原来的样子。"
+        "annotation": "照镜子两次，就会回到原来的样子。",
+        "config": {
+          "tool": "atbash"
+        }
       },
       "question": "便条原本写的是哪两个英文单词？",
       "answerFormat": "两个英文单词",
@@ -2441,6 +2447,7 @@
         "text": "镜像便条的译文是 COME IN。炉火还亮着，有人等着招待来客。",
         "symbol": "key"
       },
+      "collection": "corners",
       "answerHashes": [
         "cdb328eaf3d54a1216e2b05ff4a780adc8c51015a429f42bb6fa627305b7538e"
       ]
@@ -2469,7 +2476,10 @@
         "label": "纸条 105 / 两副铅字",
         "title": "FIVE MARKS MAKE A LETTER",
         "code": "AAAAB  ABAAA  BAAAB  AAABB",
-        "key": "A记号=0，B记号=1\n五位位权：16 8 4 2 1\n0=A  1=B  2=C  3=D  4=E  5=F  6=G  7=H  8=I  9=J  10=K  11=L  12=M\n13=N  14=O  15=P  16=Q  17=R  18=S  19=T  20=U  21=V  22=W  23=X  24=Y  25=Z"
+        "key": "A记号=0，B记号=1\n五位位权：16 8 4 2 1\n0=A  1=B  2=C  3=D  4=E  5=F  6=G  7=H  8=I  9=J  10=K  11=L  12=M\n13=N  14=O  15=P  16=Q  17=R  18=S  19=T  20=U  21=V  22=W  23=X  24=Y  25=Z",
+        "config": {
+          "tool": "bacon"
+        }
       },
       "question": "四组记号还原出的折纸图案名是什么？",
       "answerFormat": "四个英文字母",
@@ -2484,6 +2494,7 @@
         "text": "五位培根密码写着 BIRD。排字工把一次普通的折纸约定保存了很久。",
         "symbol": "mail"
       },
+      "collection": "corners",
       "answerHashes": [
         "6654080d9e64bdab29d5cb2c36b82cee031003ffed0cd6139242545ae2d1b1a2"
       ]
@@ -2562,7 +2573,10 @@
             "Z"
           ]
         ],
-        "annotation": "行号在前，列号在后；编号从 1 开始。"
+        "annotation": "行号在前，列号在后；编号从 1 开始。",
+        "config": {
+          "tool": "polybius"
+        }
       },
       "question": "园丁留下的英文任务词是什么？",
       "answerFormat": "五个英文字母",
@@ -2577,6 +2591,7 @@
         "text": "方阵便条写着 WATER。异常档案有时只是提醒后来的人，别忘了浇水。",
         "symbol": "grid"
       },
+      "collection": "corners",
       "answerHashes": [
         "cc8c1411e2ce7365f0fa9f427d9e3ed2f67ebc1e38be5a54cfbb8c4ed5ca8b57"
       ]
@@ -2627,7 +2642,10 @@
             "2"
           ]
         ],
-        "annotation": "先把密文按 2 / 4 / 2 分段，填回相应位置，再从位置 1 读到 8。"
+        "annotation": "先把密文按 2 / 4 / 2 分段，填回相应位置，再从位置 1 读到 8。",
+        "config": {
+          "tool": "rail"
+        }
       },
       "question": "按原顺序还原后，售票员希望你做什么？",
       "answerFormat": "两个英文单词，共八个字母",
@@ -2642,6 +2660,7 @@
         "text": "三轨栅栏密码还原成 BRING TEA。空车厢里的小桌，还留着一个位置。",
         "symbol": "map"
       },
+      "collection": "corners",
       "answerHashes": [
         "fa742d3f3375a70732786a14572d627bec85c7fff441ccbce1f0123fdebf169a"
       ]
@@ -2707,6 +2726,7 @@
         "text": "电报错误位为 5。0110111 更正为 0110011，三个偶校验均通过。",
         "symbol": "radio"
       },
+      "collection": "corners",
       "answerHashes": [
         "17e832dd0a45be12ac767fc5dcee86fc79adc4f332705683d02e695944dbf131",
         "cd6348e8fc23934449101f82dba1e9190ab161e5d040ff6d762863deb01d4921"
@@ -2778,6 +2798,7 @@
         "text": "小型 RSA 题中，27³ mod 55 = 48。信件成功送达第 27 号柜。",
         "symbol": "key"
       },
+      "collection": "corners",
       "answerHashes": [
         "b3315761e661940c891daba7d0d75d8ca39f5c66b5f16b021319c9ce019896f8"
       ]
@@ -2840,6 +2861,7 @@
         "text": "前六枚重量相同；第七枚更重。它是一枚被当成零钱留下的纪念章。",
         "symbol": "orbit"
       },
+      "collection": "corners",
       "answerHashes": [
         "51ef4567e1066dd522d360a6eade7600197cc8ee4a225b12ab2d8f1ad57198a4",
         "ea89b3cabfb62489f1ba089bb9812055a45ca4e6f1ac8cb9a6915e284ca6035f"
@@ -2913,6 +2935,7 @@
         "text": "数织复原了一张生日贺卡，上面写着：总有人记得。",
         "symbol": "grid"
       },
+      "collection": "corners",
       "answerHashes": [
         "22f2a6f2e8557b55cb35a98b4a98c8916eaada73f96266b00417b0eb99b31745"
       ]
@@ -2960,6 +2983,7 @@
         "text": "照相馆网页注释保存了 SEE YOU TOMORROW。页面没有显示的那句话，仍留在原文件中。",
         "symbol": "terminal"
       },
+      "collection": "corners",
       "answerHashes": [
         "2241a07291c1cad8ae68b190251cd09a282073feb1a0117b107e4ab597e6479f"
       ]
@@ -3007,6 +3031,7 @@
         "text": "九枚检验币通过两次三分称量锁定第 7 枚。记录支持唯一判断，天平重新启用。",
         "symbol": "orbit"
       },
+      "collection": "supply",
       "answerHashes": [
         "ca79c3218ec969d15d79626e90d0412a39b3888339173aad8fdd9f48341f732b"
       ]
@@ -3059,6 +3084,7 @@
         "text": "用 5 升和 3 升的空壶，通过六次操作在甲壶留下 4 升。热饮分给每一位等候的人。",
         "symbol": "sun"
       },
+      "collection": "supply",
       "answerHashes": [
         "25c2339352178ac8c7d7f57d90a2e6c57d2c12ee1d5ca9171b990eaf2716f3ca"
       ]
@@ -3129,6 +3155,7 @@
         "text": "摆渡练习通过七次往返完成。回去接人，同样是抵达的一部分。",
         "symbol": "map"
       },
+      "collection": "supply",
       "answerHashes": [
         "c7d5cfba6c4903b907336f6edebfb04d8617910399fb5b39fa6c40831da6ba6f"
       ]
@@ -3184,8 +3211,211 @@
         "text": "两只补给箱被放到指定格，仓库通道重新开放。这一夜的帮助由许多小事组成。",
         "symbol": "archive"
       },
+      "collection": "supply",
       "answerHashes": [
         "4edbd8c20505699112ad49253b8b2dbf66589b5375cddc343839e818bc38fd34"
+      ]
+    },
+    {
+      "id": "x17",
+      "chapter": "side",
+      "collection": "cipherlab",
+      "number": 117,
+      "title": "半圈之后，还有一层",
+      "subtitle": "只打开外面的信封，还读不到信。",
+      "kind": "cipher",
+      "difficulty": 3,
+      "minutes": 10,
+      "tags": [
+        "夜班密码实验室",
+        "ROT47",
+        "Base64",
+        "连续解码"
+      ],
+      "optional": true,
+      "requires": [],
+      "briefing": [
+        "夜班实验室收到一段难以辨认的字符。操作员留下的包装记录是：先把英文留言编码为 Base64，再对 ASCII 33–126 的可见字符整体做 ROT47。",
+        "要还原，顺序正好相反：先 ROT47，再 Base64 解码。使用下方的工具箱入口，第一步得到结果后点「使用结果继续」，选择下一种方法。空格在 ROT47 中保持不变。"
+      ],
+      "artifact": {
+        "type": "cipher",
+        "label": "电报 117 / 两层包装",
+        "title": "HALF A TURN, THEN OPEN THE ENVELOPE",
+        "code": "\"_h}#$qx%_`u",
+        "annotation": "包装顺序：原文 → Base64 → ROT47。拆封顺序需要倒过来。",
+        "config": {
+          "tool": "rot47"
+        }
+      },
+      "question": "拆开两层后，收到的英文留言是什么？",
+      "answerFormat": "两个英文单词",
+      "hints": [
+        "先解决最后加上的 ROT47。它把 94 个可见 ASCII 字符转动半圈，重复一次就能还原。",
+        "ROT47 后得到 Q09NRSBIT01F。这一层是 Base64，把它作为下一次输入进行解码。",
+        "在工具箱依次 ROT47 → 使用结果继续 → Base64 解码，得到 COME HOME。"
+      ],
+      "resolution": "COME HOME。实验员把这两个词抄在白板上，没有署名，也不再加密。她说复杂包装有时只是让寄信的人拖延真正想说的话。今晚，她终于决定按下发送。",
+      "evidence": {
+        "title": "拆开后的回家邀请",
+        "text": "两层包装还原为 COME HOME。先 ROT47，再 Base64；最后剩下一句普通而重要的话。",
+        "symbol": "mail"
+      },
+      "answerHashes": [
+        "fae49bb32e9df0e611b8d45963cafb0b45845a72c60133c35968c4c02e9f976b"
+      ]
+    },
+    {
+      "id": "x18",
+      "chapter": "side",
+      "collection": "cipherlab",
+      "number": 118,
+      "title": "接线员的双拍",
+      "subtitle": "这次钥匙不是一个数，而是一段节奏。",
+      "kind": "cipher",
+      "difficulty": 2,
+      "minutes": 9,
+      "tags": [
+        "夜班密码实验室",
+        "重复密钥 XOR",
+        "十六进制"
+      ],
+      "optional": true,
+      "requires": [
+        "x17"
+      ],
+      "briefing": [
+        "接线员用两个字节交替异或原文：第一个字节用 17，第二个用 A3，第三个再用 17，依此循环。这些数值都按十六进制解释。",
+        "异或同一把钥匙两次会回到原文。在解码工具箱选择「循环异或」，输入密钥 17 A3，对下面的十六进制密文解码。结果是今晚最后一个仍有人值守的地点。"
+      ],
+      "artifact": {
+        "type": "cipher",
+        "label": "电报 118 / 双拍密钥",
+        "title": "A KEY WITH TWO BEATS",
+        "code": "44 F4 5E F7 54 EB 55 EC 56 F1 53",
+        "key": "循环密钥：17 A3 / 17 A3 / 17 A3 / ……",
+        "annotation": "密文和密钥都使用十六进制；解密结果按 UTF-8 文字读取。",
+        "config": {
+          "tool": "xor"
+        }
+      },
+      "question": "解密得到的英文地点名是什么？",
+      "answerFormat": "十一个英文字母",
+      "hints": [
+        "不要把 17A3 当成一个需要逐字符平移的数字。它是两个轮流使用的字节：0x17 与 0xA3。",
+        "工具箱「循环异或」支持多字节密钥，填写 17 A3，再按解码运行。第一个字节 44 XOR 17 = 53，也就是 S。",
+        "完整译文为 SWITCHBOARD，意思是电话交换台。输入 SWITCHBOARD。"
+      ],
+      "resolution": "SWITCHBOARD。交换台的指示灯只剩一盏还亮着。接线员说她可以下班了，但想等最后一位来电者说完。那条线路已经很久没有人抢着挂断。",
+      "evidence": {
+        "title": "双拍密钥的交换台",
+        "text": "17 A3 循环异或还原出 SWITCHBOARD。最后一盏线路灯仍由一位接线员守着。",
+        "symbol": "radio"
+      },
+      "answerHashes": [
+        "7d57cfc902e69ce8f14332b52eb906cb279dcc3e669fd070c8fe865e0ba15b3b"
+      ]
+    },
+    {
+      "id": "x19",
+      "chapter": "side",
+      "collection": "cipherlab",
+      "number": 119,
+      "title": "数字挤错了车厢",
+      "subtitle": "先让乘客归位，再问他们的名字。",
+      "kind": "cipher",
+      "difficulty": 3,
+      "minutes": 11,
+      "tags": [
+        "夜班密码实验室",
+        "三轨栅栏",
+        "A1Z26",
+        "连续解码"
+      ],
+      "optional": true,
+      "requires": [
+        "x18"
+      ],
+      "briefing": [
+        "这份回执先把字母写成 A1Z26 数字，字母之间用短横线、单词之间用斜线；之后又把整行字符按三轨栅栏重排，轨道顺序循环为 1、2、3、2。",
+        "数字、短横线和斜线都参与重排，没有省略任何字符。先用三轨栅栏解码还原数字排列，再把结果送入字母序号工具。"
+      ],
+      "artifact": {
+        "type": "cipher",
+        "label": "回执 119 / 挤错车厢的数字",
+        "title": "PUT THE PASSENGERS BACK IN ORDER",
+        "code": "1-02-33552/-0412-4--1/-1",
+        "annotation": "加密顺序：英文 → A1Z26（短横线 / 斜线）→ 三轨栅栏。每一个标点都占一个位置。",
+        "config": {
+          "tool": "rail"
+        }
+      },
+      "question": "回执里约定的英文见面时间是什么？",
+      "answerFormat": "三个英文单词",
+      "hints": [
+        "栅栏是外层，必须先撤掉。轨道数填 3，选择解码；不要先逐个数字换字母。",
+        "三轨还原的结果是 13-5-5-20/1-20/4-1-23-14。它已经按单词用斜线分好组。",
+        "继续做 A1Z26 解码：13-5-5-20→MEET，1-20→AT，4-1-23-14→DAWN。答案 MEET AT DAWN。"
+      ],
+      "resolution": "MEET AT DAWN。你在交换台的值班册上找到一个画着太阳的小方格。没人保证黎明一定准时，但有人已经约好了在那里见面。",
+      "evidence": {
+        "title": "黎明的约定",
+        "text": "三轨栅栏之后是 A1Z26，最终读出 MEET AT DAWN。约定被认真留在值班册里。",
+        "symbol": "sun"
+      },
+      "answerHashes": [
+        "6bb5eff4ce41f1e5447c06c011f633884b202a39107dcd03e00bfc86bcb88a93"
+      ]
+    },
+    {
+      "id": "x20",
+      "chapter": "side",
+      "collection": "cipherlab",
+      "number": 120,
+      "title": "一模一样，才算收到",
+      "subtitle": "摘要无法倒读，但可以认出同一封信。",
+      "kind": "cipher",
+      "difficulty": 2,
+      "minutes": 10,
+      "tags": [
+        "夜班密码实验室",
+        "SHA-256",
+        "候选验证"
+      ],
+      "optional": true,
+      "requires": [
+        "x19"
+      ],
+      "briefing": [
+        "接线员只留下了回复的 SHA-256 摘要。原文一定是四个候选之一：OPEN、LEAVE、STAY、LISTEN。这里不需要反向破解摘要，只需要分别计算候选词的摘要并比较。",
+        "在工具箱选「SHA-256 摘要」，把输入替换成候选大写单词本身，不加空格、不换行。与下面的 64 位十六进制摘要完全一致，就说明找到了原文。"
+      ],
+      "artifact": {
+        "type": "cipher",
+        "label": "回执 120 / 最后一条确认摘要",
+        "title": "RECOGNIZE THE SAME MESSAGE",
+        "code": "b4d43da68c5ae72747bc7076a823b70d9b67292f9efca76dc07b76db10c445e3",
+        "key": "候选原文：OPEN / LEAVE / STAY / LISTEN\n编码：UTF-8，大写英文，无空格、无换行",
+        "annotation": "摘要是一种单向指纹。通过计算候选词进行比对，而不是把摘要当成密文解码。",
+        "config": {
+          "tool": "sha256"
+        }
+      },
+      "question": "哪一个候选词与记录中的摘要匹配？",
+      "answerFormat": "一个英文单词",
+      "hints": [
+        "SHA-256 不是 Base64，它没有通常意义上的解码步骤。四个候选已经把问题缩小成四次比对。",
+        "确保输入大写单词本身。多一个空格、换行或不同大小写都会产生不同摘要。可以把每次处理留在工具箱记录里。",
+        "匹配的单词是 LISTEN。对这六个大写英文字母按原样计算 SHA-256，即得到目标摘要。输入 LISTEN。"
+      ],
+      "resolution": "LISTEN。不是离开、留下，或替别人开门，而是先听完。接线员给实验室写回最后一条确认：「收到。」那盏守了一夜的指示灯，终于安稳地亮成了绿色。",
+      "evidence": {
+        "title": "LISTEN 的确认指纹",
+        "text": "目标摘要属于大写 LISTEN，无空格与换行。夜班实验室把最后的回复交还给了真正说话的人。",
+        "symbol": "fingerprint"
+      },
+      "answerHashes": [
+        "438bf4a6c03d8c9ad0cac2ba9953b1008c80123b32d5adb7a268c268cfe2617b"
       ]
     }
   ]

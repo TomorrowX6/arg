@@ -1,0 +1,226 @@
+.collection-browser {
+  margin: 24px 0 28px;
+}
+.collection-browser-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  margin-bottom: 13px;
+}
+.collection-browser-heading .eyebrow {
+  font-size: 9px;
+}
+.collection-browser-heading .text-button {
+  font-size: 11px;
+  color: #5b7448;
+}
+.collection-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 12px;
+}
+.collection-card {
+  display: block;
+  text-align: left;
+  padding: 19px 18px 16px;
+  background: #f4f5eb;
+  border: 1px solid #d4ddc5;
+  border-radius: 5px;
+  color: #526a43;
+  transition:
+    background 0.2s,
+    border-color 0.2s;
+}
+.collection-card:hover {
+  border-color: #a7ba91;
+  background: #eef2e2;
+}
+.collection-card.selected {
+  background: #e9efda;
+  border-color: #93ab77;
+  box-shadow: inset 0 2px #a5b78d;
+}
+.collection-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+  color: #6c8156;
+}
+.collection-card-top > span {
+  font: 10px var(--mono);
+  color: #526b3f;
+}
+.collection-card > h3 {
+  font: 500 17px var(--serif);
+  line-height: 1.65;
+  color: #476039;
+}
+.collection-card > p {
+  font-size: 10px;
+  color: #566b44;
+  margin-top: 9px;
+  line-height: 1.8;
+}
+.collection-progress {
+  display: flex;
+  gap: 4px;
+  margin-top: 17px;
+}
+.collection-progress > i {
+  height: 3px;
+  flex: 1;
+  border-radius: 1px;
+  background: #dce3ce;
+}
+.collection-progress > i.complete {
+  background: #8da671;
+}
+.case-toolbox-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 19px;
+  margin: -7px 0 27px;
+  border: 1px solid #d8dfcd;
+  border-radius: 5px;
+  background: #f0f3e7;
+  color: #61784d;
+}
+.case-toolbox-link > span {
+  flex: 1;
+}
+.case-toolbox-link strong {
+  display: block;
+  font-size: 12px;
+  font-weight: 500;
+  color: #4a663b;
+}
+.case-toolbox-link small {
+  display: block;
+  font-size: 10px;
+  color: #62734f;
+  margin-top: 5px;
+}
+.case-toolbox-link:hover {
+  background: #e8efd9;
+  border-color: #adbf94;
+}
+.other-stories-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  font-size: 10px;
+  color: #526b3d;
+  padding: 3px 0 20px;
+}
+.case-dock {
+  display: none;
+}
+#case-findings,
+#case-hints {
+  scroll-margin-top: 24px;
+}
+@media (max-width: 650px) {
+  .collection-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 9px;
+  }
+  .collection-card {
+    padding: 15px 13px;
+  }
+  .collection-card > h3 {
+    font-size: 15px;
+    line-height: 1.6;
+  }
+  .collection-card > p {
+    font-size: 9px;
+  }
+  .collection-card-top {
+    margin-bottom: 10px;
+  }
+  .collection-card-top > svg {
+    width: 21px;
+  }
+  .collection-card-top > span {
+    font-size: 9px;
+  }
+  .collection-browser-heading .eyebrow {
+    font-size: 8px;
+  }
+  .collection-browser-heading .text-button {
+    font-size: 10px;
+  }
+  .case-toolbox-link {
+    padding: 15px;
+    margin-bottom: 24px;
+  }
+  .case-dock {
+    display: flex;
+    position: fixed;
+    bottom: calc(12px + env(safe-area-inset-bottom));
+    left: 16px;
+    right: 16px;
+    align-items: center;
+    z-index: 30;
+    border: 1px solid #aebf97;
+    border-radius: 8px;
+    background: #f5f6edfa;
+    backdrop-filter: blur(8px);
+    box-shadow:
+      0 5px 25px #1c352227,
+      0 1px 2px #263b2115;
+  }
+  .case-dock > button {
+    display: flex;
+    flex: 1;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 17px 8px;
+    font-size: 11px;
+    color: #3e5a31;
+    background: transparent;
+    min-height: 56px;
+  }
+  .case-dock > button:first-child {
+    border-radius: 7px 0 0 7px;
+    background: #e8eedc;
+  }
+  .case-dock > button + button {
+    border-left: 1px solid #d1dcc2;
+  }
+  .case-dock small {
+    margin-left: 3px;
+    font: 9px var(--mono);
+    color: #526b3f;
+  }
+  .reading-case .site-footer {
+    padding-bottom: calc(94px + env(safe-area-inset-bottom));
+  }
+  .reading-case button,
+  .reading-case input,
+  .reading-case textarea,
+  .reading-case select,
+  .reading-case a {
+    scroll-margin-bottom: 94px;
+    scroll-margin-top: 16px;
+  }
+  #case-findings,
+  #case-hints {
+    scroll-margin-top: 22px;
+  }
+  .other-stories-link {
+    padding: 0 0 12px;
+    font-size: 11px;
+  }
+}
+@media print {
+  .case-dock,
+  .case-toolbox-link,
+  .other-stories-link {
+    display: none !important;
+  }
+}

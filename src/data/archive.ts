@@ -5,7 +5,10 @@ export const chapters = data.chapters as Chapter[]
 export const puzzles = data.puzzles as Puzzle[]
 export const mainPuzzles = puzzles.filter((puzzle) => !puzzle.optional)
 export const sidePuzzles = puzzles.filter((puzzle) => puzzle.optional)
-export const puzzleById = Object.fromEntries(puzzles.map((puzzle) => [puzzle.id, puzzle]))
+export const puzzleById: Record<string, Puzzle> = Object.assign(
+  Object.create(null),
+  Object.fromEntries(puzzles.map((puzzle) => [puzzle.id, puzzle])),
+)
 
 export function getStatus(puzzle: Puzzle, state: Pick<GameState, 'solved'>): PuzzleStatus {
   if (state.solved[puzzle.id]) return 'solved'

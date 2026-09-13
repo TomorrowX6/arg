@@ -23,6 +23,7 @@ const names: Record<string, string> = {
   '/field': '异常接收站',
   '/about': '入馆须知',
   '/ending': '明天的选择',
+  '/tools': '解码工具箱',
 }
 
 export function Layout() {
@@ -93,7 +94,7 @@ export function Layout() {
   }, [compact, mobileOpen])
   const results = puzzles
     .filter((puzzle) =>
-      `${puzzle.title}${puzzle.subtitle}${puzzle.tags.join('')}${puzzle.id}`
+      `${puzzle.title}${puzzle.subtitle}${puzzle.tags.join('')}${puzzle.id}${String(puzzle.number).padStart(3, '0')}`
         .toLowerCase()
         .includes(query.toLowerCase()),
     )
@@ -102,7 +103,7 @@ export function Layout() {
     ? '档案阅览室'
     : (names[location.pathname] ?? '余响档案馆')
   return (
-    <div className="app-shell">
+    <div className={`app-shell ${location.pathname.startsWith('/case/') ? 'reading-case' : ''}`}>
       <a
         className="skip-link"
         href="#main-content"
@@ -186,6 +187,10 @@ export function Layout() {
           <Icon name="radio" size={19} />
           <span>异常接收站</span>
           <span className="tiny-live">LIVE</span>
+        </NavLink>
+        <NavLink to="/tools" className={({ isActive }) => `nav-item ${isActive ? 'active' : ''}`}>
+          <Icon name="key" size={19} />
+          <span>解码工具箱</span>
         </NavLink>
         <NavLink to="/about" className={({ isActive }) => `nav-item ${isActive ? 'active' : ''}`}>
           <Icon name="help" size={19} />
