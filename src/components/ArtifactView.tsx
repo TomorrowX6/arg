@@ -12,8 +12,12 @@ import { BalanceDevice } from './BalanceDevice'
 import { JugDevice } from './JugDevice'
 import { FerryDevice } from './FerryDevice'
 import { WarehouseDevice } from './WarehouseDevice'
+import { LaserDevice } from './LaserDevice'
+import { CodeBreakDevice } from './CodeBreakDevice'
+import { BridgeDevice } from './BridgeDevice'
 import '../styles/nonogram.css'
 import '../styles/mini-games.css'
+import '../styles/fairground.css'
 
 export function ArtifactView({ artifact }: { artifact: Artifact }) {
   const specialized = [
@@ -34,6 +38,9 @@ export function ArtifactView({ artifact }: { artifact: Artifact }) {
     'jugs',
     'ferry',
     'warehouse',
+    'laser',
+    'codebreak',
+    'bridge',
   ].includes(artifact.type)
   return (
     <section className={`artifact artifact-${artifact.type}`} aria-label={artifact.label}>
@@ -46,7 +53,13 @@ export function ArtifactView({ artifact }: { artifact: Artifact }) {
       </div>
       <div className="artifact-content">
         {artifact.title && <h3 className="artifact-title">{artifact.title}</h3>}
-        {artifact.type === 'balance' ? (
+        {artifact.type === 'laser' ? (
+          <LaserDevice artifact={artifact} />
+        ) : artifact.type === 'codebreak' ? (
+          <CodeBreakDevice artifact={artifact} />
+        ) : artifact.type === 'bridge' ? (
+          <BridgeDevice artifact={artifact} />
+        ) : artifact.type === 'balance' ? (
           <BalanceDevice artifact={artifact} />
         ) : artifact.type === 'jugs' ? (
           <JugDevice artifact={artifact} />

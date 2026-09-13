@@ -54,6 +54,9 @@
 - `jugs`：`capacity`（两个整数容量）, `targetJug`（0/1）, `target`, `message`。只可装满、倒空、倒至源空或目标满；`solveJugs` 可验证最短解。
 - `ferry`：`passengers`（`label`, `symbol`）, `conflicts`（不能在无人照看时同岸的索引对）, `message`。船载一位乘客，可以空船往返；非法渡河不执行。
 - `warehouse`：`layout`（等宽字符串数组）, `message`。`#` 墙、空格地面、`.` 目标、`$` 箱子、`@` 玩家、`+` 目标上的玩家、`*` 就位箱子；`solveWarehouse` 用于证明可解。
+- `laser`：`size`、`source`（棋盘外的 `x`, `y` 与 `direction`）、`exit`（棋盘外坐标）、`mirrors`（从 0 编号的 `cell`、`tilt` 为 `/` 或反斜线、可选 `fixed`）、`walls`、`receivers`、`message`。镜面反射 90°；所有接收器被照到且光从指定出口离开才算完成。`traceLaser` 可检测挡板、出界与回路，`solveLaser` 枚举活动镜面验证解法。
+- `codebreak`：`symbols`（`label`, `glyph`）、`secret`（符号索引数组）、`maxGuesses`、`message`。支持重复符号，先统计位置正确，再从未匹配符号里统计误位，避免重复计数。玩家可以查看剩余候选数量；用完机会可重试同一个谜面。
+- `bridge`：`people`（`label`, 正整数 `time`）、`budget`、可选两项 `banks`、`message`。每次一至两人与提灯同侧出发，耗时取同行者较大值；可撤回，不执行超出灯油预算的动作。`solveBridge` 计算最短总用时，题目必须至少容纳一个解。
 - `cipher` 可设置 `config.tool` 为 `caesar`、`base64`、`vigenere` 或 `xor`，启用对应站内辅助工具。
 
 新增机制时同步更新类型、档案标签、卡片图标、渲染器与实际交互测试。完成后运行内容测试、相关浏览器测试与生产构建。

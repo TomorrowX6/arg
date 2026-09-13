@@ -62,10 +62,10 @@ describe('the authored campaign', () => {
       expect(puzzle.artifact.type).toBe(puzzle.kind)
     }
   })
-  it('lets every main chapter become reachable without circular prerequisites', () => {
+  it('lets every authored case become reachable without circular prerequisites', () => {
     const solved: Record<string, { at: string; hints: number; attempts: number }> = {}
-    let remaining = [...mainPuzzles]
-    for (let pass = 0; pass < mainPuzzles.length && remaining.length; pass++) {
+    let remaining = [...puzzles]
+    for (let pass = 0; pass < puzzles.length && remaining.length; pass++) {
       const ready = remaining.filter((p) => getStatus(p, { solved }) === 'available')
       expect(ready.length, `Unreachable: ${remaining.map((p) => p.id).join(',')}`).toBeGreaterThan(
         0,

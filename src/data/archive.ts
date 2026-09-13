@@ -59,4 +59,7 @@ export const kindLabels: Record<string, string> = {
   jugs: '量水机关',
   ferry: '渡河规划',
   warehouse: '仓库推箱',
+  laser: '镜面导光',
+  codebreak: '符号推理',
+  bridge: '提灯过桥',
 }

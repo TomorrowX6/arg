@@ -20,6 +20,9 @@ export type PuzzleKind =
   | 'jugs'
   | 'ferry'
   | 'warehouse'
+  | 'laser'
+  | 'codebreak'
+  | 'bridge'
 
 export interface Artifact {
   type: PuzzleKind

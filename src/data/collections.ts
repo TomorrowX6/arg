@@ -45,6 +45,15 @@ export const caseCollections: CaseCollection[] = [
     color: '#887397',
     tag: '多层编码 · CTF 入门',
   },
+  {
+    id: 'fairground',
+    title: '未散场的游园会',
+    subtitle: 'ONE MORE SEAT, ONE MORE LIGHT',
+    description: '票口的符号锁、拐弯的光束、桥上的一盏灯。修好这场演出，让后来的人也有座位。',
+    icon: 'sparkles',
+    color: '#a58160',
+    tag: '六份连续档案 · 动手与推理',
+  },
 ]
 export const collectionById = Object.fromEntries(
   caseCollections.map((collection) => [collection.id, collection]),
