@@ -1,4 +1,5 @@
-import { Link } from 'react-router-dom'
+import { useEffect } from 'react'
+import { Link, useSearchParams } from 'react-router-dom'
 import { chapters, getNextPuzzle, getStatus, mainPuzzles, puzzles } from '../data/archive'
 import { useGame } from '../game/useGame'
 import { CityMap } from '../components/CityMap'
@@ -8,6 +9,17 @@ import { ResumeStory, StoryShelf } from '../components/StoryShelf'
 
 export default function Dashboard() {
   const { state } = useGame()
+  const [searchParams] = useSearchParams()
+  const openStories = searchParams.get('stories') === '1'
+  useEffect(() => {
+    if (!openStories) return
+    const frame = requestAnimationFrame(() => {
+      const heading = document.getElementById('story-shelf-title')
+      heading?.focus({ preventScroll: true })
+      heading?.scrollIntoView({ block: 'start' })
+    })
+    return () => cancelAnimationFrame(frame)
+  }, [openStories])
   const next = getNextPuzzle(state)
   const completed = mainPuzzles.filter((puzzle) => !!state.solved[puzzle.id]).length
   const evidenceCount = puzzles.filter((puzzle) => !!state.solved[puzzle.id]).length

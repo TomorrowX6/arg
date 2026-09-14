@@ -28,7 +28,10 @@ export function getNextSidePuzzle(
   state: Pick<GameState, 'solved'>,
 ): Puzzle | undefined {
   const available = sidePuzzles.filter(
-    (puzzle) => puzzle.id !== current.id && getStatus(puzzle, state) === 'available',
+    (puzzle) =>
+      puzzle.id !== current.id &&
+      (!current.collection || puzzle.collection === current.collection) &&
+      getStatus(puzzle, state) === 'available',
   )
   return (
     available.find((puzzle) => puzzle.requires?.includes(current.id)) ??

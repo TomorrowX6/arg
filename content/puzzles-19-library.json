@@ -1,0 +1,225 @@
+[
+  {
+    "id": "x57",
+    "chapter": "side",
+    "number": 157,
+    "title": "两种笔迹的借书单",
+    "subtitle": "有人用一张借书单，练习重新开始。",
+    "kind": "cipher",
+    "difficulty": 1,
+    "minutes": 5,
+    "tags": [
+      "没有截止日的借书证",
+      "纸面密码"
+    ],
+    "optional": true,
+    "collection": "library",
+    "briefing": [
+      "管理员陶页从还书箱里捡到一张借书单。纸上没有姓名，只有两种记号 A 和 B，每五个一组。页脚写着：「字母不一定是字母，也可以是一种墨水。」",
+      "使用现代 26 字母培根记号：A 记号代表二进制 0，B 代表 1，每五位按高位在左读取。得到 0 对应英文 A，1 对应 B，直到 25 对应 Z。可以带到工具箱的「两种记号」中读取。"
+    ],
+    "artifact": {
+      "type": "cipher",
+      "label": "物证 157 / 旧街图书馆",
+      "title": "YOU CAN FINISH THIS ANOTHER DAY",
+      "code": "ABBBA ABBBB AABAA ABBAB",
+      "config": {
+        "tool": "bacon"
+      }
+    },
+    "question": "借书单给还书箱留下了哪个英文动作？",
+    "answerFormat": "一个英文单词",
+    "answers": [
+      "OPEN",
+      "打开"
+    ],
+    "hints": [
+      "它不是 A、B 两个字母之间的替换。五个记号组成一个二进制数，字母编号从 0 开始。",
+      "ABBBA 对应 01110，也就是十进制 14；从 0 开始数，14 对应 O。",
+      "四组依次得到 14、15、4、13，对应 OPEN。可使用工具箱「两种记号」核对。"
+    ],
+    "resolution": "OPEN。陶页把还书箱打开，里面没有催还通知，只有一本被包得很仔细的小书。第一页写着：「读到一半也可以先放下，这不是一场比赛。」她把这句话留在了新的借书证背面。",
+    "evidence": {
+      "title": "还书箱的开启记号",
+      "text": "现代 26 字母培根记号以 A=0、B=1，每五位读取，四组得到 OPEN。",
+      "symbol": "book"
+    }
+  },
+  {
+    "id": "x58",
+    "chapter": "side",
+    "number": 158,
+    "title": "从镜子里读借阅坐标",
+    "subtitle": "先把纸翻正，再找出它指向哪一架。",
+    "kind": "cipher",
+    "difficulty": 2,
+    "minutes": 9,
+    "tags": [
+      "没有截止日的借书证",
+      "纸面密码"
+    ],
+    "optional": true,
+    "collection": "library",
+    "requires": [
+      "x57"
+    ],
+    "briefing": [
+      "书封里的第一张纸条是从镜子里抄下来的。请先将下面整行字符完全倒序，组内两个数字也一起反过来；斜线和空格同样保留到倒序后。",
+      "翻正后，每对数字是标准 5×5 波利比奥斯方阵坐标：行在前、列在后，均从 1 开始，I/J 合并为 I。方阵依次为 ABCDE / FGHIK / LMNOP / QRSTU / VWXYZ。斜线分隔单词。工具箱可先「倒序阅读」，再「使用结果继续」选择「五乘五方阵」。"
+    ],
+    "artifact": {
+      "type": "cipher",
+      "label": "物证 158 / 旧街图书馆",
+      "title": "YOU CAN FINISH THIS ANOTHER DAY",
+      "code": "51 51 24 32 44 / 12 13 51 32 34",
+      "config": {
+        "tool": "reverse"
+      },
+      "key": "ABCDE\nFGHIK\nLMNOP\nQRSTU\nVWXYZ"
+    },
+    "question": "翻正并查方阵后，纸条指向哪里？",
+    "answerFormat": "两个英文单词",
+    "answers": [
+      "SHELF THREE",
+      "第三书架"
+    ],
+    "hints": [
+      "倒序的是全部字符，不只是调换数字组顺序。每对数字内部也会反转，完成后再查方阵。",
+      "翻正后的坐标为 43 23 15 31 21 / 44 23 42 15 15。第一对 43 是第 4 行第 3 列，对应 S。",
+      "按标准方阵依次读出 SHELF / THREE，即 SHELF THREE。I 和 J 共用 I 的位置，其他字母顺序不变。"
+    ],
+    "resolution": "第三书架的书脊各不相同，有人读得很快，也有人在同一页停了很久。陶页没有给它们排一个高低顺序，只在架边加了一盏更柔和的灯。",
+    "evidence": {
+      "title": "镜子里的第三书架",
+      "text": "整行字符倒序后，用行在前、列在后的标准 5×5 方阵还原，得到 SHELF THREE。",
+      "symbol": "grid"
+    }
+  },
+  {
+    "id": "x59",
+    "chapter": "side",
+    "number": 159,
+    "title": "第三架的折页书",
+    "subtitle": "句子之间，还有给读者留下的空位。",
+    "kind": "document",
+    "difficulty": 2,
+    "minutes": 8,
+    "tags": [
+      "没有截止日的借书证",
+      "纸面密码"
+    ],
+    "optional": true,
+    "collection": "library",
+    "requires": [
+      "x58"
+    ],
+    "briefing": [
+      "第三书架上只有这六行英文，旁边夹着六组三个数字的坐标。每组依次表示：行号、该行的词号、该词内的字母号，全部从 1 开始。",
+      "单词按空格分开；词内只数 A–Z 英文字母，不数句号。按坐标出现顺序各取一个字母，拼成一个英文单词。无需理解英文句意，也不用查另一本书。"
+    ],
+    "artifact": {
+      "type": "document",
+      "label": "物证 159 / 旧街图书馆",
+      "title": "YOU CAN FINISH THIS ANOTHER DAY",
+      "table": [
+        [
+          "行",
+          "原文"
+        ],
+        [
+          "1",
+          "Many small rooms hold morning light."
+        ],
+        [
+          "2",
+          "A borrowed story can travel far."
+        ],
+        [
+          "3",
+          "Rain waits quietly outside the door."
+        ],
+        [
+          "4",
+          "Good pages leave space for a reader."
+        ],
+        [
+          "5",
+          "Inside every margin someone starts again."
+        ],
+        [
+          "6",
+          "No one needs to finish tonight."
+        ]
+      ],
+      "code": "1·5·1 / 2·5·3 / 3·6·4 / 4·2·3 / 5·6·4 / 6·6·3",
+      "annotation": "行 · 词 · 字母，全部从 1 开始；忽略词尾句号。"
+    },
+    "question": "六组书页坐标拼出哪个英文单词？",
+    "answerFormat": "一个英文单词",
+    "answers": [
+      "MARGIN",
+      "页边"
+    ],
+    "hints": [
+      "第一组 1·5·1：第 1 行的第 5 个词是 morning，取第 1 个字母 m。",
+      "第二组从 travel 取第 3 个字母 a；第三组从 door 取第 4 个字母 r。后面同样按三层坐标读取。",
+      "六个位置依次是 morning[1]、travel[3]、door[4]、pages[3]、again[4]、tonight[3]，得到 MARGIN。"
+    ],
+    "resolution": "MARGIN，页边。书里最宽的一块地方没有正文，只有前一位读者写的三个小字：「慢慢读。」你想起自己也曾把某个没有完成的夜晚当作失败，于是在旁边画了一枚很小的书签。",
+    "evidence": {
+      "title": "留白里的字母密钥",
+      "text": "六组行·词·字母坐标依次取出 M、A、R、G、I、N。得到 MARGIN，下一张纸条将它按大写 ASCII 字节作为循环异或密钥。",
+      "symbol": "file"
+    }
+  },
+  {
+    "id": "x60",
+    "chapter": "side",
+    "number": 160,
+    "title": "这张借书证没有截止日",
+    "subtitle": "书可以合上，故事还会在这里。",
+    "kind": "cipher",
+    "difficulty": 2,
+    "minutes": 9,
+    "tags": [
+      "没有截止日的借书证",
+      "纸面密码"
+    ],
+    "optional": true,
+    "collection": "library",
+    "requires": [
+      "x59"
+    ],
+    "briefing": [
+      "最后一张纸条存成了十六进制字节。取上一关的英文单词，全部使用大写；把每个字母按 ASCII 编码得到六字节密钥，从第一个字节开始循环，与密文字节逐个异或。",
+      "空格也参与异或，不能跳过。工具箱的十六进制编码能把大写单词转换为密钥；本页异或工具可填写多个十六进制字节。解码后保留词间空格，读出完整的三个英文单词。"
+    ],
+    "artifact": {
+      "type": "cipher",
+      "label": "物证 160 / 旧街图书馆",
+      "title": "YOU CAN FINISH THIS ANOTHER DAY",
+      "code": "19 00 19 02 69 17 02 14 00 67 1D 07 00 04",
+      "config": {
+        "tool": "xor"
+      },
+      "annotation": "六字节密钥循环使用；空格属于正文，也占用一个密钥位置。"
+    },
+    "question": "陶页在新借书证上写下了什么？",
+    "answerFormat": "三个英文单词",
+    "answers": [
+      "TAKE YOUR TIME",
+      "慢慢来"
+    ],
+    "hints": [
+      "上一关得到 MARGIN。本关先转为大写 ASCII 字节，不能把字母 MARGIN 直接填进要求十六进制的输入框。",
+      "六字节密钥是 4D 41 52 47 49 4E。与密文逐字节异或，使用到第七字节时重新从 4D 开始。",
+      "在异或工具中输入 4D 41 52 47 49 4E，完整译文为 TAKE YOUR TIME，意思是慢慢来。"
+    ],
+    "resolution": "TAKE YOUR TIME。陶页把借书证推到你面前，截止日期那一栏留着空白。你合上书时，天色已经比来时亮了一些。下次回来，可以从书签处开始，也可以重新读第一页。",
+    "evidence": {
+      "title": "没有截止日的借书证",
+      "text": "以大写 MARGIN 的 ASCII 字节 4D 41 52 47 49 4E 循环异或，解得 TAKE YOUR TIME。你可以从书签处继续，也可以重新开始。",
+      "symbol": "book"
+    }
+  }
+]

@@ -119,11 +119,57 @@
 .case-dock {
   display: none;
 }
+.story-complete {
+  display: flex;
+  align-items: flex-start;
+  gap: 17px;
+  margin-top: 24px;
+  padding: 24px 0 7px;
+  border-top: 1px dashed #a9b69b;
+  color: #46623c;
+}
+.story-complete > svg {
+  flex: 0 0 auto;
+  margin-top: 5px;
+}
+.story-complete .eyebrow {
+  font-size: 9px;
+  line-height: 1.7;
+  color: #526b45;
+}
+.story-complete h3 {
+  font: 500 22px/1.6 var(--serif);
+  margin-top: 7px;
+  color: #36532e;
+}
+.story-complete p {
+  font-size: 12px;
+  margin: 8px 0 12px;
+  line-height: 1.9;
+}
+.story-complete a {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 12px;
+  min-height: 36px;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+#story-shelf-title {
+  scroll-margin-top: 30px;
+}
 #case-findings,
 #case-hints {
   scroll-margin-top: 24px;
 }
 @media (max-width: 650px) {
+  .story-complete {
+    gap: 12px;
+  }
+  .story-complete h3 {
+    font-size: 19px;
+  }
   .collection-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 9px;

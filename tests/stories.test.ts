@@ -1,9 +1,18 @@
 import { describe, expect, it } from 'vitest'
 import { getResumeStory, getStoryProgress } from '../src/data/stories'
 import { createState } from '../src/game/storage'
-import { sidePuzzles } from '../src/data/archive'
+import { getNextSidePuzzle, puzzleById, sidePuzzles } from '../src/data/archive'
 
 describe('returning to an independent story', () => {
+  it('continues within the selected story and stops at its ending', () => {
+    const state = createState()
+    state.solved.x57 = { at: '2026-09-14T02:30:00Z', hints: 0, attempts: 1 }
+    expect(getNextSidePuzzle(puzzleById.x57, state)?.id).toBe('x58')
+    for (const id of ['x58', 'x59', 'x60'])
+      state.solved[id] = { at: '2026-09-14T02:30:00Z', hints: 0, attempts: 1 }
+    expect(getNextSidePuzzle(puzzleById.x60, state)).toBeUndefined()
+    expect(getNextSidePuzzle(puzzleById.x04, state)?.collection).toBe('corners')
+  })
   it('resumes an open case or the next unlocked case without changing the main story', () => {
     const state = createState()
     expect(getResumeStory(state)).toBeUndefined()

@@ -132,10 +132,10 @@ function StoryCover({ id }: { id: string }) {
         ].includes(id) && (
           <>
             <path
-              d="M73 97h95M81 97V56l40-32 39 32v41M96 97V61h49v36M121 61v36M97 79h47M88 53h65"
+              d="M120 38q-25-13-49-3v64q25-9 49 4 24-13 49-4V35q-24-10-49 3v65M80 46q15-4 30 3M80 58q15-4 30 3M80 70q15-4 30 3M130 49q15-7 30-3M130 61q15-7 30-3M130 73q15-7 30-3"
               fill="var(--cover-paper)"
             />
-            <path d="M115 49q-18-2-15-14 15 0 15 14m0 0q1-16 14-16 0 15-14 16" />
+            <path d="M137 31V17h12v17l-6-4-6 1" fill="var(--cover-paper)" />
           </>
         )}
       </g>
@@ -185,7 +185,9 @@ export function StoryShelf() {
       <div className="section-heading">
         <div>
           <span className="eyebrow">LIVES BETWEEN THE FILES</span>
-          <h2 id="story-shelf-title">每一盏灯，都是一个故事</h2>
+          <h2 id="story-shelf-title" tabIndex={-1}>
+            每一盏灯，都是一个故事
+          </h2>
         </div>
         <Link className="text-link" to="/archives?chapter=side">
           完整目录

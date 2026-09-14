@@ -66,8 +66,17 @@ test('recover real files and complete the independent side stories', async ({ pa
       await page.getByRole('button', { name: '验证线索', exact: true }).click()
       await expect(page.getByRole('heading', { name: '档案已复原。' })).toBeVisible()
       const next = cases[cases.indexOf(puzzle) + 1]
-      if (next)
+      if (next && next.collection === puzzle.collection)
         await page.getByRole('link', { name: `继续调查：${next.title}`, exact: true }).click()
+      else if (next) {
+        await expect(page.getByRole('complementary', { name: '故事已完整复原' })).toBeVisible()
+        await page.getByRole('link', { name: '挑选下一段故事', exact: true }).click()
+        await expect(page.locator('#story-shelf-title')).toBeFocused()
+        await page
+          .locator(`.story-book-${next.collection}`)
+          .getByRole('link', { name: '翻开第一页', exact: true })
+          .click()
+      }
     })
   }
   await page.goto('/#/archives?chapter=side')

@@ -58,6 +58,7 @@ function CaseReader({ id }: { id: string }) {
   const chapterPuzzles = puzzles.filter((item) =>
     collection ? item.collection === collection.id : item.chapter === puzzle.chapter,
   )
+  const collectionComplete = !!collection && chapterPuzzles.every((item) => !!state.solved[item.id])
   const toolboxMethod =
     puzzle.kind === 'morse'
       ? 'morse'
@@ -268,6 +269,22 @@ function CaseReader({ id }: { id: string }) {
                   <Icon name="arrowUpRight" size={18} />
                 </Link>
               </div>
+              {collectionComplete && collection && (
+                <aside className="story-complete" aria-label="故事已完整复原">
+                  <Icon name={collection.icon} size={30} />
+                  <div>
+                    <span className="eyebrow">ONE MORE LIGHT IN THE CITY</span>
+                    <h3>{collection.title}</h3>
+                    <p>
+                      {chapterPuzzles.length} 份档案，已完整复原。故事会留在这里，随时可以回来。
+                    </p>
+                    <Link to={`/evidence?collection=${collection.id}&from=${id}`}>
+                      回看这段故事的证据
+                      <Icon name="arrowUpRight" size={15} />
+                    </Link>
+                  </div>
+                </aside>
+              )}
               <div className="resolution-actions">
                 {next && next.id !== id ? (
                   <Link className="button button-coral" to={`/case/${next.id}`}>
@@ -278,15 +295,11 @@ function CaseReader({ id }: { id: string }) {
                   <Link
                     className="button button-coral"
                     to={
-                      puzzle.optional
-                        ? '/archives?chapter=side'
-                        : state.solved.f06
-                          ? '/ending'
-                          : '/archives'
+                      puzzle.optional ? '/?stories=1' : state.solved.f06 ? '/ending' : '/archives'
                     }
                   >
                     {puzzle.optional
-                      ? '返回异常档案'
+                      ? '挑选下一段故事'
                       : state.solved.f06
                         ? '查看你的结局'
                         : '返回档案目录'}

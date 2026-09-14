@@ -73,7 +73,6 @@
 }
 .story-shelf-filters button span {
   font: 9px var(--mono);
-  opacity: 0.9;
 }
 .story-shelf-filters button[aria-pressed='true'] {
   background: #3e5741;

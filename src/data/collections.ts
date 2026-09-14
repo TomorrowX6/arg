@@ -100,6 +100,15 @@ export const caseCollections: CaseCollection[] = [
     color: '#96735e',
     tag: '拖动解结 · 四份排演记录',
   },
+  {
+    id: 'library',
+    title: '没有截止日的借书证',
+    subtitle: 'YOU CAN FINISH THIS ANOTHER DAY',
+    description: '两种笔迹，一页倒着写的坐标，一本留出页边的书。找回读到一半也可以停下的自由。',
+    icon: 'book',
+    color: '#738c91',
+    tag: '四份纸面密码 · 多层解读',
+  },
 ]
 export const collectionById = Object.fromEntries(
   caseCollections.map((collection) => [collection.id, collection]),
