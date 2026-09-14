@@ -5,6 +5,7 @@ import { Modal } from './Modal'
 import { mainPuzzles, puzzles, getStatus } from '../data/archive'
 import { useGame } from '../game/useGame'
 import { useCompact } from '../game/useCompact'
+import { useOffline } from '../game/offline'
 
 const nav = [
   { to: '/', icon: 'grid', label: '调查工作台', end: true },
@@ -33,6 +34,7 @@ export function Layout() {
   const [searchOpen, setSearchOpen] = useState(false)
   const [query, setQuery] = useState('')
   const compact = useCompact()
+  const offline = useOffline()
   const sidebarRef = useRef<HTMLElement>(null)
   const completed = mainPuzzles.filter((puzzle) => state.solved[puzzle.id]).length
   useEffect(() => {
@@ -264,10 +266,16 @@ export function Layout() {
             >
               <Icon name={state.settings.sound ? 'volume' : 'muted'} size={18} />
             </button>
-            <div className="connection">
+            <Link
+              to="/settings"
+              className={`connection ${offline.online ? '' : 'is-offline'}`}
+              aria-label={offline.online ? '在线浏览，打开离线设置' : '当前离线，打开离线设置'}
+            >
               <span className="status-dot" />
-              <span>连接稳定</span>
-            </div>
+              <span>
+                {offline.online ? (offline.updateReady ? '新档案已就绪' : '在线浏览') : '离线浏览'}
+              </span>
+            </Link>
           </div>
         </header>
         {storageError && (

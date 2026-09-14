@@ -207,6 +207,13 @@ function CaseReader({ id }: { id: string }) {
             <Icon name="book" size={16} />
             随手记
           </button>
+          <Link
+            className="button button-ghost button-small"
+            to={`/evidence?${collection ? `collection=${collection.id}` : `chapter=${chapter.id}`}&from=${id}`}
+          >
+            <Icon name="fingerprint" size={16} />
+            查阅证据
+          </Link>
         </div>
       </header>
       <div className="case-reader-grid">
@@ -253,7 +260,11 @@ function CaseReader({ id }: { id: string }) {
                   <small>已收入证据墙</small>
                   <strong>{puzzle.evidence.title}</strong>
                 </div>
-                <Link to="/evidence" className="icon-button" aria-label="查看证据墙">
+                <Link
+                  to={`/evidence?${collection ? `collection=${collection.id}` : `chapter=${chapter.id}`}&item=${id}&from=${id}`}
+                  className="icon-button"
+                  aria-label="查看证据墙"
+                >
                   <Icon name="arrowUpRight" size={18} />
                 </Link>
               </div>

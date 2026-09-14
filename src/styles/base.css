@@ -99,6 +99,14 @@ summary:focus-visible {
   background: #e8d3b8;
   color: #1c2c27;
 }
+.connection.is-offline .status-dot {
+  background: #a77935;
+  box-shadow: 0 0 0 3px #a7793516;
+}
+.connection:focus-visible {
+  outline: 2px solid var(--coral);
+  outline-offset: 6px;
+}
 input[type='range'] {
   accent-color: var(--coral);
   cursor: pointer;

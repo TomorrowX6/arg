@@ -5,6 +5,8 @@ import { MAX_SAVE_BYTES, parseSave, readRecoverySave, serializeSave } from '../g
 import type { GameState } from '../game/types'
 import { Icon } from '../components/Icon'
 import { Modal } from '../components/Modal'
+import { OfflineSettings } from '../components/OfflineSettings'
+import '../styles/offline.css'
 
 export default function Settings() {
   const { state, dispatch } = useGame()
@@ -185,6 +187,7 @@ export default function Settings() {
           </div>
         )}
       </section>
+      <OfflineSettings />
       <section className="settings-section reset-section">
         <div>
           <h2>重新开始调查</h2>

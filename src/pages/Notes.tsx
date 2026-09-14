@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useSearchParams } from 'react-router-dom'
 import { useGame } from '../game/useGame'
 import { Icon } from '../components/Icon'
 import { Modal } from '../components/Modal'
@@ -7,7 +7,10 @@ import { puzzleById } from '../data/archive'
 
 export default function Notes() {
   const { state, dispatch } = useGame()
-  const [selected, setSelected] = useState<string | null>(state.notes[0]?.id ?? null)
+  const [params] = useSearchParams()
+  const [selected, setSelected] = useState<string | null>(
+    state.notes.find((note) => note.id === params.get('note'))?.id ?? state.notes[0]?.id ?? null,
+  )
   const [query, setQuery] = useState('')
   const [deleteId, setDeleteId] = useState<string | null>(null)
   const notes = state.notes.filter((note) =>

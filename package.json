@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
+    "postbuild": "node scripts/generate-offline.mjs",
     "lint": "oxlint",
     "preview": "vite preview",
     "generate": "node scripts/generate-evidence.mjs && node scripts/generate-transmissions.mjs && node scripts/generate-content.mjs",
@@ -13,6 +14,7 @@
     "prebuild": "npm run generate",
     "test": "vitest run",
     "test:e2e": "playwright test",
+    "test:offline": "playwright test --config playwright.offline.config.ts",
     "format": "prettier --write .",
     "format:check": "prettier --check ."
   },

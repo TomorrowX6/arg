@@ -1,0 +1,81 @@
+.offline-package {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 20px;
+  background: #f0f2e9;
+  border: 1px solid #dfe5d7;
+  border-radius: 7px;
+}
+.offline-seal {
+  display: grid;
+  place-items: center;
+  width: 58px;
+  height: 66px;
+  flex-shrink: 0;
+  color: #5d715e;
+  background: #fdfcf8;
+  border: 1px solid #d5ddcb;
+  border-radius: 3px 3px 14px 3px;
+}
+.offline-seal.is-ready {
+  color: #376853;
+}
+.offline-package strong {
+  font-size: 14px;
+  font-weight: 600;
+}
+.offline-package p {
+  font-size: 11px;
+  color: #65715d;
+  line-height: 1.9;
+  margin-top: 5px;
+}
+.offline-package span {
+  color: #586957;
+  font-size: 10px;
+  display: block;
+  margin-top: 7px;
+}
+.offline-actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin: 20px 0 14px;
+}
+.offline-actions .text-button {
+  color: #687260;
+  font-size: 11px;
+}
+.offline-progress {
+  display: grid;
+  gap: 8px;
+  margin: 18px 0;
+}
+.offline-progress progress {
+  width: 100%;
+  height: 8px;
+  accent-color: #567462;
+}
+.offline-progress span {
+  color: #586a58;
+  font: 11px var(--mono);
+}
+@media (max-width: 520px) {
+  .offline-package {
+    padding: 15px;
+    gap: 12px;
+    align-items: flex-start;
+  }
+  .offline-seal {
+    width: 42px;
+    height: 52px;
+  }
+  .offline-package strong {
+    font-size: 12px;
+  }
+  .offline-actions {
+    gap: 16px;
+  }
+}
