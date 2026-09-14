@@ -97,6 +97,15 @@ function StoryCover({ id }: { id: string }) {
             <path d="M93 81l7-8 9 4M135 18l20 3" />
           </>
         )}
+        {id === 'camp' && (
+          <>
+            <path
+              d="M61 104h122M69 99l36-61 37 61H69zM105 38l49 14 30 47h-42M105 61l-20 38h40z"
+              fill="var(--cover-paper)"
+            />
+            <path d="M62 71V39m0 0-15 22h30L62 39m0 4-11 8h22M167 43v-8m-4 4h8M88 25h7m-3-4v8" />
+          </>
+        )}
         {![
           'photographer',
           'corners',
@@ -106,6 +115,7 @@ function StoryCover({ id }: { id: string }) {
           'postoffice',
           'observatory',
           'press',
+          'camp',
         ].includes(id) && (
           <>
             <path

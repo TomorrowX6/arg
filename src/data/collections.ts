@@ -82,6 +82,15 @@ export const caseCollections: CaseCollection[] = [
     color: '#a48b60',
     tag: '压缩包与文件校验 · 六份校样',
   },
+  {
+    id: 'camp',
+    title: '雨停之前的营地',
+    subtitle: 'THE CAPTAIN HAS LEFT A NOTE',
+    description: '搭好树下的帐篷，修复河湾步道，再找出队长到底是谁。一场带着脚蹼印的郑重寻宝。',
+    icon: 'tent',
+    color: '#7d8b55',
+    tag: '营地与环线 · 六份雨后短笺',
+  },
 ]
 export const collectionById = Object.fromEntries(
   caseCollections.map((collection) => [collection.id, collection]),

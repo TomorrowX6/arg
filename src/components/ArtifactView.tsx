@@ -24,10 +24,13 @@ import { TrafficDevice } from './TrafficDevice'
 import { OrbitalDevice } from './OrbitalDevice'
 import { StencilDevice } from './StencilDevice'
 import { ZipDevice } from './ZipDevice'
+import { TentDevice } from './TentDevice'
+import { LoopDevice } from './LoopDevice'
 import '../styles/nonogram.css'
 import '../styles/mini-games.css'
 import '../styles/fairground.css'
 import '../styles/observatory.css'
+import '../styles/camp.css'
 
 export function ArtifactView({ artifact }: { artifact: Artifact }) {
   const specialized = [
@@ -60,6 +63,8 @@ export function ArtifactView({ artifact }: { artifact: Artifact }) {
     'orbital',
     'stencil',
     'zip',
+    'tents',
+    'loop',
   ].includes(artifact.type)
   return (
     <section className={`artifact artifact-${artifact.type}`} aria-label={artifact.label}>
@@ -72,7 +77,11 @@ export function ArtifactView({ artifact }: { artifact: Artifact }) {
       </div>
       <div className="artifact-content">
         {artifact.title && <h3 className="artifact-title">{artifact.title}</h3>}
-        {artifact.type === 'zip' ? (
+        {artifact.type === 'tents' ? (
+          <TentDevice artifact={artifact} />
+        ) : artifact.type === 'loop' ? (
+          <LoopDevice artifact={artifact} />
+        ) : artifact.type === 'zip' ? (
           <ZipDevice artifact={artifact} />
         ) : artifact.type === 'sudoku' ? (
           <SudokuDevice artifact={artifact} />

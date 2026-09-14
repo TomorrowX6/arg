@@ -52,6 +52,8 @@ import {
   Sun,
   Trash2,
   Triangle,
+  TreePine,
+  Tent,
   Upload,
   Volume2,
   VolumeX,
@@ -64,6 +66,8 @@ import type { LucideIcon } from 'lucide-react'
 const icons: Record<string, LucideIcon> = {
   activity: Activity,
   archive: Archive,
+  tree: TreePine,
+  tent: Tent,
   arrowDown: ArrowDown,
   arrowLeft: ArrowLeft,
   arrowRight: ArrowRight,

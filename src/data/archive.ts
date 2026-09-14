@@ -71,4 +71,6 @@ export const kindLabels: Record<string, string> = {
   orbital: '周期会合',
   stencil: '叠片显影',
   zip: '压缩包取证',
+  tents: '树下营地',
+  loop: '环形步道',
 }

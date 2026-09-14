@@ -38,6 +38,8 @@ const kindIcon: Record<string, string> = {
   orbital: 'orbit',
   stencil: 'copy',
   zip: 'archive',
+  tents: 'tent',
+  loop: 'map',
 }
 export function PuzzleCard({ puzzle, featured = false }: { puzzle: Puzzle; featured?: boolean }) {
   const { state, dispatch } = useGame()
