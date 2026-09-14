@@ -72,6 +72,16 @@ export const caseCollections: CaseCollection[] = [
     color: '#738c95',
     tag: '八份观测记录 · 五种新机关',
   },
+  {
+    id: 'press',
+    title: '停在付印前的报社',
+    subtitle: 'A CORRECTION FOR TOMORROW',
+    description:
+      '一份被上锁的校样，一张贴错的标记，一页看起来没有改变的文字。让更正得到和头条一样的位置。',
+    icon: 'file',
+    color: '#a48b60',
+    tag: '压缩包与文件校验 · 六份校样',
+  },
 ]
 export const collectionById = Object.fromEntries(
   caseCollections.map((collection) => [collection.id, collection]),

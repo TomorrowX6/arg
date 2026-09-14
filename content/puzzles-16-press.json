@@ -1,0 +1,248 @@
+[
+  {
+    "id": "x41",
+    "chapter": "side",
+    "number": 141,
+    "title": "正文之外，还有一封信",
+    "subtitle": "编辑把最重要的话，写在了纸张以外。",
+    "kind": "zip",
+    "difficulty": 1,
+    "minutes": 6,
+    "tags": ["停在付印前的报社", "压缩包批注"],
+    "optional": true,
+    "collection": "press",
+    "requires": [],
+    "briefing": [
+      "雾港报社的印刷机停在最后一道校样前。夜班编辑何素留下了一封数字封套，说她要更正一条未经核实的报道，却不愿让更正只出现在没人看的角落。",
+      "先找到校样的提取口令。ZIP 不仅能装文件，整个压缩包还可以有自己的批注；目录里的 00-readme.txt 会指出该往哪里找。所需解码工具在站内，原始封套也可下载。"
+    ],
+    "artifact": {
+      "type": "zip",
+      "label": "物证 141 / 雾港报社",
+      "title": "THE NEXT EDITION IS STILL OPEN",
+      "config": {
+        "src": "assets/evidence/editor-envelope.zip",
+        "filename": "editor-envelope.zip"
+      }
+    },
+    "question": "编辑留给校对员的英文口令是什么？",
+    "answerFormat": "一个英文单词",
+    "answers": ["PROOF"],
+    "hints": [
+      "先选中 00-readme.txt，点击读取并校验。它提示你，口令不在文件正文，而在压缩包本身的批注里。",
+      "展开「查看压缩包批注」，找到 PASSWORD_HEX。每两个十六进制数字代表一个 ASCII 字母；可点击「用十六进制读批注」进入工具箱。",
+      "70 72 6F 6F 66 解码为 proof。答案是 PROOF；下一份校样的提取密码必须使用小写 proof。"
+    ],
+    "resolution": "proof 既是校样，也意味着需要拿出依据。何素在信封边上划掉了「今晚必须付印」，改成「核对之后再付印」。你把这枚口令带进排字室，那里有一份真正锁起来的稿件。",
+    "evidence": {
+      "title": "编辑封套里的口令",
+      "text": "ZIP 批注中的十六进制 70 72 6F 6F 66 解码为 proof。校样提取口令使用小写 proof。",
+      "symbol": "mail"
+    }
+  },
+  {
+    "id": "x42",
+    "chapter": "side",
+    "number": 142,
+    "title": "需要口令的校样",
+    "subtitle": "先读完它，再决定它应该放在哪里。",
+    "kind": "zip",
+    "difficulty": 2,
+    "minutes": 7,
+    "tags": ["停在付印前的报社", "真实 ZIP 解密"],
+    "optional": true,
+    "collection": "press",
+    "requires": ["x41"],
+    "briefing": [
+      "这份 proof.txt 的内容确实经过传统 ZIP 加密。提取密码是上一份编辑封套得到的英文单词，全部使用小写。",
+      "填写条目提取密码，解密后核对正文中的 DESK 字段。站内检验台会同时验证文件长度和 CRC-32；原始 ZIP 也可以下载到你自己的解压工具中读取。"
+    ],
+    "artifact": {
+      "type": "zip",
+      "label": "物证 142 / 雾港报社",
+      "title": "THE NEXT EDITION IS STILL OPEN",
+      "config": {
+        "src": "assets/evidence/locked-proof.zip",
+        "filename": "locked-proof.zip"
+      }
+    },
+    "question": "校样被放在了哪一个英文标记的排字架？",
+    "answerFormat": "两个英文单词",
+    "answers": ["LINE SEVEN", "第七排"],
+    "hints": [
+      "本关不是猜一个新密码。上一份档案的编辑口令就是这份校样的密码，注意按要求使用小写。",
+      "输入 proof，点击「解密并读取」。解压后的原文包含 DESK=…，那一行就是排字架的英文标记。",
+      "提取密码为 proof。校样原文写着 DESK=LINE SEVEN，所以答案是 LINE SEVEN。"
+    ],
+    "resolution": "第七排铅字架上还摆着原来的标题，但旁边多了一张更正申请。何素没有把旧标题悄悄收走。她说，错误曾经被许多人看见，更正也应当有机会被同样多的人看见。",
+    "evidence": {
+      "title": "第七排铅字架",
+      "text": "用小写 proof 解开真实加密的校样，DESK 字段为 LINE SEVEN。文件长度与 CRC-32 均通过，稿件的位置得到确认。",
+      "symbol": "key"
+    }
+  },
+  {
+    "id": "x43",
+    "chapter": "side",
+    "number": 143,
+    "title": "上了锁，还是贴了标签",
+    "subtitle": "别让包装替内容作证。",
+    "kind": "zip",
+    "difficulty": 2,
+    "minutes": 9,
+    "tags": ["停在付印前的报社", "伪加密标记修复"],
+    "optional": true,
+    "collection": "press",
+    "requires": ["x42"],
+    "briefing": [
+      "另一份校样也声称自己被加密，但何素在目录旁画了一个问号：「标记是谁写的，内容又是什么？」如果之前的密码不能打开它，先别急着继续猜。",
+      "选中条目，展开「检查文件头与标记」。最低位的 1 只是目录对加密状态的声明。请检查载荷是否真的像加密数据；若发现声明与内容不符，可以尝试按未加密方式读取。只有长度与 CRC 都吻合，检验台才会接受结果，并提供真实修复件。"
+    ],
+    "artifact": {
+      "type": "zip",
+      "label": "物证 143 / 雾港报社",
+      "title": "THE NEXT EDITION IS STILL OPEN",
+      "config": {
+        "src": "assets/evidence/flagged-proof.zip",
+        "filename": "flagged-proof.zip"
+      }
+    },
+    "question": "CORRECTION 字段要求把更正刊在哪一版？",
+    "answerFormat": "PAGE 加一个数字",
+    "answers": ["PAGE 4", "第四版", "4"],
+    "hints": [
+      "压缩方法是「存储」，载荷与原始大小却完全相同。传统 ZIP 加密通常还需要额外的 12 字节头，这个标记值得怀疑。",
+      "查看原始载荷右边的 ASCII 栏，它已经能读出 CORRECTION。尝试按未加密方式读取，并确认长度和 CRC-32 同时通过。",
+      "在文件头检查中点击「按未加密读取此条目」，正文可完整读出 CORRECTION=PAGE 4。还可下载清除两处错误加密位的 ZIP；答案是 PAGE 4。"
+    ],
+    "resolution": "你清除了包装上错误的标记，正文没有改变一个字。第四版是这份报纸原本的读者来信版。何素把更正放在那里，同时保留了错误的封套：以后有人问起时，不必靠谁的记忆来解释发生过什么。",
+    "evidence": {
+      "title": "更正应刊在第四版",
+      "text": "correction.txt 的加密标记与真实载荷不符。按未加密读取后长度与 CRC-32 都正确，CORRECTION 字段为 PAGE 4。",
+      "symbol": "fingerprint"
+    }
+  },
+  {
+    "id": "x44",
+    "chapter": "side",
+    "number": 144,
+    "title": "封套里还有一个封套",
+    "subtitle": "文件的名字，有时只是临时写上的门牌。",
+    "kind": "zip",
+    "difficulty": 2,
+    "minutes": 8,
+    "tags": ["停在付印前的报社", "嵌套文件与格式识别"],
+    "optional": true,
+    "collection": "press",
+    "requires": ["x43"],
+    "briefing": [
+      "老工作封套的后缀是 .dat，最前面还有一段说明文字。但它的内部目录仍然属于 ZIP；扩展名和外包装没有改变实际文件结构。",
+      "读取 manifest.txt，找到真正的版样。内部文件若也是压缩包，检验台会提供继续打开的入口。两份版样里，WITHDRAWN 表示已撤回，APPROVED 表示当前获批；请只采用当前版样的投递位置。"
+    ],
+    "artifact": {
+      "type": "zip",
+      "label": "物证 144 / 雾港报社",
+      "title": "THE NEXT EDITION IS STILL OPEN",
+      "config": {
+        "src": "assets/evidence/old-press.dat",
+        "filename": "old-press.dat"
+      }
+    },
+    "question": "当前获批版样的 DELIVERY 字段是什么？",
+    "answerFormat": "两个英文单词",
+    "answers": ["WEST WINDOW", "西侧窗口"],
+    "hints": [
+      "最外层的 manifest.txt 指向 envelope/layout.bin。先读取这个文件，再看检验台对其内部结构的识别。",
+      "读取 layout.bin 后，点击「继续打开内部压缩包」。里面的旧版指令已经 WITHDRAWN，请检查 plate-current.txt 的状态。",
+      "打开 envelope/layout.bin 里的 plate-current.txt，确认 STATUS=APPROVED，再读取 DELIVERY=WEST WINDOW。答案是 WEST WINDOW。"
+    ],
+    "resolution": "西侧窗口的玻璃上贴着两张交接单，旧的那张被清楚地标注为撤回。何素让它们留在一起，因为更改指令的人也有责任说明改变发生在什么时候。你拿起当前版样，继续核对最后一处差异。",
+    "evidence": {
+      "title": "获批版样的西侧窗口",
+      "text": "外层 .dat 带 60 字节封套文字，内部仍是完整 ZIP。envelope/layout.bin 又包含 ZIP；当前 APPROVED 版样的 DELIVERY 为 WEST WINDOW，东侧窗口属于已撤回版本。",
+      "symbol": "folder"
+    }
+  },
+  {
+    "id": "x45",
+    "chapter": "side",
+    "number": 145,
+    "title": "看不见的一字之差",
+    "subtitle": "眼睛读到同一句话，文件却没有说同一件事。",
+    "kind": "zip",
+    "difficulty": 2,
+    "minutes": 8,
+    "tags": ["停在付印前的报社", "完整字节与摘要比对"],
+    "optional": true,
+    "collection": "press",
+    "requires": ["x44"],
+    "briefing": [
+      "甲、乙两份校样看起来几乎一样。编辑留下的获批文件指纹保存在 fingerprint.txt；它针对完整文件字节，包括不可见字符和换行。",
+      "先读取 fingerprint.txt 并记下 SHA256，再分别读取两份版面。每次成功提取后，下方会显示由真实字节计算的 SHA-256。比较完整的 64 位十六进制摘要，不要把正文复制到编辑器后重新排版再算。CRC 通过表示提取完整，不能代替这次与留存指纹的比对。"
+    ],
+    "artifact": {
+      "type": "zip",
+      "label": "物证 145 / 雾港报社",
+      "title": "THE NEXT EDITION IS STILL OPEN",
+      "config": {
+        "src": "assets/evidence/approved-edition.zip",
+        "filename": "approved-edition.zip"
+      }
+    },
+    "question": "哪份版面的完整字节与获批校样指纹相符？",
+    "answerFormat": "甲或乙",
+    "answers": ["乙", "版面-乙.txt"],
+    "hints": [
+      "先从 fingerprint.txt 读取留存摘要。然后分别打开两份版面，观察检验台算出的 SHA-256；不能只看两份正文是否相像。",
+      "两份文件的长度也不同，一份多了三个 UTF-8 字节的不可见字符。以与留存摘要完全一致的那份为准。",
+      "与 fingerprint.txt 中 SHA256 完全相同的是版面-乙.txt。甲稿多了 U+2060 连接字符，视觉上很难发现。提交乙。"
+    ],
+    "resolution": "乙稿通过了比对。没有人因此被宣布永远可信，也没有人因为一份错稿失去解释的机会；你只是确认了这一次付印应该采用哪些具体字节。何素将两份稿件一同编号保存，把选择写得清清楚楚。",
+    "evidence": {
+      "title": "获批校样 · 乙",
+      "text": "版面-乙.txt 与 fingerprint.txt 中的留存 SHA-256 完全相符。甲稿多了 U+2060，不可见的三个字节也会改变摘要。最终选择为乙。",
+      "symbol": "checks"
+    }
+  },
+  {
+    "id": "x46",
+    "chapter": "side",
+    "number": 146,
+    "title": "更正要印在明天",
+    "subtitle": "承认一处错误，不必先抹去它曾经存在。",
+    "kind": "zip",
+    "difficulty": 3,
+    "minutes": 10,
+    "tags": ["停在付印前的报社", "跨证据组合口令"],
+    "optional": true,
+    "collection": "press",
+    "requires": ["x45"],
+    "briefing": [
+      "最终编者按被封在 editorial.txt 中。instruction.txt 说明了口令的五段来源，依次对应本故事前五份证据。可以从本页「查阅证据」进入故事分组，把五份原文放上对照台。",
+      "五段依次是：编辑口令小写；排字架英文去空格并小写；更正版数只留数字；当前窗口的第一个英文单词小写；获批校样的中文标记。用一个半角连字符 - 连接各段，不加其他空白。解密后，读出编者按中完整的八字原则。"
+    ],
+    "artifact": {
+      "type": "zip",
+      "label": "物证 146 / 雾港报社",
+      "title": "THE NEXT EDITION IS STILL OPEN",
+      "config": {
+        "src": "assets/evidence/morning-editorial.zip",
+        "filename": "morning-editorial.zip"
+      }
+    },
+    "question": "编者按用哪八个字说明如何面对错误？",
+    "answerFormat": "八个汉字",
+    "answers": ["允许更正拒绝抹去", "允许更正，拒绝抹去"],
+    "hints": [
+      "前五份证据分别提供口令、排字架、版数、窗口和校样标记。只读本故事的档案，其他故事的单词不参与。",
+      "五段分别为 proof、lineseven、4、west、乙。按说明用半角连字符连接，中间不加空格。",
+      "完整提取密码是 proof-lineseven-4-west-乙。读取 editorial.txt 后，八字编辑原则为「允许更正拒绝抹去」。"
+    ],
+    "resolution": "允许更正，拒绝抹去。印刷机重新转动，更正占据了第四版清楚可见的位置。何素没有销毁旧报纸，也没有让它继续以事实的名义流传。她在更正下方留了一个空白栏：如果明天还有读者指出新的错误，就在这里继续写。",
+    "evidence": {
+      "title": "明日版的八字原则",
+      "text": "五份证据组合出的 ZIP 口令为 proof-lineseven-4-west-乙。真实解密的编者按写着：允许更正拒绝抹去。旧版留作审阅，修正公开说明。",
+      "symbol": "file"
+    }
+  }
+]

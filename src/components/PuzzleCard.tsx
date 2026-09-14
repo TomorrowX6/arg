@@ -37,6 +37,7 @@ const kindIcon: Record<string, string> = {
   traffic: 'compass',
   orbital: 'orbit',
   stencil: 'copy',
+  zip: 'archive',
 }
 export function PuzzleCard({ puzzle, featured = false }: { puzzle: Puzzle; featured?: boolean }) {
   const { state, dispatch } = useGame()

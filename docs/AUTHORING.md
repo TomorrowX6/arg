@@ -65,6 +65,7 @@
 - `traffic`：`size`、`vehicles`（`id`, `label`, `axis` 为 h/v, `length`, 从 0 开始的 `row`, `column`）、`target`、`message`。横架左右、竖架上下，目标必须是横架，抵达右边界即可；移动不能跳过阻挡。`solveTraffic` 按单格步数求最短路线，`validTraffic` 验证边界和碰撞。
 - `orbital`：`gears`（`label`, `period`, `phase`）、`steps`（推进按钮的分钟数）、`message`。所有指针每分钟加一后按各自周期取模；`orbitalAlignment` 返回第一个共同零点与完整周期，题目应当有解且周期不超过一百万。
 - `stencil`：`rows`、`columns`、`layers`（`label`, 按行展平的 0/1 字符串 `bits`）。选择叠片后真实逐格异或，奇数黑点保留、偶数抵消。内置完整 5×7 拉丁字库，`readPixelText` 直接比对运算后的字形，提供可访问的文字识读；7 行、各字之间一列空白。
+- `zip`：`src`、`filename`。从真实 ZIP 目录和载荷读取条目，支持 STORED / DEFLATE、UTF-8 / CP437 名称、传统 ZipCrypto（含数据描述符）、文件前缀与最多五层嵌套。读取后检查实际长度与 CRC-32，再计算完整字节的 SHA-256；伪加密修复仅在按未加密读取通过校验后清除两处标记。归档限制 8 MB、256 条目，单条目解压限制 5 MB；不支持 ZIP64、跨卷、强加密或其他压缩方法。
 - `cipher` 可设置 `config.tool` 为 `caesar`、`base64`、`vigenere` 或 `xor`，启用对应站内辅助工具。
 
 新增机制时同步更新类型、档案标签、卡片图标、渲染器与实际交互测试。完成后运行内容测试、相关浏览器测试与生产构建。
@@ -74,6 +75,8 @@
 `scripts/generate-evidence.mjs` 以原创像素绘图生成三份真实 PNG 文件，并在内容编译前自动执行。第一张仅损坏前四个签名字节；第二张把 Base64 留言写入 tEXt 的 Comment；第三张把零字节结束的 ASCII 写入蓝色通道最低位。单元测试直接读取这些文件，核对 CRC、元数据、像素解码和隐藏信息；浏览器测试下载修复后的文件并验证字节。
 
 `scripts/generate-transmissions.mjs` 生成三份 PCAP、真实零宽字符信件与双声道 WAV。PCAP 使用文档保留地址与 `.invalid` 域名，包含有效 IPv4/TCP 校验和、DNS 名称压缩、TCP 握手、乱序与重复片段；它们是游戏编写的静态物证，不来自真实用户通信。WAV 在共同背景上叠加方向相反的七频带信号，差分还原字形。所有生成过程可复现，文件同时随源码与网站提供；页面不硬编码这些物证的检验输出。
+
+`scripts/generate-press.mjs` 生成六份真实压缩物证，分别承载批注、ZipCrypto、伪加密位、带前缀的嵌套 ZIP、不可见字符与完整字节摘要、跨证据组合口令。ZIP 密码区分大小写，并按 UTF-8 编码；题面必须明确拼接方式。生成文件可由外部解压软件检查，页面从实际字节中得出结果。单元测试还覆盖错误密码、CRC 损坏、目录边界和谎报长度的解压限制。
 
 支线使用 `optional: true`，不会计入主线进度或阻挡结局。可以用 `requires` 组成独立故事，完成后优先进入依赖当前档案的下一关。
 

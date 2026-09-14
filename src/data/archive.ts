@@ -70,4 +70,5 @@ export const kindLabels: Record<string, string> = {
   traffic: '轨架挪移',
   orbital: '周期会合',
   stencil: '叠片显影',
+  zip: '压缩包取证',
 }

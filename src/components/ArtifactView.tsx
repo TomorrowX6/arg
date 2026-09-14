@@ -23,6 +23,7 @@ import { ConstellationDevice } from './ConstellationDevice'
 import { TrafficDevice } from './TrafficDevice'
 import { OrbitalDevice } from './OrbitalDevice'
 import { StencilDevice } from './StencilDevice'
+import { ZipDevice } from './ZipDevice'
 import '../styles/nonogram.css'
 import '../styles/mini-games.css'
 import '../styles/fairground.css'
@@ -58,6 +59,7 @@ export function ArtifactView({ artifact }: { artifact: Artifact }) {
     'traffic',
     'orbital',
     'stencil',
+    'zip',
   ].includes(artifact.type)
   return (
     <section className={`artifact artifact-${artifact.type}`} aria-label={artifact.label}>
@@ -70,7 +72,9 @@ export function ArtifactView({ artifact }: { artifact: Artifact }) {
       </div>
       <div className="artifact-content">
         {artifact.title && <h3 className="artifact-title">{artifact.title}</h3>}
-        {artifact.type === 'sudoku' ? (
+        {artifact.type === 'zip' ? (
+          <ZipDevice artifact={artifact} />
+        ) : artifact.type === 'sudoku' ? (
           <SudokuDevice artifact={artifact} />
         ) : artifact.type === 'constellation' ? (
           <ConstellationDevice artifact={artifact} />

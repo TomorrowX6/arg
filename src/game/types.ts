@@ -31,6 +31,7 @@ export type PuzzleKind =
   | 'traffic'
   | 'orbital'
   | 'stencil'
+  | 'zip'
 
 export interface Artifact {
   type: PuzzleKind
