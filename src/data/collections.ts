@@ -109,6 +109,15 @@ export const caseCollections: CaseCollection[] = [
     color: '#738c91',
     tag: '四份纸面密码 · 多层解读',
   },
+  {
+    id: 'breakfast',
+    title: '迟到也有早餐',
+    subtitle: 'A TABLE FOR THE MORNING',
+    description: '排好出炉单，量一锅热饮，找回纸袋上的小店长。忙了一整夜，也有人为你留了早餐。',
+    icon: 'sun',
+    color: '#a48157',
+    tag: '排序、量水与数织 · 四份晨间小事',
+  },
 ]
 export const collectionById = Object.fromEntries(
   caseCollections.map((collection) => [collection.id, collection]),

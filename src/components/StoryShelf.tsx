@@ -118,6 +118,19 @@ function StoryCover({ id }: { id: string }) {
             <circle cx="145" cy="85" r="5" fill="var(--cover-paper)" />
           </>
         )}
+        {id === 'breakfast' && (
+          <>
+            <path
+              d="M65 104h115M74 72q0-22 21-22h22q21 0 21 22v20H74zM82 65l9-7m9 7 9-7m9 7 8-7M146 61h26v27q-13 9-26 0V61zM172 65q17-2 12 13-3 7-12 4"
+              fill="var(--cover-paper)"
+            />
+            <path
+              d="M148 44q-5-6 0-12m12 12q-5-6 0-12M99 39V21l12 9q10-5 20 0l12-9v20"
+              fill="var(--cover-paper)"
+            />
+            <path d="M112 39h1m17 0h1M120 43h3M121 43v4" />
+          </>
+        )}
         {![
           'photographer',
           'corners',
@@ -129,6 +142,7 @@ function StoryCover({ id }: { id: string }) {
           'press',
           'camp',
           'theatre',
+          'breakfast',
         ].includes(id) && (
           <>
             <path

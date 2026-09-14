@@ -8,10 +8,7 @@
     "kind": "cipher",
     "difficulty": 1,
     "minutes": 5,
-    "tags": [
-      "没有截止日的借书证",
-      "纸面密码"
-    ],
+    "tags": ["没有截止日的借书证", "纸面密码"],
     "optional": true,
     "collection": "library",
     "briefing": [
@@ -29,10 +26,7 @@
     },
     "question": "借书单给还书箱留下了哪个英文动作？",
     "answerFormat": "一个英文单词",
-    "answers": [
-      "OPEN",
-      "打开"
-    ],
+    "answers": ["OPEN", "打开"],
     "hints": [
       "它不是 A、B 两个字母之间的替换。五个记号组成一个二进制数，字母编号从 0 开始。",
       "ABBBA 对应 01110，也就是十进制 14；从 0 开始数，14 对应 O。",
@@ -54,15 +48,10 @@
     "kind": "cipher",
     "difficulty": 2,
     "minutes": 9,
-    "tags": [
-      "没有截止日的借书证",
-      "纸面密码"
-    ],
+    "tags": ["没有截止日的借书证", "纸面密码"],
     "optional": true,
     "collection": "library",
-    "requires": [
-      "x57"
-    ],
+    "requires": ["x57"],
     "briefing": [
       "书封里的第一张纸条是从镜子里抄下来的。请先将下面整行字符完全倒序，组内两个数字也一起反过来；斜线和空格同样保留到倒序后。",
       "翻正后，每对数字是标准 5×5 波利比奥斯方阵坐标：行在前、列在后，均从 1 开始，I/J 合并为 I。方阵依次为 ABCDE / FGHIK / LMNOP / QRSTU / VWXYZ。斜线分隔单词。工具箱可先「倒序阅读」，再「使用结果继续」选择「五乘五方阵」。"
@@ -79,10 +68,7 @@
     },
     "question": "翻正并查方阵后，纸条指向哪里？",
     "answerFormat": "两个英文单词",
-    "answers": [
-      "SHELF THREE",
-      "第三书架"
-    ],
+    "answers": ["SHELF THREE", "第三书架"],
     "hints": [
       "倒序的是全部字符，不只是调换数字组顺序。每对数字内部也会反转，完成后再查方阵。",
       "翻正后的坐标为 43 23 15 31 21 / 44 23 42 15 15。第一对 43 是第 4 行第 3 列，对应 S。",
@@ -104,15 +90,10 @@
     "kind": "document",
     "difficulty": 2,
     "minutes": 8,
-    "tags": [
-      "没有截止日的借书证",
-      "纸面密码"
-    ],
+    "tags": ["没有截止日的借书证", "纸面密码"],
     "optional": true,
     "collection": "library",
-    "requires": [
-      "x58"
-    ],
+    "requires": ["x58"],
     "briefing": [
       "第三书架上只有这六行英文，旁边夹着六组三个数字的坐标。每组依次表示：行号、该行的词号、该词内的字母号，全部从 1 开始。",
       "单词按空格分开；词内只数 A–Z 英文字母，不数句号。按坐标出现顺序各取一个字母，拼成一个英文单词。无需理解英文句意，也不用查另一本书。"
@@ -122,44 +103,20 @@
       "label": "物证 159 / 旧街图书馆",
       "title": "YOU CAN FINISH THIS ANOTHER DAY",
       "table": [
-        [
-          "行",
-          "原文"
-        ],
-        [
-          "1",
-          "Many small rooms hold morning light."
-        ],
-        [
-          "2",
-          "A borrowed story can travel far."
-        ],
-        [
-          "3",
-          "Rain waits quietly outside the door."
-        ],
-        [
-          "4",
-          "Good pages leave space for a reader."
-        ],
-        [
-          "5",
-          "Inside every margin someone starts again."
-        ],
-        [
-          "6",
-          "No one needs to finish tonight."
-        ]
+        ["行", "原文"],
+        ["1", "Many small rooms hold morning light."],
+        ["2", "A borrowed story can travel far."],
+        ["3", "Rain waits quietly outside the door."],
+        ["4", "Good pages leave space for a reader."],
+        ["5", "Inside every margin someone starts again."],
+        ["6", "No one needs to finish tonight."]
       ],
       "code": "1·5·1 / 2·5·3 / 3·6·4 / 4·2·3 / 5·6·4 / 6·6·3",
       "annotation": "行 · 词 · 字母，全部从 1 开始；忽略词尾句号。"
     },
     "question": "六组书页坐标拼出哪个英文单词？",
     "answerFormat": "一个英文单词",
-    "answers": [
-      "MARGIN",
-      "页边"
-    ],
+    "answers": ["MARGIN", "页边"],
     "hints": [
       "第一组 1·5·1：第 1 行的第 5 个词是 morning，取第 1 个字母 m。",
       "第二组从 travel 取第 3 个字母 a；第三组从 door 取第 4 个字母 r。后面同样按三层坐标读取。",
@@ -181,15 +138,10 @@
     "kind": "cipher",
     "difficulty": 2,
     "minutes": 9,
-    "tags": [
-      "没有截止日的借书证",
-      "纸面密码"
-    ],
+    "tags": ["没有截止日的借书证", "纸面密码"],
     "optional": true,
     "collection": "library",
-    "requires": [
-      "x59"
-    ],
+    "requires": ["x59"],
     "briefing": [
       "最后一张纸条存成了十六进制字节。取上一关的英文单词，全部使用大写；把每个字母按 ASCII 编码得到六字节密钥，从第一个字节开始循环，与密文字节逐个异或。",
       "空格也参与异或，不能跳过。工具箱的十六进制编码能把大写单词转换为密钥；本页异或工具可填写多个十六进制字节。解码后保留词间空格，读出完整的三个英文单词。"
@@ -206,10 +158,7 @@
     },
     "question": "陶页在新借书证上写下了什么？",
     "answerFormat": "三个英文单词",
-    "answers": [
-      "TAKE YOUR TIME",
-      "慢慢来"
-    ],
+    "answers": ["TAKE YOUR TIME", "慢慢来"],
     "hints": [
       "上一关得到 MARGIN。本关先转为大写 ASCII 字节，不能把字母 MARGIN 直接填进要求十六进制的输入框。",
       "六字节密钥是 4D 41 52 47 49 4E。与密文逐字节异或，使用到第七字节时重新从 4D 开始。",
