@@ -63,6 +63,15 @@ export const caseCollections: CaseCollection[] = [
     color: '#638991',
     tag: '网络与声音 · 真实物证',
   },
+  {
+    id: 'observatory',
+    title: '把夜空还给星星',
+    subtitle: 'THE SKY BELONGS TO TOMORROW',
+    description: '校准星历，走遍星轨，挪开挡住窗口的镜架。天文台可以等待黎明，也可以不再挽留黑夜。',
+    icon: 'star',
+    color: '#738c95',
+    tag: '八份观测记录 · 五种新机关',
+  },
 ]
 export const collectionById = Object.fromEntries(
   caseCollections.map((collection) => [collection.id, collection]),

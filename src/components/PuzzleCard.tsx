@@ -32,6 +32,11 @@ const kindIcon: Record<string, string> = {
   packet: 'activity',
   wave: 'audio',
   unicode: 'fingerprint',
+  sudoku: 'grid',
+  constellation: 'star',
+  traffic: 'compass',
+  orbital: 'orbit',
+  stencil: 'copy',
 }
 export function PuzzleCard({ puzzle, featured = false }: { puzzle: Puzzle; featured?: boolean }) {
   const { state, dispatch } = useGame()

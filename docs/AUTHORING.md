@@ -60,6 +60,11 @@
 - `packet`：`src`、`filename`。读取经典 PCAP 的以太网 / IPv4 / UDP / TCP / DNS，显示实际字段与载荷；编号 DNS 查询片段可去重、排序为十六进制；TCP 按单向四元组与序列号重组，检测缺口及矛盾重传，读取 HTTP 与 gzip 正文。提供原件和重组字节下载。当前检验台不重组 IP 分片、TCP 序列号回绕或多次复用同一四元组的连接。
 - `wave`：`src`、`filename`。读取单声道或双声道 16 位 PCM WAV，含 RIFF LIST/INFO 备注。波形、512 点 Hann 窗 FFT 声谱与声道合成全部来自采样数据；合声 `(L+R)/2`，差分 `(L−R)/2`。当前频带像素工具读取 750–1500 Hz 的七条等距频带，每列时长可调，默认 160 ms。
 - `unicode`：`src`、`filename`。读取真实 UTF-8 文本，统计常见不可见字符、可视化其位置，按选择的两种码位映射为 0/1，再以八位字节解码。默认 U+200B=0，U+200C=1。
+- `sudoku`：`size`、`boxRows`、`boxColumns`、`givens`（按行展平，0 为待填格）、`message`。行、列和宫均包含 1…size 一次；支持铅笔候选、局部候选检查、方向键与撤回。`solveSudoku` 最多返回两解，用于验证唯一性，不在谜面中存储完整答案。
+- `constellation`：`nodes`（`id`, `label`, 百分比 `x`, `y`）、`edges`（无向端点对）、`start`、`end`、`message`。星点可重访，连线只能走一次，全部用完并在指定终点结束；`findStarTrail` 与 `starTrailStatus` 验证完整路线。
+- `traffic`：`size`、`vehicles`（`id`, `label`, `axis` 为 h/v, `length`, 从 0 开始的 `row`, `column`）、`target`、`message`。横架左右、竖架上下，目标必须是横架，抵达右边界即可；移动不能跳过阻挡。`solveTraffic` 按单格步数求最短路线，`validTraffic` 验证边界和碰撞。
+- `orbital`：`gears`（`label`, `period`, `phase`）、`steps`（推进按钮的分钟数）、`message`。所有指针每分钟加一后按各自周期取模；`orbitalAlignment` 返回第一个共同零点与完整周期，题目应当有解且周期不超过一百万。
+- `stencil`：`rows`、`columns`、`layers`（`label`, 按行展平的 0/1 字符串 `bits`）。选择叠片后真实逐格异或，奇数黑点保留、偶数抵消。内置完整 5×7 拉丁字库，`readPixelText` 直接比对运算后的字形，提供可访问的文字识读；7 行、各字之间一列空白。
 - `cipher` 可设置 `config.tool` 为 `caesar`、`base64`、`vigenere` 或 `xor`，启用对应站内辅助工具。
 
 新增机制时同步更新类型、档案标签、卡片图标、渲染器与实际交互测试。完成后运行内容测试、相关浏览器测试与生产构建。

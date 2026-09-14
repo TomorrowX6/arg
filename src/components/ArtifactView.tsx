@@ -18,9 +18,15 @@ import { BridgeDevice } from './BridgeDevice'
 import { PacketDevice } from './PacketDevice'
 import { WaveDevice } from './WaveDevice'
 import { UnicodeDevice } from './UnicodeDevice'
+import { SudokuDevice } from './SudokuDevice'
+import { ConstellationDevice } from './ConstellationDevice'
+import { TrafficDevice } from './TrafficDevice'
+import { OrbitalDevice } from './OrbitalDevice'
+import { StencilDevice } from './StencilDevice'
 import '../styles/nonogram.css'
 import '../styles/mini-games.css'
 import '../styles/fairground.css'
+import '../styles/observatory.css'
 
 export function ArtifactView({ artifact }: { artifact: Artifact }) {
   const specialized = [
@@ -47,6 +53,11 @@ export function ArtifactView({ artifact }: { artifact: Artifact }) {
     'packet',
     'wave',
     'unicode',
+    'sudoku',
+    'constellation',
+    'traffic',
+    'orbital',
+    'stencil',
   ].includes(artifact.type)
   return (
     <section className={`artifact artifact-${artifact.type}`} aria-label={artifact.label}>
@@ -59,7 +70,17 @@ export function ArtifactView({ artifact }: { artifact: Artifact }) {
       </div>
       <div className="artifact-content">
         {artifact.title && <h3 className="artifact-title">{artifact.title}</h3>}
-        {artifact.type === 'packet' ? (
+        {artifact.type === 'sudoku' ? (
+          <SudokuDevice artifact={artifact} />
+        ) : artifact.type === 'constellation' ? (
+          <ConstellationDevice artifact={artifact} />
+        ) : artifact.type === 'traffic' ? (
+          <TrafficDevice artifact={artifact} />
+        ) : artifact.type === 'orbital' ? (
+          <OrbitalDevice artifact={artifact} />
+        ) : artifact.type === 'stencil' ? (
+          <StencilDevice artifact={artifact} />
+        ) : artifact.type === 'packet' ? (
           <PacketDevice artifact={artifact} />
         ) : artifact.type === 'wave' ? (
           <WaveDevice artifact={artifact} />

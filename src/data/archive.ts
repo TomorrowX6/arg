@@ -65,4 +65,9 @@ export const kindLabels: Record<string, string> = {
   packet: '网络取证',
   wave: '声谱分析',
   unicode: '字符隐写',
+  sudoku: '星历填数',
+  constellation: '星图一笔画',
+  traffic: '轨架挪移',
+  orbital: '周期会合',
+  stencil: '叠片显影',
 }

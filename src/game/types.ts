@@ -26,6 +26,11 @@ export type PuzzleKind =
   | 'packet'
   | 'wave'
   | 'unicode'
+  | 'sudoku'
+  | 'constellation'
+  | 'traffic'
+  | 'orbital'
+  | 'stencil'
 
 export interface Artifact {
   type: PuzzleKind
