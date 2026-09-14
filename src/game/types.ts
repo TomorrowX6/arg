@@ -34,6 +34,7 @@ export type PuzzleKind =
   | 'zip'
   | 'tents'
   | 'loop'
+  | 'untangle'
 
 export interface Artifact {
   type: PuzzleKind

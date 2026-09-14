@@ -73,4 +73,5 @@ export const kindLabels: Record<string, string> = {
   zip: '压缩包取证',
   tents: '树下营地',
   loop: '环形步道',
+  untangle: '绳线解结',
 }

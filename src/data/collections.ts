@@ -91,6 +91,15 @@ export const caseCollections: CaseCollection[] = [
     color: '#7d8b55',
     tag: '营地与环线 · 六份雨后短笺',
   },
+  {
+    id: 'theatre',
+    title: '不必完美的首演',
+    subtitle: 'ROOM FOR ONE MORE PERSON',
+    description: '四个点、六张圆牌、一整座布景。解开绳线，排练开场，为晚到的人留一个位置。',
+    icon: 'sparkles',
+    color: '#96735e',
+    tag: '拖动解结 · 四份排演记录',
+  },
 ]
 export const collectionById = Object.fromEntries(
   caseCollections.map((collection) => [collection.id, collection]),

@@ -1,0 +1,259 @@
+.untangle-device {
+  color: #59674d;
+}
+.untangle-instruction {
+  font-size: 12px;
+  line-height: 2;
+  color: #616e52;
+  margin: 16px 0 20px;
+}
+.untangle-board {
+  aspect-ratio: 1;
+  max-width: 470px;
+  margin: auto;
+  position: relative;
+  border: 1px solid #d1c9ad;
+  border-radius: 6px;
+  background-color: #f2efe2;
+  background-image:
+    linear-gradient(#ae9e7610 1px, transparent 1px),
+    linear-gradient(90deg, #ae9e7610 1px, transparent 1px),
+    radial-gradient(ellipse at 50% 20%, #fffdf2, transparent 80%);
+  background-size:
+    10% 10%,
+    10% 10%,
+    100% 100%;
+}
+.untangle-board.complete {
+  border-color: #b4c798;
+  background-color: #eef3df;
+}
+.untangle-stage-label {
+  position: absolute;
+  top: 3%;
+  left: 0;
+  right: 0;
+  text-align: center;
+  color: #766b50;
+  font: 8px var(--mono);
+  letter-spacing: 1.5px;
+  pointer-events: none;
+}
+.untangle-ropes {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: visible;
+}
+.untangle-ropes line {
+  stroke-width: 0.62;
+  stroke-linecap: round;
+  transition: stroke 0.15s;
+}
+.untangle-ropes .tangled {
+  stroke: #b47750;
+  stroke-dasharray: 1.2 1.1;
+}
+.untangle-ropes .clear {
+  stroke: #688053;
+}
+.untangle-stage {
+  stroke: #b7a582;
+  stroke-width: 0.35;
+  fill: none;
+}
+.untangle-node {
+  position: absolute;
+  width: 12%;
+  height: 12%;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  border: 1px solid #a8b792;
+  background: #f8faed;
+  color: #4b623b;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  font: 17px var(--mono);
+  box-shadow: 0 2px 5px #59552f12;
+  touch-action: none;
+  cursor: grab;
+}
+.untangle-node:active {
+  cursor: grabbing;
+}
+.untangle-node.selected {
+  background: #536e47;
+  border-color: #38582f;
+  color: #f9f8ea;
+  box-shadow: 0 0 0 3px #69835222;
+  z-index: 2;
+}
+.untangle-node.fixed {
+  background: #e8e3d1;
+  border-color: #b4a887;
+  color: #6b6044;
+  cursor: default;
+}
+.untangle-node.obstructed {
+  border: 2px solid #a86f4d;
+  background: #f2dfcb;
+  color: #895132;
+}
+.untangle-node:focus-visible {
+  outline: 2px solid #b27751;
+  outline-offset: 3px;
+}
+.untangle-legend {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 11px 17px;
+  color: #686e53;
+  font-size: 10px;
+  line-height: 1.8;
+  margin: 15px 0 20px;
+}
+.untangle-legend > span {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.untangle-legend i {
+  width: 16px;
+  height: 2px;
+  background: #688053;
+}
+.untangle-legend > span:nth-child(2) i {
+  background: repeating-linear-gradient(90deg, #a26945 0 3px, transparent 3px 5px);
+}
+.untangle-controls {
+  max-width: 470px;
+  margin: auto;
+  padding: 15px 17px;
+  background: #f1f2e5;
+  border: 1px solid #d8ddc9;
+  border-radius: 5px;
+}
+.untangle-selection {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  color: #536b44;
+  margin-bottom: 14px;
+}
+.untangle-selection strong {
+  font-weight: 500;
+}
+.untangle-selection > span {
+  font-size: 9px;
+  color: #636e53;
+  margin-left: auto;
+}
+.untangle-position {
+  display: flex;
+  align-items: flex-end;
+  gap: 9px;
+}
+.untangle-position label {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  flex: 1;
+  min-width: 0;
+  font-size: 10px;
+  color: #5f704f;
+}
+.untangle-position input {
+  min-width: 0;
+  width: 100%;
+  padding: 9px;
+  border: 1px solid #c4d0b2;
+  border-radius: 3px;
+  background: #fcfcf4;
+  color: #4b6540;
+  font: 12px var(--mono);
+}
+.untangle-position .button {
+  white-space: nowrap;
+  padding-inline: 12px;
+  min-height: 36px;
+}
+.untangle-controls > p {
+  font-size: 10px;
+  line-height: 1.9;
+  color: #606f51;
+  margin-top: 12px;
+}
+.untangle-actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 22px;
+}
+.untangle-actions > span {
+  font-size: 10px;
+  color: #647152;
+  margin-left: auto;
+}
+.untangle-device .device-result {
+  margin: 15px 0 0;
+  border: 1px solid #d2dbc3;
+  padding: 14px 15px;
+  border-radius: 4px;
+  background: #f0f4e6;
+  color: #526b45;
+  font-size: 12px;
+  line-height: 1.9;
+}
+.untangle-device .device-result.success {
+  color: #476737;
+  border-color: #bad0a2;
+  background: #e7f0db;
+}
+.untangle-text {
+  margin-top: 21px;
+  padding-top: 13px;
+  border-top: 1px dashed #d1dac3;
+  color: #5e714d;
+  font-size: 11px;
+}
+.untangle-text summary {
+  cursor: pointer;
+  padding-block: 5px;
+}
+.untangle-text p {
+  font-size: 11px;
+  line-height: 2;
+  margin-top: 12px;
+}
+@media (max-width: 650px) {
+  .untangle-node {
+    font-size: 14px;
+  }
+  .untangle-stage-label {
+    font-size: 6px;
+    letter-spacing: 1px;
+  }
+  .untangle-controls {
+    padding: 13px;
+  }
+  .untangle-position {
+    gap: 7px;
+    flex-wrap: wrap;
+  }
+  .untangle-position .button {
+    font-size: 10px;
+    padding-inline: 9px;
+  }
+  .untangle-actions > span {
+    width: 100%;
+    margin-top: 3px;
+  }
+}

@@ -106,6 +106,18 @@ function StoryCover({ id }: { id: string }) {
             <path d="M62 71V39m0 0-15 22h30L62 39m0 4-11 8h22M167 43v-8m-4 4h8M88 25h7m-3-4v8" />
           </>
         )}
+        {id === 'theatre' && (
+          <>
+            <path
+              d="M64 25h112v78H64zM65 26q20 44 0 70M175 26q-20 44 0 70M70 30q22 14 44 0M126 30q22 14 44 0M77 103v6m85-6v6"
+              fill="var(--cover-paper)"
+            />
+            <path d="M95 85l25-40 25 40H95zM120 45v40M95 85l25-18 25 18" />
+            <circle cx="120" cy="45" r="5" fill="var(--cover-paper)" />
+            <circle cx="95" cy="85" r="5" fill="var(--cover-paper)" />
+            <circle cx="145" cy="85" r="5" fill="var(--cover-paper)" />
+          </>
+        )}
         {![
           'photographer',
           'corners',
@@ -116,6 +128,7 @@ function StoryCover({ id }: { id: string }) {
           'observatory',
           'press',
           'camp',
+          'theatre',
         ].includes(id) && (
           <>
             <path

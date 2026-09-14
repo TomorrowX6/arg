@@ -40,6 +40,7 @@ const kindIcon: Record<string, string> = {
   zip: 'archive',
   tents: 'tent',
   loop: 'map',
+  untangle: 'sparkles',
 }
 export function PuzzleCard({ puzzle, featured = false }: { puzzle: Puzzle; featured?: boolean }) {
   const { state, dispatch } = useGame()
