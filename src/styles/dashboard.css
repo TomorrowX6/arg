@@ -882,7 +882,7 @@
 .chapter-strip-stops > a.current > span {
   background: #e4cfaf;
   border-color: #c8aa80;
-  color: #7a5c38;
+  color: #6c4f2f;
 }
 .chapter-strip-stops > a.done > span {
   background: #789767;
@@ -975,7 +975,7 @@
 .discovery-card .eyebrow {
   font-size: 8px;
   letter-spacing: 1.1px;
-  color: #6c785c;
+  color: #5f6e50;
 }
 .discovery-card h3 {
   margin: 10px 0;

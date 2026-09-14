@@ -1,16 +1,10 @@
 import { Link } from 'react-router-dom'
-import {
-  chapters,
-  getNextPuzzle,
-  getStatus,
-  mainPuzzles,
-  puzzles,
-  sidePuzzles,
-} from '../data/archive'
+import { chapters, getNextPuzzle, getStatus, mainPuzzles, puzzles } from '../data/archive'
 import { useGame } from '../game/useGame'
 import { CityMap } from '../components/CityMap'
 import { Icon } from '../components/Icon'
 import { PuzzleCard } from '../components/PuzzleCard'
+import { ResumeStory, StoryShelf } from '../components/StoryShelf'
 
 export default function Dashboard() {
   const { state } = useGame()
@@ -28,7 +22,7 @@ export default function Dashboard() {
           <div className="eyebrow">
             <span className="small-cross">✳</span> NIGHT SHIFT / 014
           </div>
-          <h1>{completed ? '欢迎回来，档案员。' : '一切线索，都有回响。'}</h1>
+          <h1>{evidenceCount ? '欢迎回来，档案员。' : '一切线索，都有回响。'}</h1>
           <p>
             {state.ending
               ? '天亮了。还有新的故事，正在发生。'
@@ -105,6 +99,7 @@ export default function Dashboard() {
           </span>
         </div>
       </section>
+      <ResumeStory />
       <section className="stats-grid" aria-label="调查概况">
         <div className="stat-card">
           <div className="stat-label">
@@ -228,22 +223,8 @@ export default function Dashboard() {
             })}
         </div>
       </section>
-      <section className="discovery-grid" aria-label="更多调查">
-        <Link to="/archives?chapter=side" className="discovery-card">
-          <div className="discovery-icon">
-            <Icon name="fingerprint" size={26} />
-          </div>
-          <div>
-            <span className="eyebrow">SIDE STORIES / {sidePuzzles.length} CASES</span>
-            <h3>大事件之外的小故事</h3>
-            <p>修复照片，读取隐写电报，走进仍亮着灯的小店。</p>
-            <small>
-              {sidePuzzles.filter((puzzle) => state.solved[puzzle.id]).length} /{' '}
-              {sidePuzzles.length} 份异常档案已复原
-            </small>
-          </div>
-          <Icon name="arrowUpRight" size={21} />
-        </Link>
+      <StoryShelf />
+      <section className="discovery-grid reception-discovery" aria-label="更多调查">
         <Link to="/field" className="discovery-card">
           <div className="discovery-icon">
             <Icon name="radio" size={26} />
